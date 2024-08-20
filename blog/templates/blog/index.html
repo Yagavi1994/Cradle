@@ -25,7 +25,7 @@
             {% for post in post_list %}
             <!-- Blog post-->
             {% if forloop.counter|divisibleby:2 %}
-            <div class="container row p-3 border my-3 shadow align-items-center">
+            <div class="container row p-3 border my-5 shadow align-items-center">
                 <div class="col-md-5 p-3 order-md-1">
                     <a href="{% url 'post_detail' post.slug %}"><img class="circle-image"
                             src="{% static 'images/default.jpg' %}" alt="..." /></a>
@@ -42,7 +42,7 @@
             </div>
 
             {% else %}
-            <div class="container row p-3 border my-3 shadow align-items-center">
+            <div class="container row p-3 border my-5 shadow align-items-center">
                 <div class="col-md-7 order-2 order-md-1">
                     <div class="small text-muted">{{ post.created_on}}</div>
                     <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
@@ -59,18 +59,18 @@
             {% endif %}
             {% endfor %}
             <!-- Pagination-->
+            {% if is_paginated %}
             <nav aria-label="Pagination">
                 <hr class="my-0" />
                 <ul class="pagination justify-content-center my-4">
-                    <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"
-                            aria-disabled="true">Newer</a></li>
-                    <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#!">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#!">3</a></li>
-                    <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
-                    <li class="page-item"><a class="page-link" href="#!">15</a></li>
-                    <li class="page-item"><a class="page-link" href="#!">Older</a></li>
+                    {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link"> &laquo; PREV </a></li>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+                    {% endif %}
                 </ul>
+                {% endif %}
             </nav>
         </div>
     </div>

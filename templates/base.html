@@ -1,6 +1,10 @@
 {% load static %}
+
 {% url 'home' as home_url %}
 {% url 'about' as about_url %}
+{% url 'account_login' as login_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_logout' as logout_url %}
 
 
 <!DOCTYPE html>
@@ -40,30 +44,41 @@
                 <button class="btn btn-outline-success" type="submit">Search</button>
               </form>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link {% if request.path == about_url %}active{% endif %}" href="{% url 'about' %}">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Category
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Newborn</a></li>
-                        <li><a class="dropdown-item" href="#">Breastfeeding</a></li>
-                        <li><a class="dropdown-item" href="#">Formula Feeding</a></li>
-                        <li><a class="dropdown-item" href="#">Sleep</a></li>
-                        <li><a class="dropdown-item" href="#">Parenting</a></li>
-                        <li><a class="dropdown-item" href="#">Baby Led Weaning</a></li>
-                        <li><a class="dropdown-item" href="#">Eating Habits</a></li>
-                        <li><a class="dropdown-item" href="#">Potty Training</a></li>
-                        <li><a class="dropdown-item" href="#">Personal Stories</a></li>
-                        <li><a class="dropdown-item" href="#">Toddlers</a></li>
-                        <li><a class="dropdown-item" href="#">Teens</a></li>
-                      </ul>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Login</a>
-                    </li>
+                  <li class="nav-item"><a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a></li>
+                  <li class="nav-item"><a class="nav-link {% if request.path == about_url %}active{% endif %}" href="{% url 'about' %}">About</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Category
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Newborn</a></li>
+                      <li><a class="dropdown-item" href="#">Breastfeeding</a></li>
+                      <li><a class="dropdown-item" href="#">Formula Feeding</a></li>
+                      <li><a class="dropdown-item" href="#">Sleep</a></li>
+                      <li><a class="dropdown-item" href="#">Parenting</a></li>
+                      <li><a class="dropdown-item" href="#">Baby Led Weaning</a></li>
+                      <li><a class="dropdown-item" href="#">Eating Habits</a></li>
+                      <li><a class="dropdown-item" href="#">Potty Training</a></li>
+                      <li><a class="dropdown-item" href="#">Personal Stories</a></li>
+                      <li><a class="dropdown-item" href="#">Toddlers</a></li>
+                      <li><a class="dropdown-item" href="#">Teens</a></li>
+                    </ul>
+                  </li>
+                  {% if user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                      href="{% url 'account_signup' %}">Register</a>
+                  </li>
+                  {% endif %}
+
                 </ul>
             </div>
         </div>
