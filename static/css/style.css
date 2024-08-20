@@ -1,18 +1,26 @@
  /* Custom CSS */
 
- .main-bg {
+.main-bg {
   background-color: #fcfdfd;
  }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
  /* Post_Detail Template */
 
- .blog-post-image {
+.blog-post-image {
   max-height: 500px;
  }
 
  /* About Template */
 
- .circle-image {
+.circle-image {
   max-height: 300px;
   border-radius: 50%;
  }

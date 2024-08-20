@@ -4,7 +4,7 @@
 <div class="container mt-5">
   <div class="row">
     <div class="text-center">
-        <!-- Title goes between these h2 tags -->
+      <!-- Title goes between these h2 tags -->
         <h2>{{ about.title }}</h2>
       </div>
       <!-- Image -->
@@ -12,7 +12,7 @@
       <img src="{% static 'images/about-image.jpg' %}" class="img-fluid circle-image" alt="circle-image"/>
     </div>
     <!-- Content -->
-    <div class="card mb-4  mt-3 left top p-3 card-body shadow">
+    <div class="card mb-4 mt-3 p-4 shadow">
       {{ about.content | safe }}
     </div>
   </div>
