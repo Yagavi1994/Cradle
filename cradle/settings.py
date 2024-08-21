@@ -125,6 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_REQUIRED = True
 
 
 # Internationalization
@@ -152,12 +153,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email settings for SMTP backend
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # Replace with your email provider's SMTP server
+EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587  # SMTP port for TLS
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_USER = os.environ.get("Username")
+EMAIL_HOST_PASSWORD = os.environ.get("Password")
 
 # Default "from" email address
 DEFAULT_FROM_EMAIL = 'cradle.blog.2024@gmail.com'
