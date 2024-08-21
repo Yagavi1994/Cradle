@@ -9,7 +9,7 @@
 {% block content %}
 
 <section>
-    <div class="container-fluid h-custom my-5">
+    <div class="container-fluid h-custom my-5 text-center">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-md-9 col-lg-6 col-xl-5">
                 <img src="{% static 'images/logo.png' %}" class="img-fluid" alt="Sample image">
@@ -17,7 +17,7 @@
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-5 mt-lg-0">
                 <div class="card">
                     <div class="card-header text-center">
-                        <h4>Login</h4>
+                        <h4>{% trans "Login" %}</h4>
                     </div>
                     <div class="card-body">
                         <!-- Django's default login form -->
@@ -28,25 +28,25 @@
                             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                             {% endif %}
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="submit" class="btn btn-primary">{% trans "Login" %}</button>
                             </div>
                         </form>
                         <hr>
                         <div class="text-center">
-                            <p>Or login with</p>
+                            <p>{% trans "Or login with" %}</p>
                             <!-- Google Login Button -->
                             <a href="#" class="btn btn-outline-danger btn-block w-100 mb-2">
-                                <i class="fab fa-google"></i> Login with Google
+                                <i class="fab fa-google"></i> {% trans "Login with Google" %}
                             </a>
                             <!-- Facebook Login Button -->
                             <a href="#" class="btn btn-outline-primary btn-block w-100">
-                                <i class="fab fa-facebook-f"></i> Login with Facebook
+                                <i class="fab fa-facebook-f"></i> {% trans "Login with Facebook" %}
                             </a>
                         </div>
                     </div>
                     <div class="card-footer text-center">
-                        <p>Don't have an account? <a href="{% url 'account_signup' %}">Sign up</a></p>
-                        <p><a href="{% url 'account_reset_password' %}">Forgot your password?</a></p>
+                        <p>{% trans "Don't have an account?" %}" <a href="{% url 'account_signup' %}">{% trans "Sign up" %}</a></p>
+                        <p><a href="{% url 'account_reset_password' %}">{% trans "Forgot your password?" %}</a></p>
                     </div>
                 </div>
             </div>
