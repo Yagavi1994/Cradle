@@ -4,14 +4,14 @@
 {% block content %}
 <!-- Page header with logo and tagline-->
 <header class="py-5 bg-light border-bottom mb-4">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row align-items-center">
             <div class="col-5 col-md-4">
                 <img src="{% static 'images/hero-image.png' %}" class="img-fluid" alt="Hero Image">
             </div>
             <div class="col-7 col-md-8 text-center align-items-center">
-                <h1 class="fw-bolder">Welcome to Cradle!</h1>
-                <p class="lead mb-0">A one stop Blog for all parenting needs</p>
+                <h1 class="fw-bolder salsa-regular">Welcome to Cradle!</h1>
+                <p class="lead mb-0 handlee-regular">A one stop Blog for all parenting needs</p>
             </div>
         </div>
     </div>
@@ -25,31 +25,31 @@
             {% for post in post_list %}
             <!-- Blog post-->
             {% if forloop.counter|divisibleby:2 %}
-            <div class="container row p-3 border my-5 shadow align-items-center g-0">
+            <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-purple rounded">
                 <div class="col-md-5 p-3 order-md-1">
                     <a href="{% url 'post_detail' post.slug %}"><img class="circle-image img-fluid"
                             src="{% static 'images/default.jpg' %}" alt="..." /></a>
                 </div>
                 <div class="col-md-7 order-md-2">
-                    <div class="small text-muted">{{ post.created_on}}</div>
+                    <div class="small text-muted p-2">{{ post.created_on}}</div>
                     <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
-                        <h2 class="card-title h4">{{ post.title }}</h2>
+                        <h2 class="card-title h4 salsa-regular">{{ post.title }}</h2>
                     </a>
-                    <p class="card-text card-body">{{ post.excerpt }}</p>
-                    <a class="btn btn-primary post-link" href="{% url 'post_detail' post.slug %}">Read more →</a>
+                    <p class="card-text card-body handlee-regular p-2">{{ post.excerpt }}</p>
+                    <a class="btn btn-primary my-custom-button btn-enlarge post-link" href="{% url 'post_detail' post.slug %}">Read more →</a>
                 </div>
                     
             </div>
 
             {% else %}
-            <div class="container row p-3 border my-5 shadow align-items-center g-0">
+            <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-pink rounded">
                 <div class="col-md-7 order-2 order-md-1">
-                    <div class="small text-muted">{{ post.created_on}}</div>
+                    <div class="small text-muted p-2">{{ post.created_on}}</div>
                     <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
-                        <h2 class="card-title h4">{{ post.title }}</h2>
+                        <h2 class="card-title h4 salsa-regular ">{{ post.title }}</h2>
                     </a>
-                    <p class="card-text card-body">{{ post.excerpt }}</p>
-                    <a class="btn btn-primary post-link" href="{% url 'post_detail' post.slug %}">Read more →</a>
+                    <p class="card-text card-body handlee-regular p-2">{{ post.excerpt }}</p>
+                    <a class="btn btn-primary btn-enlarge post-link" href="{% url 'post_detail' post.slug %}">Read more →</a>
                 </div>
                 <div class="col-md-5 order-1 order-md-2 p-3">
                     <a href="{% url 'post_detail' post.slug %}"><img class="circle-image float-end img-fluid"

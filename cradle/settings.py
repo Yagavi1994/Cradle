@@ -28,7 +28,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-_(^ge47_(a$1bl!)xg+l2c)$uxza2vy=tu7x6yev8t+@pmnm#!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['8000-yagavi1994-cradle-5ckw8ika6zj.ws.codeinstitute-ide.net', '.herokuapp.com']
 
@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'django_summernote',
     'blog',
     'about',
-    'anymail',
 ]
 
 SITE_ID = 1
@@ -159,7 +158,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_USE_TLS = False
+EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 

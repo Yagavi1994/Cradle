@@ -6,7 +6,7 @@
         <div class="row">
             <div class="masthead-text g-4">
                 <!-- Post title goes in these h1 tags -->
-                <h1 class="post-title">{{ post.title }}</h1>
+                <h1 class="post-title salsa-regular">{{ post.title }}</h1>
                 <!-- Post author goes before the | the post's created date goes after -->
                 <p class="post-subtitle"><a href="{{ post.source }}" target="_blank">Source Link</a></p>
                 <p class="post-subtitle"> {{ post.created_on }} </p>
@@ -22,9 +22,7 @@
         </div>
         <div>
             <div class="card mb-4 mt-3 left top p-3">
-                <p class="card-body">
-                    {{ post.content | safe }}
-                </p>
+                <p class="card-body handlee-regular">{{ post.content | safe }}</p>
             </div>
         </div>
     </div>

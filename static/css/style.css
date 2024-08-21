@@ -1,5 +1,7 @@
  /* Custom CSS */
 
+ /* General styles */
+
 .main-bg {
   background-color: #fcfdfd;
  }
@@ -11,6 +13,93 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.logo 
+{
+  height: 80px;
+  width: 80px;
+
+}
+
+/* Bootstrap classes */
+
+.nav-link {
+  color: #ffffff !important;
+}
+
+.nav-link {
+  padding-bottom: 5px !important; 
+}
+
+.nav-link.active {
+  text-decoration: underline;
+  text-underline-offset: 8px
+}
+
+.btn-primary {
+  background-color: #292D3D !important; 
+  color: white !important;              
+  border: none !important;          
+}
+
+.navbar-toggler {
+  background-color: #fff !important;
+}
+
+/* Colors */
+
+.white-font {
+  color: #ffffff 
+}
+
+.bg-dark-purple {
+  background-color: #775295;
+}
+
+.bg-pink {
+  background: linear-gradient(to left, #ED829D, #fff)
+}
+
+.bg-purple {
+  background: linear-gradient(to right, #BD9DE7, #fff);
+}
+
+.btn-enlarge {
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.btn-enlarge:hover {
+  transform: scale(1.1); /* Enlarge by 10% */
+}
+
+/* Fonts */
+
+.handlee-regular {
+  font-family: "Handlee", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: larger;
+}
+
+.pacifico-regular {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: xx-large;
+}
+
+.salsa-regular {
+  font-family: "Salsa", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+header {
+  background-image: url(/static/images/flower-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 
 /* For sticky footer */
 main {
