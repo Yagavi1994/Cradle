@@ -3,7 +3,7 @@
  /* General styles */
 
  .main-bg {
-   background-color: #e0f1fb;
+   background-color: #fff;
  }
 
  body {
@@ -19,6 +19,15 @@
    width: 80px;
 
  }
+
+ header {
+  background-image: url(/static/images/yellow-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.8),
+    inset -5px -3px 5px rgba(255, 255, 255, 0.2);
+}
+
 
  /* Bootstrap classes */
 
@@ -56,11 +65,12 @@
  }
 
  .bg-pink {
-   background: linear-gradient(to left, #ED829D, #fff)
+   /* background: linear-gradient(to left, #ED829D, #fff) */
+   background-color: #c44f6c;
  }
 
  .bg-purple {
-   background: linear-gradient(to right, #BD9DE7, #fff);
+   background-color: #8c6eb4;
  }
 
  .btn-enlarge {
@@ -93,19 +103,6 @@
    font-family: "Salsa", cursive;
    font-weight: 400;
    font-style: normal;
- }
-
- header {
-   background-image: url(/static/images/flower-bg.jpg);
-   background-repeat: no-repeat;
-   background-size: cover;
-   /* filter: grayscale(100%); */
-   /* Make the image grayscale */
-   box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.8),
-     inset -5px -5px 10px rgba(255, 255, 255, 0.2);
-   /* Add shadows for the engraved effect */
-   /* mix-blend-mode: multiply; */
-   /* opacity: 0.7; */
  }
 
 
