@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
+
 
 STATUS = ((0, "Draft"), (1, "Published"))
 CATEGORY = ((0, "Newborn"), (1, "Breastfeeding"), (2, "Formula Feeding"), (3, "Sleep"), (4, "Baby Led Weaning"), (5, "Eating Habits"), (6, "Potty Training"), (7, "Toddlers"), (8, "Parenting"), (9, "Personal Stories"), (10, "Teens"))
@@ -11,6 +13,7 @@ class Post(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_posts"
     )
+    featured_image = CloudinaryField('image', default='placeholder')
     source = models.CharField(max_length=400)
     category = models.IntegerField(choices=CATEGORY, default=0)
     content = models.TextField()

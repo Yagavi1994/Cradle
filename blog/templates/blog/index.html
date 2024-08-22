@@ -36,9 +36,10 @@
                         <h2 class="card-title h4 salsa-regular">{{ post.title }}</h2>
                     </a>
                     <p class="card-text card-body handlee-regular p-2">{{ post.excerpt }}</p>
-                    <a class="btn btn-primary my-custom-button btn-enlarge post-link" href="{% url 'post_detail' post.slug %}">Read more →</a>
+                    <a class="btn btn-primary my-custom-button btn-enlarge post-link"
+                        href="{% url 'post_detail' post.slug %}">Read more →</a>
                 </div>
-                    
+
             </div>
 
             {% else %}
@@ -49,11 +50,15 @@
                         <h2 class="card-title h4 salsa-regular">{{ post.title }}</h2>
                     </a>
                     <p class="card-text card-body handlee-regular p-2">{{ post.excerpt }}</p>
-                    <a class="btn btn-primary btn-enlarge post-link" href="{% url 'post_detail' post.slug %}">Read more →</a>
+                    <a class="btn btn-primary btn-enlarge post-link" href="{% url 'post_detail' post.slug %}">Read more
+                        →</a>
                 </div>
                 <div class="col-md-5 order-1 order-md-2 p-3">
-                    <a href="{% url 'post_detail' post.slug %}"><img class="circle-image float-end img-fluid"
-                            src="{% static 'images/default.jpg' %}" alt="..." /></a>
+                    {% if "placeholder" in post.featured_image.url %}
+                    <a href="{% url 'post_detail' post.slug %}"><img class="circle-image float-end img-fluid" src="{% static 'images/default.jpg' %}" alt="placeholder image"></a>
+                    {% else %}
+                    <img class="circle-image float-end img-fluid" src=" {{ post.featured_image.url }}" alt="{{ post.title }}">
+                    {% endif %}
                 </div>
             </div>
             {% endif %}
