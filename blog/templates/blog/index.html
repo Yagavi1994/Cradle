@@ -27,8 +27,11 @@
             {% if forloop.counter|divisibleby:2 %}
             <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-pink rounded">
                 <div class="col-md-5 p-3 order-md-1">
-                    <a href="{% url 'post_detail' post.slug %}"><img class="circle-image img-fluid"
-                            src="{% static 'images/default.jpg' %}" alt="..." /></a>
+                    {% if "placeholder" in post.featured_image.url %}
+                    <a href="{% url 'post_detail' post.slug %}"><img class="circle-image img-fluid" src="{% static 'images/default.jpg' %}" alt="placeholder image"></a>
+                    {% else %}
+                    <a href="{% url 'post_detail' post.slug %}"><img class="circle-image img-fluid" src=" {{ post.featured_image.url }}" alt="{{ post.title }}"></a>
+                    {% endif %}
                 </div>
                 <div class="col-md-7 order-md-2">
                     <div class="small p-2">{{ post.created_on}}</div>
@@ -57,7 +60,7 @@
                     {% if "placeholder" in post.featured_image.url %}
                     <a href="{% url 'post_detail' post.slug %}"><img class="circle-image float-end img-fluid" src="{% static 'images/default.jpg' %}" alt="placeholder image"></a>
                     {% else %}
-                    <img class="circle-image float-end img-fluid" src=" {{ post.featured_image.url }}" alt="{{ post.title }}">
+                    <a href="{% url 'post_detail' post.slug %}"><img class="circle-image float-end img-fluid" src=" {{ post.featured_image.url }}" alt="{{ post.title }}"></a>
                     {% endif %}
                 </div>
             </div>
