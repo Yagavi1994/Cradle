@@ -38,7 +38,8 @@
   <!-- Responsive navbar-->
   <nav class="navbar navbar-expand-lg bg-dark">
     <div class="container">
-      <a class="text-decoration-none pacifico-regular white-font p-2 me-3" href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" class="logo p-2">Cradle</a>
+      <a class="text-decoration-none pacifico-regular white-font p-2 me-3" href="{% url 'home' %}"><img
+          src="{% static 'images/logo.png' %}" class="logo p-2">Cradle</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
           class="navbar-toggler-icon"></span></button>
@@ -92,6 +93,20 @@
       </div>
     </div>
   </nav>
+  <!-- displaying Django messages -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible
+        fade show" id="msg" role="alert">
+          {{ message | safe }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 
   <main class="flex-shrink-0 main-bg">
     {% if user.is_authenticated %}

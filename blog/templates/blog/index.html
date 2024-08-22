@@ -25,7 +25,7 @@
             {% for post in post_list %}
             <!-- Blog post-->
             {% if forloop.counter|divisibleby:2 %}
-            <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-purple rounded">
+            <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-pink rounded">
                 <div class="col-md-5 p-3 order-md-1">
                     <a href="{% url 'post_detail' post.slug %}"><img class="circle-image img-fluid"
                             src="{% static 'images/default.jpg' %}" alt="..." /></a>
@@ -42,7 +42,7 @@
             </div>
 
             {% else %}
-            <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-pink rounded">
+            <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-purple rounded">
                 <div class="col-md-7 order-2 order-md-1">
                     <div class="small p-2">{{ post.created_on}}</div>
                     <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
