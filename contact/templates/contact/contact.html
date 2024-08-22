@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="bg-pink box-shadow">
+    <div class="">
+        <div class="">
+            <div>
+                <h2 class="salsa-regular text-center p-4">Let's Talk</h2>
+                <p class="handlee-regular text-center">I hope you found the blog helpful. If there's a specific
+                    topic
+                    you'd like more information on or if you'd
+                    like to share any personal stories with me, which I can share in the blog, please don't hesitate to
+                    reach out. I would love to hear
+                    from you.</p>
+            </div>
+            <div class="row p-5 justify-content-center">
+                <div class="col-6">
+                    <form method="post">
+                        {{ contact_form | crispy }}
+                        {% csrf_token %}
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

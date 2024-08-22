@@ -28,6 +28,11 @@
     inset -5px -3px 5px rgba(255, 255, 255, 0.2);
 }
 
+.box-shadow {
+  box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.8),
+    inset -5px -3px 5px rgba(255, 255, 255, 0.2);
+}
+
 
  /* Bootstrap classes */
 
@@ -64,9 +69,13 @@
    background-color: #775295;
  }
 
+ .bg-yellow {
+  background-color: #DDC868;
+ }
+
  .bg-pink {
    /* background: linear-gradient(to left, #ED829D, #fff) */
-   background-color: #c44f6c;
+   background-color: #bb546e;
  }
 
  .bg-purple {
