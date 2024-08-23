@@ -14,6 +14,11 @@
    padding: 0;
  }
 
+ /* For sticky footer */
+ main {
+  flex: 1
+}
+
  .logo {
    height: 120px;
    width: 120px;
@@ -32,6 +37,7 @@
   box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.8),
     inset -5px -3px 5px rgba(255, 255, 255, 0.2);
 }
+
 
 
  /* Bootstrap classes */
@@ -120,11 +126,6 @@
    font-style: normal;
  }
 
-
- /* For sticky footer */
- main {
-   flex: 1
- }
 
  /* Post_Detail Template */
 

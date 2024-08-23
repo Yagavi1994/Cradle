@@ -48,3 +48,12 @@ for (let button of deleteButtons) {
     deleteModal.show();
   });
 }
+
+function checkSearchQuery() {
+  var query = document.getElementById('searchInput').value.trim();
+  if (query === "") {
+      // Prevent the form from submitting if the query is empty
+      return false;
+  }
+  return true; // Allow the form to submit if there is a query
+}

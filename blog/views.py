@@ -111,8 +111,24 @@ def search_results(request):
     """
     To search in the search bar
     """
-    query = request.GET.get('q')
-    results = Post.objects.filter(
-        Q(title__icontains=query) | Q(content__icontains=query)
-    )
-    return render(request, 'search_results.html', {'results': results, 'query': query})
+    query = request.GET.get('q', '').strip()
+
+    if query:
+        results = Post.objects.filter(
+            Q(title__icontains=query) | Q(content__icontains=query) | Q(category__icontains=query)
+        )
+    else:
+        results = Post.objects.none()
+    
+    print(f"Search query: '{query}' | Results found: {results.count()}")
+
+    
+    paginate_by = 5
+
+    return render(
+        request, 
+        'blog/search_results.html', 
+        {'results': results, 
+        'query': query,})
+
+
