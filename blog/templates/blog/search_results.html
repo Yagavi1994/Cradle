@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div><h2>Search Results for "{{ query }}"</h2>
+<ul>
+    {% for result in results %}
+        <li>{{ result.name }}</li>  
+    {% empty %}
+        <li>No results found.</li>
+    {% endfor %}
+</ul>
+</div>
+
+{% endblock content %}

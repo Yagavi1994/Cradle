@@ -3,9 +3,10 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+
 <div class="bg-yellow box-shadow">
-    <div class="">
-        <div class="">
+    <div class="container">
+        <div>
             <div>
                 <h2 class="salsa-regular text-center p-4">Let's Talk</h2>
                 <p class="handlee-regular text-center">I hope you found the blog helpful. If there's a specific
@@ -16,7 +17,7 @@
                     from you.</p>
             </div>
             <div class="row p-5 justify-content-center">
-                <div class="col-6">
+                <div class="col-10 col-md-8 col-lg-6 card p-5">
                     <form method="post">
                         {{ contact_form | crispy }}
                         {% csrf_token %}
