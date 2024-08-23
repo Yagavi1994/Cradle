@@ -4,9 +4,18 @@ from cloudinary.models import CloudinaryField
 
 
 STATUS = ((0, "Draft"), (1, "Published"))
-CATEGORY = ((0, "Newborn"), (1, "Breastfeeding"), (2, "Formula Feeding"), (3, "Sleep"), (4, "Baby Led Weaning"), (5, "Eating Habits"), (6, "Potty Training"), (7, "Toddlers"), (8, "Parenting"), (9, "Personal Stories"), (10, "Teens"))
+
 
 # Create your models here.
+
+class Category(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
@@ -15,7 +24,7 @@ class Post(models.Model):
     )
     featured_image = CloudinaryField('image', default='placeholder')
     source = models.CharField(max_length=400)
-    category = models.IntegerField(choices=CATEGORY, default=0)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True, related_name='posts')
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)

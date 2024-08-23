@@ -73,12 +73,17 @@
 
  /* Colors */
 
+ .pink-font {
+  color: #b13686;
+ }
+
  .white-font {
-   color: #ffffff
+   color: #ffffff;
  }
 
  .bg-dark-purple {
-   background-color: #775295;
+   /* background-color: #775295; */
+   background-color: #593675;
  }
 
  .bg-yellow {
@@ -86,7 +91,6 @@
  }
 
  .bg-pink {
-   /* background: linear-gradient(to left, #ED829D, #fff) */
    background-color: #bb546e;
  }
 

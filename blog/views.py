@@ -3,7 +3,7 @@ from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.db.models import Q
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from .forms import CommentForm
 
 
@@ -115,13 +115,12 @@ def search_results(request):
 
     if query:
         results = Post.objects.filter(
-            Q(title__icontains=query) | Q(content__icontains=query) | Q(category__icontains=query)
+            Q(title__icontains=query) |
+            Q(content__icontains=query) |
+            Q(category__name__icontains=query)
         )
     else:
         results = Post.objects.none()
-    
-    print(f"Search query: '{query}' | Results found: {results.count()}")
-
     
     paginate_by = 5
 
@@ -130,5 +129,15 @@ def search_results(request):
         'blog/search_results.html', 
         {'results': results, 
         'query': query,})
+
+def category_posts(request, slug):
+    category = get_object_or_404(Category, slug=slug)
+    posts = Post.objects.filter(category=category)
+    paginate_by = 5
+
+    return render(request, 'blog/category_posts.html', {
+        'category': category,
+        'posts': posts,
+    })
 
 

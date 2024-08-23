@@ -63,18 +63,10 @@
               aria-expanded="false">
               Category
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Newborn</a></li>
-              <li><a class="dropdown-item" href="#">Breastfeeding</a></li>
-              <li><a class="dropdown-item" href="#">Formula Feeding</a></li>
-              <li><a class="dropdown-item" href="#">Sleep</a></li>
-              <li><a class="dropdown-item" href="#">Parenting</a></li>
-              <li><a class="dropdown-item" href="#">Baby Led Weaning</a></li>
-              <li><a class="dropdown-item" href="#">Eating Habits</a></li>
-              <li><a class="dropdown-item" href="#">Potty Training</a></li>
-              <li><a class="dropdown-item" href="#">Personal Stories</a></li>
-              <li><a class="dropdown-item" href="#">Toddlers</a></li>
-              <li><a class="dropdown-item" href="#">Teens</a></li>
+            <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+              {% for category in categories %}
+              <li><a class="dropdown-item" href="{% url 'category_posts' category.slug %}">{{ category.name }}</a></li>
+              {% endfor %}
             </ul>
           </li>
           {% if user.is_authenticated %}

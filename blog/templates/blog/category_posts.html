@@ -3,13 +3,13 @@
 
 {% block content %}
 <!-- Page content-->
-<div class="{% if not results %} d-flex bg-yellow h-100 align-items-center m-0 {% endif %}">
+<div>
     <div class="container">
         <div class="row">
             <!-- Blog entries-->
             <div class="col-lg-12">
-                <h2 class = "pt-4 mt-2 salsa-regular text-center">Search results for <strong class="pink-font text-capitalize">"{{ query }}"</strong></h2>
-                {% for post in results %}
+                <h2 class = "pt-4 mt-2 salsa-regular text-center">Posts in <strong class="pink-font text-capitalize">"{{ category.name }}"</strong></h2>
+                {% for post in posts %}
                 <!-- Blog post-->
                 {% if forloop.counter|divisibleby:2 %}
                 <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-pink rounded">
@@ -57,17 +57,6 @@
                 </div>
                 {% endif %}
                 {% endfor %}
-            
-                <!-- Display a message if no results are found -->
-                {% if not results %}
-                <div class="row my-5 justify-content-center">
-                    <div class="col-10 ">
-                        <div class="card shadow text-center">
-                            <h3>No results found for "{{ query }}".</h3>
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
 
                 <!-- Pagination (optional)-->
                 {% if is_paginated %}
