@@ -62,11 +62,34 @@
    text-underline-offset: 8px
  }
 
- .btn-primary {
+ /* .btn-primary {
    background-color: #292D3D !important;
    color: white !important;
    border: none !important;
- }
+ } */
+
+ .btn-primary {
+  background-color: #292D3D !important; 
+  color: white !important; 
+  padding: 10px 20px !important; 
+  border: none !important; 
+  border-radius: 5px !important; 
+  font-size: 16px !important; 
+  font-weight: bold !important; 
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease, transform 0.2s ease !important;
+}
+
+.btn-primary:hover {
+  background-color: #b13686 !important;
+  transform: scale(1.05) !important;
+}
+
+.btn-primary:active {
+  background-color: #222222 !important; 
+  transform: scale(0.95) !important;
+}
 
  .navbar-toggler {
    background-color: #fff !important;
