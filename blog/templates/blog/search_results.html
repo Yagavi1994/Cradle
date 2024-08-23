@@ -8,7 +8,9 @@
         <div class="row">
             <!-- Blog entries-->
             <div class="col-lg-12">
+                {% if results %}
                 <h2 class = "pt-4 mt-2 salsa-regular text-center">Search results for <strong class="pink-font text-capitalize">"{{ query }}"</strong></h2>
+                {% endif %}
                 {% for post in results %}
                 <!-- Blog post-->
                 {% if forloop.counter|divisibleby:2 %}
@@ -61,9 +63,9 @@
                 <!-- Display a message if no results are found -->
                 {% if not results %}
                 <div class="row my-5 justify-content-center">
-                    <div class="col-10 ">
+                    <div class="col-10">
                         <div class="card shadow text-center">
-                            <h3>No results found for "{{ query }}".</h3>
+                            <h3 class = "p-4 salsa-regular text-center">No results found for <strong class="pink-font text-capitalize">"{{ query }}"</strong></h3>
                         </div>
                     </div>
                 </div>
