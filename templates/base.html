@@ -78,15 +78,15 @@
           <div class="text-center p-3">
             {% if "placeholder" in profile.profile_image.url %}
             <li class="nav-item">
-              <a class="nav-link {% if request.path == profile_url %}active" aria-current="page{% endif %}"
-                href="#"><img src="{% static 'images/placeholder.webp' %}" class="img-fluid profile-icon shadow"
-                  alt="placeholder image"></a>
+              <a class="nav-link {% if request.path == profile %}active" aria-current="page{% endif %}"
+                href="{% url 'profile' %}"><img src="{% static 'images/placeholder.webp' %}" class="img-fluid profile-icon shadow"
+                  alt="placeholder image">Profile</a>
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link {% if request.path == profile_url %}active" aria-current="page{% endif %}"
-                href="#"><img src="{{ profile.profile_image.url }}" class="img-fluid profile-icon shadow"
-                  alt="{{ profile.name }}"></a>
+              <a class="nav-link {% if request.path == profile %}active" aria-current="page{% endif %}"
+                href="{% url 'profile' %}"><img src="{{ profile.profile_image.url }}" class="img-fluid profile-icon shadow"
+                  alt="{{ profile.name }}">Profile</a>
             </li>
             {% endif %}
           </div>

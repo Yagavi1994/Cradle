@@ -52,8 +52,65 @@ for (let button of deleteButtons) {
 function checkSearchQuery() {
   var query = document.getElementById('searchInput').value.trim();
   if (query === "") {
-      // Prevent the form from submitting if the query is empty
-      return false;
+    // Prevent the form from submitting if the query is empty
+    return false;
   }
   return true; // Allow the form to submit if there is a query
+}
+
+
+function toggleFavourite(element) {
+  var postId = element.getAttribute('data-post-id');
+  var isFavourite = element.classList.contains('fa-strong');
+
+  if (isFavourite) {
+    // If it is already a favourite, remove from favourites
+    $.ajax({
+      url: '/remove_favourite/' + postId + '/',
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': getCookie('csrftoken')  // Ensure CSRF token is included
+      },
+      success: function (response) {
+        element.classList.remove('fa-strong');
+        element.classList.add('fa-regular');
+      },
+      error: function (xhr, status, error) {
+        console.log('Error:', error);
+      }
+    });
+  } else {
+    // If it's not a favourite, add to favourites
+    $.ajax({
+      url: '/add_favourite/' + postId + '/',
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': getCookie('csrftoken')  // Ensure CSRF token is included
+      },
+      success: function (response) {
+        element.classList.remove('fa-regular');
+        element.classList.add('fa-strong');
+      },
+      error: function (xhr, status, error) {
+        console.log('Error:', error);
+      }
+    });
+  }
+}
+
+// Helper function to get CSRF token from cookies
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      // Does this cookie string begin with the name we want?
+      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
 }

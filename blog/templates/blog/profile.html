@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>{{ request.user.username }}'s Profile</h1>
+<p>Email: {{ request.user.email }}</p>
+
+<a href="{% url 'view_favourites' %}">Favourites</a>
+<a href="{% url 'view_comments' %}">My Comments</a>
+<form action="{% url 'delete_profile' %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">Delete Account</button>
+</form>
+
+{% endblock content %}

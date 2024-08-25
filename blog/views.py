@@ -3,7 +3,9 @@ from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.db.models import Q
-from .models import Post, Comment, Category
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
+from .models import Post, Comment, Category, Favourite
 from .forms import CommentForm
 
 
@@ -130,6 +132,7 @@ def search_results(request):
         {'results': results, 
         'query': query,})
 
+
 def category_posts(request, slug):
     category = get_object_or_404(Category, slug=slug)
     posts = Post.objects.filter(category=category)
@@ -141,3 +144,44 @@ def category_posts(request, slug):
     })
 
 
+
+@login_required
+def profile_view(request):
+    favourites = Favourite.objects.filter(author=request.user)
+    comments = Comment.objects.filter(author=request.user)
+    return render(request, 'blog/profile.html', {'favourites': favourites, 'comments': comments})
+
+    
+@require_POST
+@login_required
+def add_favourite(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    Favourite.objects.get_or_create(author=request.user, post=post)
+    return JsonResponse({'status': 'added'})
+
+@require_POST
+@login_required
+def remove_favourite(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    favourite = Favourite.objects.filter(author=request.user, post=post)
+    if favourite.exists():
+        favourite.delete()
+        return JsonResponse({'status': 'removed'})
+    return JsonResponse({'status': 'not found'})
+
+@login_required
+def view_favourites(request):
+    favourites = Favourite.objects.filter(author=request.user)
+    return render(request, 'blog/favourites.html', {'favourites': favourites})
+
+@login_required
+def view_comments(request):
+    comments = Comment.objects.filter(author=request.user)
+    return render(request, 'blog/comments.html', {'comments': comments})
+
+@login_required
+def delete_profile(request):
+    if request.method == 'POST':
+        request.user.delete()
+        return redirect('home')  # Redirect to a safe page after deletion
+    return render(request, 'blog/delete_profile.html')

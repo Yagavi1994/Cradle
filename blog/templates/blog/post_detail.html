@@ -30,7 +30,10 @@
         <div class="row">
             <div class="col-12" id="icons">
                 <strong>
-                    <button type="submit" name="favourites" id="favourites" class="btn-enlarge"><i class="fa-regular fa-heart fs-2"></i></button>
+                    <button type="submit" name="favourites" id="favourites" class="btn-enlarge"><i
+                            class="fa-heart fs-2 {% if post in user.favourite_set.all %}fa-strong{% else %}fa-regular{% endif %}"
+                            data-post-id="{{ post.id }}" onclick="toggleFavourite(this)"></i>
+                    </button>
                 </strong>
             </div>
             <div class="col-12">
