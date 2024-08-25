@@ -9,6 +9,8 @@ const deleteButtons = document.getElementsByClassName("btn-delete");
 const deleteConfirm = document.getElementById("deleteConfirm");
 
 
+
+
 // Edit Comment
 /**
 * Initializes edit functionality for the provided edit buttons.
@@ -62,40 +64,31 @@ function checkSearchQuery() {
 function toggleFavourite(element) {
   var postId = element.getAttribute('data-post-id');
   var isFavourite = element.classList.contains('fa-strong');
+  var url = isFavourite ? '/remove_favourite/' : '/add_favourite/';
+  var method = 'POST';
 
-  if (isFavourite) {
-    // If it is already a favourite, remove from favourites
-    $.ajax({
-      url: '/remove_favourite/' + postId + '/',
-      method: 'POST',
-      headers: {
-        'X-CSRFToken': getCookie('csrftoken')  // Ensure CSRF token is included
-      },
-      success: function (response) {
-        element.classList.remove('fa-strong');
-        element.classList.add('fa-regular');
-      },
-      error: function (xhr, status, error) {
-        console.log('Error:', error);
+  var xhr = new XMLHttpRequest();
+  xhr.open(method, url + postId + '/', true);
+  xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+  xhr.setRequestHeader('Content-Type', 'application/json');
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        if (isFavourite) {
+          element.classList.remove('fa-strong');
+          element.classList.add('fa-regular');
+        } else {
+          element.classList.remove('fa-regular');
+          element.classList.add('fa-strong');
+        }
+      } else {
+        console.error('Error toggling favourite:', xhr.responseText);
       }
-    });
-  } else {
-    // If it's not a favourite, add to favourites
-    $.ajax({
-      url: '/add_favourite/' + postId + '/',
-      method: 'POST',
-      headers: {
-        'X-CSRFToken': getCookie('csrftoken')  // Ensure CSRF token is included
-      },
-      success: function (response) {
-        element.classList.remove('fa-regular');
-        element.classList.add('fa-strong');
-      },
-      error: function (xhr, status, error) {
-        console.log('Error:', error);
-      }
-    });
-  }
+    }
+  };
+
+  xhr.send();
 }
 
 // Helper function to get CSRF token from cookies
@@ -105,7 +98,6 @@ function getCookie(name) {
     const cookies = document.cookie.split(';');
     for (let i = 0; i < cookies.length; i++) {
       const cookie = cookies[i].trim();
-      // Does this cookie string begin with the name we want?
       if (cookie.substring(0, name.length + 1) === (name + '=')) {
         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
         break;
@@ -114,3 +106,21 @@ function getCookie(name) {
   }
   return cookieValue;
 }
+
+// Preventing Cancel Button from form submitting in deleting profile.
+
+document.getElementById('cancelButton').addEventListener('click', function (event) {
+  event.preventDefault();  // Prevent the default form submission behavior
+  window.location.href = "{% url 'profile' %}";  // Redirect to the profile page
+});
+
+
+// Delete Account
+
+let deleteModalNew = new bootstrap.Modal(document.getElementById("deleteModal2"));
+let deleteAccount = document.getElementById("delete-account");
+
+deleteAccount.addEventListener("click", (e) => {
+    deleteAccount.innerText = "Update"
+    deleteModalNew.show(); 
+});

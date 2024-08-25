@@ -5,31 +5,46 @@
 <!-- Displaying Comments -->
 <div class="bg-yellow h-100">
     <div class="row ms-3">
-        <h1 class="ms-3 salsa-regular p-3">Your Comments:</h1>
+        <h1 class="salsa-regular ps-1 p-3 pt-4">Your Comments:</h1>
         {% for comment in comments %}
-        <div class="col-md-8 mb-4  mt-3 ">
-            <div class="card mb-4 p-2 comments shadow">
-                <a class="border-bottom pb-3 text-decoration-none text-reset" href="{% url 'post_detail' comment.post.slug %}"><strong
-                        class="fs-5 salsa-regular">{{ comment.post.title }}</strong><br></a><br>
-                <p><strong class="text-capitalize">
-                        {{ comment.author }}</strong><br>
-                    <span class="font-weight-normal">
-                        {{ comment.created_on }}
-                    </span> wrote:
-                </p>
-                <div id="comment{{ comment.id }}"
-                    class="{% if not comment.approved and comment.author == user %}text-muted{% endif %}">
-                    {{ comment.body | linebreaks }}
+        <div class="col-10 col-md-8 mb-4 mt-2 ">
+            <a class="pb-3 text-decoration-none text-reset" href="{% url 'post_detail' comment.post.slug %}">
+                <div class="card mb-4 p-2 comments shadow hover">
+                    <div class="border-bottom pt-1">
+                        <strong class="fs-4 salsa-regular">
+                            {{ comment.post.title }}</strong><br>
+                        <br>
+                    </div>
+                    <div>
+                        <p class="pt-2"><strong class="text-capitalize">
+                                {{ comment.author }}</strong><br>
+                            <span class="font-weight-normal">
+                                {{ comment.created_on }}
+                            </span> wrote:
+                        </p>
+                    </div>
+                    <div id="comment{{ comment.id }}"
+                        class="{% if not comment.approved and comment.author == user %}text-muted{% endif %}">
+                        {{ comment.body | linebreaks }}
+                    </div>
+                    {% if not comment.approved and comment.author == user %}
+                    <p class="approval text-muted">
+                        This comment is awaiting approval
+                    </p>
+                    {% endif %}
                 </div>
-                {% if not comment.approved and comment.author == user %}
-                <p class="approval text-muted">
-                    This comment is awaiting approval
-                </p>
-                {% endif %}
-            </div>
+            </a>
         </div>
         {% endfor %}
+        {% if comments.count == 0 %}
+        <div class="card col-10 mb-4 p-2 comments shadow">
+            <div class="border-bottom pt-1">
+                <strong class="fs-6 salsa-regular">
+                    Sorry, You have not made any comments yet.</strong><br>
+                <br>
+            </div>
+            {% endif %}
+        </div>
     </div>
-</div>
 
-{% endblock content %}
+    {% endblock content %}

@@ -45,7 +45,10 @@
     inset -5px -3px 5px rgba(255, 255, 255, 0.2);
 }
 
-
+.hover:hover {
+  color: #b13686 !important;
+  transform: scale(1.02) !important;
+}
 
  /* Bootstrap classes */
 
@@ -134,7 +137,6 @@
 
  .btn-enlarge {
    transition: transform 0.3s ease;
-   /* Smooth transition */
  }
 
  .btn-enlarge:hover {

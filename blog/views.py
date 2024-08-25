@@ -182,6 +182,8 @@ def view_comments(request):
 @login_required
 def delete_profile(request):
     if request.method == 'POST':
-        request.user.delete()
-        return redirect('home')  # Redirect to a safe page after deletion
-    return render(request, 'blog/delete_profile.html')
+            request.user.delete()
+            messages.add_message(request, messages.SUCCESS, 'Profile deleted Successfully!')
+    return render(request, 'account/login.html')
+
+    
