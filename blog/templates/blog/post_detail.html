@@ -28,9 +28,9 @@
         </div>
         <!-- Displaying count of comments -->
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" id="icons">
                 <strong>
-                    <i class="far fa-comments"></i> {{ comment_count }}
+                    <button type="submit" name="favourites" id="favourites" class="btn-enlarge"><i class="fa-regular fa-heart fs-2"></i></button>
                 </strong>
             </div>
             <div class="col-12">
@@ -40,8 +40,8 @@
         <!-- Displaying Comments -->
         <div class="row">
             <div class="col-md-8 mb-4  mt-3 ">
-                <h3>Comments:</h3>
-                <div class="">
+                <h3>{{ comment_count }} Comments:</h3>
+                <div>
                     <!-- We want a for loop inside the empty control tags
           to iterate through each comment in comments -->
                     {% for comment in comments %}

@@ -40,14 +40,15 @@
   <!-- Responsive navbar-->
   <nav class="navbar navbar-expand-lg bg-dark">
     <div class="container">
-      <a class="text-decoration-none text-reset pacifico-regular white-font p-2 me-3" id="title" href="{% url 'home' %}"><img
-          src="{% static 'images/logo.png' %}" class="logo p-2">Cradle</a>
+      <a class="text-decoration-none text-reset pacifico-regular white-font p-2 me-3" id="title"
+        href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" class="logo p-2">Cradle</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
           class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form method="GET" action="{% url 'search_results' %}" onsubmit="return checkSearchQuery();" class="d-flex">
-          <input class="form-control" id="searchInput" type="text" name="q" placeholder="Search by title, category" aria-label="Search">
+          <input class="form-control" id="searchInput" type="text" name="q" placeholder="Search by title, category"
+            aria-label="Search">
           <button class="btn btn-primary btn-enlarge p-2" type="submit">Search</button>
         </form>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 salsa-regular">
@@ -74,6 +75,21 @@
             <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}"
               href="{% url 'account_logout' %}">Logout</a>
           </li>
+          <div class="text-center p-3">
+            {% if "placeholder" in profile.profile_image.url %}
+            <li class="nav-item">
+              <a class="nav-link {% if request.path == profile_url %}active" aria-current="page{% endif %}"
+                href="#"><img src="{% static 'images/placeholder.webp' %}" class="img-fluid profile-icon shadow"
+                  alt="placeholder image"></a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link {% if request.path == profile_url %}active" aria-current="page{% endif %}"
+                href="#"><img src="{{ profile.profile_image.url }}" class="img-fluid profile-icon shadow"
+                  alt="{{ profile.name }}"></a>
+            </li>
+            {% endif %}
+          </div>
           {% else %}
           <li class="nav-item">
             <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %}"

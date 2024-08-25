@@ -4,11 +4,11 @@
 
 {% block content %}
 
-<div class="bg-yellow box-shadow">
+<div class="bg-yellow h-100 box-shadow">
     <div class="container">
         <div>
             <div>
-                <h2 class="salsa-regular text-center p-4">Let's Talk</h2>
+                <h2 class="salsa-regular text-center pt-5 pb-3">Let's Talk</h2>
                 <p class="handlee-regular text-center">I hope you found the blog helpful. If there's a specific
                     topic
                     you'd like more information on or if you'd
@@ -16,7 +16,7 @@
                     reach out. I would love to hear
                     from you.</p>
             </div>
-            <div class="row p-5 justify-content-center">
+            <div class="row pt-3 pb-5 justify-content-center">
                 <div class="col-10 col-md-8 col-lg-6 card p-5">
                     <form method="post">
                         {{ contact_form | crispy }}

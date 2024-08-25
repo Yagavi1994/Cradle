@@ -62,27 +62,22 @@
    text-underline-offset: 8px
  }
 
- /* .btn-primary {
-   background-color: #292D3D !important;
-   color: white !important;
-   border: none !important;
- } */
-
  .btn-primary {
   background-color: #292D3D !important; 
   color: white !important; 
   padding: 10px 20px !important; 
   border: none !important; 
-  border-radius: 5px !important; 
+  border-radius: 5px !important;
+  font-family: "Salsa", cursive !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
   font-size: 16px !important; 
-  font-weight: bold !important; 
-  text-transform: uppercase !important;
+  text-transform:capitalize !important;
   cursor: pointer !important;
   transition: background-color 0.3s ease, transform 0.2s ease !important;
 }
 
 .btn-primary:hover {
-  background-color: #b13686 !important;
   transform: scale(1.05) !important;
 }
 
@@ -103,6 +98,15 @@
 
  /* Colors */
 
+ #favourites {
+  border: none;
+  background-color: inherit;
+ }
+ 
+ .fa-regular, .fa-strong {
+  color: #b13686;
+ }
+
  .pink-font {
   color: #b13686;
  }
@@ -113,7 +117,7 @@
 
  .bg-dark-purple {
    background-color: #774c9a;
-   /* background-color: #593675; */
+   
  }
 
  .bg-yellow {
@@ -121,7 +125,7 @@
  }
 
  .bg-pink {
-   background-color: #bb546e;
+   background-color: #cc5170;
  }
 
  .bg-purple {
@@ -172,6 +176,14 @@
  .circle-image {
    max-height: 300px;
    border-radius: 50%;
+ }
+
+ /* Profile */
+
+ .profile-icon {
+  max-height: 30px;
+  max-width: 30px;
+  border-radius: 50%;
  }
 
  /* Media Query for smaller screens */
