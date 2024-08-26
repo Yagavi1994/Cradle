@@ -78,17 +78,13 @@
                                 id="delete-account">
                                 <i class="fa-solid fa-trash pe-2 fs-md-5 pink-font"></i>Delete</button>
                         </form>
-                        <!-- <a href="#" class="text-decoration-none text-reset pb-2 hover border-0 main-bg"
-                            data-bs-toggle="modal" data-bs-target="#deleteModal">
-                            <i class="fa-solid fa-trash pe-2 fs-md-5 pink-font"></i>Delete
-                        </a> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Edit Modal -->
+   <!-- Edit Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -99,14 +95,25 @@
                 <div class="modal-body">
                     <form method="post" enctype="multipart/form-data" action="{% url 'profile' %}">
                         {% csrf_token %}
-                        {{ form.profile_picture }}
+                        <div class="mb-3 text-center">
+                            <!-- Image preview -->
+                            <img id="imgPreview" src="{{ profile.profile_picture.url }}" 
+                                alt="Profile Picture Preview" class="img-thumbnail" style="width: 200px; height: 200px;">
+                        </div>
+                        <div class="mb-3">
+                            {{ form.profile_picture }}
+                        </div>
+                        <div id="error-message" class="text-danger"></div>
                         <button type="submit" class="btn btn-primary mt-3" name="confirm">Confirm</button>
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"><button type="submit" class="btn btn-danger mt-3" name="confirm">Delete Picture</button></a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                            <button type="submit" class="btn btn-danger enlarge mt-3" name="confirm">Delete Picture</button>
+                        </a>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Delete Modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -117,10 +124,13 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to delete your profile picture? This action cannot be undone.</p>
+                    <p class="text-center"><strong>Are you sure you want to delete your profile picture?</strong> <br><br>This action cannot be undone.<hr></p>
                     <form method="post" action="{% url 'profile' %}">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-danger mt-3" name="delete">Delete</button>
+                        <button type="submit" class="btn btn-danger enlarge mt-3" name="delete">Delete</button>
+                        <a href="{% url 'profile' %}">
+                            <button type="submit" class="btn btn-primary enlarge ms-2 mt-3" name="confirm">Cancel</button>
+                        </a>
                     </form>
                 </div>
             </div>
@@ -128,3 +138,35 @@
     </div>
 </section>
 {% endblock content %}
+
+{% block extras %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const fileInput = document.querySelector('input[type="file"]');
+    const imgPreview = document.getElementById('imgPreview');
+    const errorMessage = document.getElementById('error-message');
+    
+    fileInput.addEventListener('change', function () {
+        const file = fileInput.files[0];
+        if (file) {
+            const validImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+            if (!validImageTypes.includes(file.type)) {
+                errorMessage.textContent = 'Please upload a valid image file (JPEG, PNG, GIF, WEBP).';
+                imgPreview.src = '{{ profile.profile_picture.url }}';  // Reset to current profile picture
+                return;
+            }
+            
+            // Clear the error message
+            errorMessage.textContent = '';
+            
+            // Preview the uploaded image
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                imgPreview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,56 @@
+[33m85e98ef[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{0}: reset: moving to HEAD~1
+[33m10bba05[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{1}: commit: Add edit and delete profile pic modal.
+[33m85e98ef[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{2}: commit: Add function to add profile pic.
+[33m109954e[m HEAD@{3}: commit: add styling to authentication templates and blog templates.
+[33m3223df9[m HEAD@{4}: commit: Add delete_profile template and style it.
+[33me5a6a2d[m HEAD@{5}: commit: Edit profile template and add stylings to it.
+[33m4159d45[m HEAD@{6}: commit: Add styles to comment template and function of deleting the account.
+[33m163e3da[m HEAD@{7}: commit: Add models for profile, favourites and comments.
+[33m9da8f55[m HEAD@{8}: commit: Add favourites button in post detail, remove comments button and make few other styling changes in templates.
+[33m78407d7[m HEAD@{9}: commit: Add styles to buttons.
+[33me0dd86e[m HEAD@{10}: commit: Add stylings to search, categories, title and authentication templates.
+[33mb3b3c69[m HEAD@{11}: commit: Add category model to search posts based on their category.
+[33m828304d[m HEAD@{12}: reset: moving to HEAD
+[33m828304d[m HEAD@{13}: reset: moving to HEAD
+[33m828304d[m HEAD@{14}: commit: Add search_html template and add stylings to it.
+[33m52d2afa[m HEAD@{15}: commit: Add stylings to the templates and add search function.
+[33mb669bc4[m HEAD@{16}: commit: Change python version in runtime.txt.
+[33m239ccea[m HEAD@{17}: commit: Add python version in runtime.txt.
+[33mdf72405[m HEAD@{18}: commit: Enable serving static files through cloudinary.
+[33mbbb4910[m HEAD@{19}: commit: Enable serving of files through cloudinary.
+[33m1da528d[m HEAD@{20}: commit: Add CRUD functions for comments.
+[33m12e4129[m HEAD@{21}: commit: Create contact app and add contact form in contact.html.
+[33mf0abdd0[m HEAD@{22}: commit: Add crispy forms for comments and add alert messages.
+[33m8eb771a[m HEAD@{23}: commit: Add comments and comment form.
+[33m8e10ff4[m HEAD@{24}: commit: Change background of header and bacground color of blog posts.
+[33m87b4b17[m HEAD@{25}: commit: Add stylings to the logo and header image.
+[33m6949e34[m HEAD@{26}: commit: Update requirements.txt
+[33m888ee15[m HEAD@{27}: commit: Add custom css stylings to index and base.html.
+[33m12843f1[m HEAD@{28}: commit: Add trans tag in logout.html.
+[33m18d9b92[m HEAD@{29}: commit: Edit log out page template.
+[33mea68264[m HEAD@{30}: commit: Add Password reset templates.
+[33mfb3daad[m HEAD@{31}: commit: Add email configuration in settings to reset password.
+[33m07cc9f7[m HEAD@{32}: commit: Add sign up and forgot password template.
+[33m3626f06[m HEAD@{33}: commit: Add appropriate links to the login.html file.
+[33ma78b0c9[m HEAD@{34}: commit: Install Allauth and edit login template in it.
+[33mb4dba20[m HEAD@{35}: commit: Add all auth and add atylings to login and log out templates.
+[33m36219f3[m HEAD@{36}: commit: Add stylings with bootstrap to index.html and about.html.
+[33m00661df[m HEAD@{37}: commit: Add about.html, write model for it and link it in view.py, urls.py and admin.py.
+[33m863ffd0[m HEAD@{38}: commit: Add post_detail template and link its path in views.py and urls.py.
+[33mc6d9adb[m HEAD@{39}: commit: Make changes in Bootstrap CDN and indentation of html codes.
+[33m7238654[m HEAD@{40}: commit: Link css files to the templates and add hero image.
+[33m84b616c[m HEAD@{41}: commit: Add features to the frontend by adding codes in index.html and base.html.
+[33m2dab2e6[m HEAD@{42}: commit: change debug to false.
+[33m6e73e2b[m HEAD@{43}: commit: Install Bootstrap template
+[33m4f38a95[m HEAD@{44}: commit: Add base.html and index.html templates.
+[33mf61bda1[m HEAD@{45}: commit: Add html code in post_detail.
+[33m8b6256e[m HEAD@{46}: commit: Add index.html and post_detail.html templates.
+[33m0e63029[m HEAD@{47}: commit: Add posts in admin page and meta class to past and comment models.
+[33m5dd2ba3[m HEAD@{48}: commit: Add excerpt and updated on fields to post model.
+[33m8ddd7a8[m HEAD@{49}: commit: Add post model in the blog app register it in admin.py.
+[33m474e5fe[m HEAD@{50}: commit: Add database URL and make migration.
+[33m8c487ce[m HEAD@{51}: commit: Add heroku in settings for deployment.
+[33m6980e42[m HEAD@{52}: commit: Initial commit
+[33mffc0068[m HEAD@{53}: checkout: moving from main to main
+[33mffc0068[m HEAD@{54}: branch: Reset to origin/main
+[33mffc0068[m HEAD@{55}: clone: from https://github.com/Yagavi1994/Cradle.git
