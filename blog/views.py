@@ -236,6 +236,3 @@ def delete_profile(request):
             request.user.delete()
             messages.add_message(request, messages.SUCCESS, 'Profile deleted Successfully!')
     return render(request, 'account/login.html')
-
-
-    
