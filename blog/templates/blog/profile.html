@@ -34,32 +34,4 @@
     </div>
 </section>
 
-<!-- Delete confirmation modal -->
-<div class="modal fade" id="deleteModal2" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Delete profile?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to delete your Profile?
-                This action cannot be undone.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <form action="{% url 'delete_profile' %}" method="POST">
-                    {% csrf_token %}
-                    <button id="deleteConfirm" type="submit" class="btn
-                    btn-danger btn-enlarge">Delete</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 {% endblock content %}
-
-{% block extras %}
-<script src="{% static 'js/scripts.js' %}"></script>
-{% endblock %}

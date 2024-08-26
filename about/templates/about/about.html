@@ -12,7 +12,7 @@
       <!-- Image -->
       <div class="text-center p-3">
         {% if "placeholder" in about.about_image.url %}
-      <img src="{% static 'images/about-image.jpg' %}" class="img-fluid circle-image shadow"
+      <img src="{% static 'images/about-image.jpg' %}" class="img-fluid circle-image circle-border shadow"
         alt="placeholder image" >
       {% else %}
       <img src="{{ about.about_image.url }}" class="img-fluid circle-image shadow"
