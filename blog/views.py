@@ -1,12 +1,12 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
-from .models import Post, Comment, Category, Favourite
-from .forms import CommentForm
+from .models import Post, Comment, Category, Favourite, Profile
+from .forms import CommentForm, ProfilePictureForm
 
 
 # Create your views here.
@@ -147,9 +147,29 @@ def category_posts(request, slug):
 
 @login_required
 def profile_view(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
     favourites = Favourite.objects.filter(author=request.user)
     comments = Comment.objects.filter(author=request.user)
-    return render(request, 'blog/profile.html', {'favourites': favourites, 'comments': comments})
+    return render(request, 'blog/profile.html', {'profile': profile, 'favourites': favourites, 'comments': comments})
+
+@login_required
+def edit_profile_picture(request):
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if request.method == 'POST':
+        form = ProfilePictureForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return render(request, 'blog/preview_profile_picture.html', {'profile': profile})
+    else:
+        form = ProfilePictureForm(instance=profile)
+
+    return render(request, 'blog/edit_profile_picture.html', {'form': form, 'profile': profile})
+
+@login_required
+def confirm_profile_picture(request):
+    return redirect('profile')
+
 
 @login_required
 def delete_profile_view(request):
@@ -191,5 +211,6 @@ def delete_profile(request):
             request.user.delete()
             messages.add_message(request, messages.SUCCESS, 'Profile deleted Successfully!')
     return render(request, 'account/login.html')
+
 
     

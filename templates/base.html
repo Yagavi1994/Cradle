@@ -52,51 +52,50 @@
           <button class="btn btn-primary btn-enlarge p-2" type="submit">Search</button>
         </form>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 salsa-regular">
-          <li class="nav-item"><a class="nav-link {% if request.path == home_url %}active"
+          <li class="enlarge nav-item"><a class="nav-link {% if request.path == home_url %}active"
               aria-current="page{% endif %}" href="{% url 'home' %}">Home</a></li>
-          <li class="nav-item"><a class="nav-link {% if request.path == about_url %}active"
-              aria-current="page{% endif %}" href="{% url 'about' %}">About</a></li>
-          <li class="nav-item"><a class="nav-link {% if request.path == contact_url %}active"
+          <li class="enlarge nav-item"><a class="nav-link {% if request.path == about_url %}active"
+              aria-current="page{% endif %}" href="{% url 'about' %} enlarge">About</a></li>
+          <li class="enlarge nav-item"><a class="nav-link {% if request.path == contact_url %}active"
               aria-current="page{% endif %}" href="{% url 'contact' %}">Contact</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle {% if request.path == category_url %}active"
-              aria-current="page{% endif %}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+          <li class="enlarge nav-item dropdown">
+            <a class="nav-link {% if request.path == category_posts %}active"
+            aria-current="page{% endif %} dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
               Category
             </a>
             <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
               {% for category in categories %}
-                <li><a class="dropdown-item" href="{% url 'category_posts' category.slug %}">{{ category.name }}</a>
-                </li>
+              <li><a class="dropdown-item" href="{% url 'category_posts' category.slug %}">{{ category.name }}</a>
+              </li>
               {% endfor %}
             </ul>
           </li>
-          {% if user.is_authenticated %}
-          <li class="nav-item">
+        {% if user.is_authenticated %}
+          <li class="enlarge nav-item">
             <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}"
               href="{% url 'account_logout' %}">Logout</a>
           </li>
           <div class="text-center p-3">
-            {% if "placeholder" in profile.profile_image.url %}
-            <li class="nav-item">
+            <li class="enlarge nav-item">
               <a class="nav-link {% if request.path == profile %}active" aria-current="page{% endif %}"
-                href="{% url 'profile' %}"><img src="{% static 'images/placeholder.webp' %}"
-                  class="img-fluid profile-icon shadow" alt="placeholder image">Profile</a>
+                href="{% url 'profile' %}">
+                {% if "placeholder" in profile.profile_picture.url %}
+                <img src="{% static 'images/placeholder.webp' %}" class="img-fluid profile-icon shadow"
+                  alt="placeholder image">
+                {% else %}
+                <img src="{{ profile.profile_picture.url }}" class="img-fluid profile-icon shadow"
+                  alt="Profile Picture">
+                {% endif %}
+                Profile
+              </a>
             </li>
-            {% else %}
-            <li class="nav-item">
-              <a class="nav-link {% if request.path == profile %}active" aria-current="page{% endif %}"
-                href="{% url 'profile' %}"><img src="{{ profile.profile_image.url }}"
-                  class="img-fluid profile-icon shadow" alt="{{ profile.name }}">Profile</a>
-            </li>
-            {% endif %}
-          </div>
           {% else %}
-          <li class="nav-item">
+          <li class="enlarge nav-item">
             <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %}"
               href="{% url 'account_login' %}">Login</a>
           </li>
-          <li class="nav-item">
+          <li class="enlarge nav-item">
             <a class="nav-link {% if request.path == signup_url %}active" aria-current="page{% endif %}"
               href="{% url 'account_signup' %}">Register</a>
           </li>

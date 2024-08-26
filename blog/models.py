@@ -59,4 +59,10 @@ class Favourite(models.Model):
     def __str__(self):
         return f'{self.user.username} favourite {self.post.title}'
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_picture = CloudinaryField('image', default='placeholder')
+
+    def __str__(self):
+        return self.user.username
 

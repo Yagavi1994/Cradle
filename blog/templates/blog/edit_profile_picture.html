@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<section class="row bg-yellow box-shadow d-flex h-100 m-0 p-4">
+    <div class="container text-center">
+        <div class="col-md-8 col-lg-6 col-xl-4 mt-5 mt-lg-0 text-center">
+            <div class="card shadow img-fluid circle-image pt-4 pb-2">
+                <h1 class="card-head">Edit Profile Picture</h1>
+                <div class="circle-image">
+                    <img src="{{ profile.profile_picture.url }}" class="img-fluid card-body  pb-2"
+                        alt="Profile Picture">
+                </div>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Upload and Preview</button>
+                </form>
+                <a href="{% url 'profile' %}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+{% endblock content %}
