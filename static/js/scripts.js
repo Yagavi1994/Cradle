@@ -107,14 +107,6 @@ function getCookie(name) {
   return cookieValue;
 }
 
-// Preventing Cancel Button from form submitting in deleting profile.
-
-document.getElementById('cancelButton').addEventListener('click', function (event) {
-  event.preventDefault();  // Prevent the default form submission behavior
-  window.location.href = "{% url 'profile' %}";  // Redirect to the profile page
-});
-
-
 // Delete Account
 
 let deleteModalNew = new bootstrap.Modal(document.getElementById("deleteModal2"));

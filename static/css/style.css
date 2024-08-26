@@ -16,8 +16,8 @@
 
  /* For sticky footer */
  main {
-  flex: 1
-}
+   flex: 1
+ }
 
  .logo {
    height: 120px;
@@ -26,29 +26,34 @@
  }
 
  header {
-  background-image: url(/static/images/yellow-bg.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.8),
-    inset -5px -3px 5px rgba(255, 255, 255, 0.2);
-}
+   background-image: url(/static/images/yellow-bg.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.8),
+     inset -5px -3px 5px rgba(255, 255, 255, 0.2);
+ }
 
-#title {
-  color: #DDC868 !important;
-  font-family: salsa-regular !important;
-  font-weight: 600 !important;
-  font-size: 200% !important;
-}
+ #title {
+   font-family: pacifico-regular !important;
+   font-weight: 600 !important;
+   font-size: 200% !important;
+   color: #DDC868 !important;
+ }
 
-.box-shadow {
-  box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.8),
-    inset -5px -3px 5px rgba(255, 255, 255, 0.2);
-}
-
-.hover:hover {
+ .title {
+  font-size: 300% !important;
   color: #b13686 !important;
-  transform: scale(1.02) !important;
 }
+
+ .box-shadow {
+   box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.8),
+     inset -5px -3px 5px rgba(255, 255, 255, 0.2);
+ }
+
+ .hover:hover {
+   color: #b13686 !important;
+   transform: scale(1.02) !important;
+ }
 
  /* Bootstrap classes */
 
@@ -66,65 +71,74 @@
  }
 
  .btn-primary {
-  background-color: #292D3D !important; 
-  color: white !important; 
-  padding: 10px 20px !important; 
-  border: none !important; 
-  border-radius: 5px !important;
-  font-family: "Salsa", cursive !important;
-  font-weight: 400 !important;
-  font-style: normal !important;
-  font-size: 16px !important; 
-  text-transform:capitalize !important;
-  cursor: pointer !important;
-  transition: background-color 0.3s ease, transform 0.2s ease !important;
-}
+   background-color: #292D3D !important;
+   color: white !important;
+   padding: 10px 20px !important;
+   border: none !important;
+   border-radius: 5px !important;
+   font-family: "Salsa", cursive !important;
+   font-weight: 400 !important;
+   font-style: normal !important;
+   font-size: 16px !important;
+   text-transform: capitalize !important;
+   cursor: pointer !important;
+   transition: background-color 0.3s ease, transform 0.2s ease !important;
+ }
 
-.btn-primary:hover {
-  transform: scale(1.05) !important;
-}
+ .btn-primary:hover {
+   transform: scale(1.05) !important;
+ }
 
-.btn-primary:active {
-  background-color: #222222 !important; 
-  transform: scale(0.95) !important;
-}
+ .btn-primary:active {
+   background-color: #222222 !important;
+   transform: scale(0.95) !important;
+ }
 
  .navbar-toggler {
    background-color: #fff !important;
  }
 
  .card {
-  border: 3px double #b13686 !important;
-  outline: 3px double #b13686 !important;
-  padding: 15px !important;
+   border: 3px double #b13686 !important;
+   outline: 3px double #b13686 !important;
+   padding: 15px !important;
  }
 
  /* Colors */
 
  #favourites {
-  border: none;
-  background-color: inherit;
+   border: none;
+   background-color: inherit;
  }
- 
- .fa-regular, .fa-strong {
-  color: #b13686;
+
+ .fa-regular,
+ .fa-strong {
+   color: #b13686;
  }
 
  .pink-font {
-  color: #b13686;
+   color: #b13686;
  }
 
  .white-font {
    color: #ffffff;
  }
 
+ .yellow-font {
+  color: #DDC868 !important;
+ }
+
+ .grey-font {
+  color: #1f1d1d;
+ }
+
  .bg-dark-purple {
    background-color: #774c9a;
-   
+
  }
 
  .bg-yellow {
-  background-color: #DDC868;
+   background-color: #DDC868;
  }
 
  .bg-pink {
@@ -183,9 +197,9 @@
  /* Profile */
 
  .profile-icon {
-  max-height: 30px;
-  max-width: 30px;
-  border-radius: 50%;
+   max-height: 30px;
+   max-width: 30px;
+   border-radius: 50%;
  }
 
  /* Media Query for smaller screens */

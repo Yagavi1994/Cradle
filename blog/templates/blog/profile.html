@@ -1,14 +1,33 @@
 {% extends 'base.html' %}
-{% block content %}
 {% load static %}
 
-<h1>{{ request.user.username }}'s Profile</h1>
-<p>Email: {{ request.user.email }}</p>
-
-<a href="{% url 'view_favourites' %}">Favourites</a>
-<a href="{% url 'view_comments' %}">My Comments</a><br>
-<button id="delete-account" type="submit">Delete Account</button>
-
+{% block content %}
+<section class="bg-yellow box-shadow h-100 m-0 p-4">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-5 col-lg-3 col-xl-2 p-2 text-center align-items-center">
+                <img src="{% static 'images/logo-dark.png' %}" class="img-fluid pb-2" alt="Sample image">
+                <h3 class="salsa-regular"><strong>{{ request.user.username }}</strong></h3>
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-5 mt-lg-0">
+                <div class="card shadow">
+                    <div class="card-header text-center">
+                        <h4 class="text-capitalize salsa-regular">{{ request.user.username }}'s Profile</h4>
+                    </div>
+                    <div class="card-body fs-5">
+                        <p class="pb-2 handlee-regular"><i class="fa-solid fa-envelope pe-2 fs-md-5"></i> {{ request.user.email }}</p>
+                        <p class="pb-2 hover handlee-regular"><a href="{% url 'view_favourites' %}" class="text-decoration-none text-reset"><i
+                                    class="fa-solid fa-heart pe-2 fs-md-5"></i> Favourites</a></p>
+                        <p class="pb-2 hover handlee-regular"><a href="{% url 'view_comments' %}" class="text-decoration-none text-reset"><i
+                                    class="fa-solid fa-comment pe-2 fs-md-5"></i> My Comments</a></p>
+                        <p id="delete-account" class="text-decoration-none text-reset pb-2 hover handlee-regular"><i class="fa-solid fa-trash pe-2 fs-md-5"></i>
+                            Delete Account</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Delete confirmation modal -->
 <div class="modal fade" id="deleteModal2" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -26,8 +45,8 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <form action="{% url 'delete_profile' %}" method="POST">
                     {% csrf_token %}
-                    <a href="{% url 'delete_profile' %}"><button id="deleteConfirm" type="submit" class="btn
-                    btn-danger btn-enlarge">Delete</button></a>
+                    <button id="deleteConfirm" type="submit" class="btn
+                    btn-danger btn-enlarge">Delete</button>
                 </form>
             </div>
         </div>
@@ -37,7 +56,5 @@
 {% endblock content %}
 
 {% block extras %}
-
 <script src="{% static 'js/scripts.js' %}"></script>
-
 {% endblock %}
