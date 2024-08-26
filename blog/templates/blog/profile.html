@@ -7,7 +7,7 @@
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-md-5 col-lg-3 col-xl-2 p-2 text-center align-items-center">
                 <img src="{% static 'images/logo-dark.png' %}" class="img-fluid pb-2" alt="Sample image">
-                <h3 class="salsa-regular"><strong>{{ request.user.username }}</strong></h3>
+                <h2 class="salsa-regular grey-font"><strong>{{ request.user.username }}</strong></h2>
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-5 mt-lg-0">
                 <div class="card shadow">
@@ -15,13 +15,18 @@
                         <h4 class="text-capitalize salsa-regular">{{ request.user.username }}'s Profile</h4>
                     </div>
                     <div class="card-body fs-5">
-                        <p class="pb-2 handlee-regular"><i class="fa-solid fa-envelope pe-2 fs-md-5"></i> {{ request.user.email }}</p>
-                        <p class="pb-2 hover handlee-regular"><a href="{% url 'view_favourites' %}" class="text-decoration-none text-reset"><i
-                                    class="fa-solid fa-heart pe-2 fs-md-5"></i> Favourites</a></p>
-                        <p class="pb-2 hover handlee-regular"><a href="{% url 'view_comments' %}" class="text-decoration-none text-reset"><i
-                                    class="fa-solid fa-comment pe-2 fs-md-5"></i> My Comments</a></p>
-                        <p id="delete-account" class="text-decoration-none text-reset pb-2 hover handlee-regular"><i class="fa-solid fa-trash pe-2 fs-md-5"></i>
-                            Delete Account</p>
+                        <p class="pb-2 handlee-regular"><i class="fa-solid fa-envelope pe-2 fs-md-5 pink-font"></i> {{ request.user.email }}</p>
+                        <p class="pb-2 hover handlee-regular"><a href="{% url 'view_favourites' %}"
+                                class="text-decoration-none text-reset"><i class="fa-solid fa-heart pe-2 fs-md-5 pink-font"></i>
+                                Favourites</a></p>
+                        <p class="pb-2 hover handlee-regular"><a href="{% url 'view_comments' %}"
+                                class="text-decoration-none text-reset"><i class="fa-solid fa-comment pe-2 fs-md-5 pink-font"></i>
+                                My Comments</a></p>
+                        <form action="{% url 'delete_profile_view' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="text-decoration-none text-reset pb-2 hover handlee-regular border-0 main-bg" id="delete-account">
+                                <i class="fa-solid fa-trash pe-2 fs-md-5 pink-font"></i>Delete</button>
+                        </form>
                     </div>
                 </div>
             </div>

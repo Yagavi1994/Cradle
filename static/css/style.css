@@ -111,8 +111,7 @@
    background-color: inherit;
  }
 
- .fa-regular,
- .fa-strong {
+ .fa-regular, .fa-strong {
    color: #b13686;
  }
 

@@ -151,7 +151,13 @@ def profile_view(request):
     comments = Comment.objects.filter(author=request.user)
     return render(request, 'blog/profile.html', {'favourites': favourites, 'comments': comments})
 
-    
+@login_required
+def delete_profile_view(request):
+    if request.method == 'POST':
+        return render(request, 'blog/delete_profile.html')
+    else:
+        return redirect('profile')
+
 @require_POST
 @login_required
 def add_favourite(request, post_id):
