@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
-{% load static %}
+<!--
 
-{% block content %}
+
+
 <section class="bg-yellow box-shadow h-100 m-0 p-4">
     <div class="container-fluid h-custom">
         <div class="row d-flex justify-content-center align-items-cente pt-3">
@@ -38,6 +39,92 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
+
+
+
+{% load static %}
+
+{% block content %}
+<section class="bg-yellow box-shadow h-100 m-0 p-4">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center pt-3">
+            <div class="col-md-5 col-lg-3 col-xl-2 p-2 text-center align-items-center img-fluid circle-image pt-4 pb-2">
+                <img src="{{ profile.profile_picture.url }}" class="img-fluid circle-image pb-2" alt="Profile Picture"
+                    id="profile-pic">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#editModal"><i
+                        class="fa-solid fa-pen-to-square pink-font fs-4 enlarge"></i></a>
+                <h2 class="salsa-regular grey-font"><strong>{{ request.user.username }}</strong></h2>
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-5 mt-lg-0">
+                <div class="card shadow">
+                    <div class="card-header text-center">
+                        <h4 class="text-capitalize salsa-regular">{{ request.user.username }}'s Profile</h4>
+                    </div>
+                    <div class="card-body fs-5">
+                        <p class="pb-2"><i class="fa-solid fa-envelope pe-2 fs-md-5 pink-font"></i> {{ request.user.email }}</p>
+                        <p class="pb-2 hover"><a href="{% url 'view_favourites' %}"
+                                class="text-decoration-none text-reset"><i
+                                    class="fa-solid fa-heart pe-2 fs-md-5 pink-font"></i>
+                                Favourites</a></p>
+                        <p class="pb-2 hover"><a href="{% url 'view_comments' %}"
+                                class="text-decoration-none text-reset"><i
+                                    class="fa-solid fa-comment pe-2 fs-md-5 pink-font"></i>
+                                My Comments</a></p>
+                        <form action="{% url 'delete_profile_view' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="text-decoration-none text-reset pb-2 hover border-0 main-bg"
+                                id="delete-account">
+                                <i class="fa-solid fa-trash pe-2 fs-md-5 pink-font"></i>Delete</button>
+                        </form>
+                        <!-- <a href="#" class="text-decoration-none text-reset pb-2 hover border-0 main-bg"
+                            data-bs-toggle="modal" data-bs-target="#deleteModal">
+                            <i class="fa-solid fa-trash pe-2 fs-md-5 pink-font"></i>Delete
+                        </a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Profile Picture</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" action="{% url 'profile' %}">
+                        {% csrf_token %}
+                        {{ form.profile_picture }}
+                        <button type="submit" class="btn btn-primary mt-3" name="confirm">Confirm</button>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"><button type="submit" class="btn btn-danger mt-3" name="confirm">Delete Picture</button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Delete Profile Picture</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete your profile picture? This action cannot be undone.</p>
+                    <form method="post" action="{% url 'profile' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger mt-3" name="delete">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}

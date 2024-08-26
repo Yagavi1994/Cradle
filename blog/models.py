@@ -61,7 +61,7 @@ class Favourite(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_picture = CloudinaryField('image', default='placeholder')
+    profile_picture = CloudinaryField('image', default='nnn7jme2crgxnlba6ygb')
 
     def __str__(self):
         return self.user.username

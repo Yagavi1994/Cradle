@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from .models import Post, Comment, Category, Favourite, Profile
-from .forms import CommentForm, ProfilePictureForm
+from .forms import CommentForm, ProfilePictureForm, DeletePictureForm
 
 
 # Create your views here.
@@ -147,10 +147,35 @@ def category_posts(request, slug):
 
 @login_required
 def profile_view(request):
-    profile, created = Profile.objects.get_or_create(user=request.user)
+    profile = get_object_or_404(Profile, user=request.user)
+    
+    if request.method == 'POST':
+        if 'confirm' in request.POST:
+            form = ProfilePictureForm(request.POST, request.FILES, instance=profile)
+            if form.is_valid():
+                form.save()
+                return redirect('profile')
+        elif 'delete' in request.POST:
+            profile.profile_picture = 'nnn7jme2crgxnlba6ygb'
+            profile.save()
+            return redirect('profile')
+    else:
+        form = ProfilePictureForm(instance=profile)
+        delete_form = DeletePictureForm()
+
     favourites = Favourite.objects.filter(author=request.user)
     comments = Comment.objects.filter(author=request.user)
-    return render(request, 'blog/profile.html', {'profile': profile, 'favourites': favourites, 'comments': comments})
+
+    context = {
+        'form': form,
+        'delete_form': delete_form,
+        'profile': profile,
+        'favourites': favourites,
+        'comments': comments,
+    }
+
+    return render(request, 'blog/profile.html', context)
+
 
 @login_required
 def edit_profile_picture(request):

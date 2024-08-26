@@ -21,3 +21,6 @@ class ProfilePictureForm(forms.ModelForm):
             'folder': 'profile_pictures',
         }
     )
+
+class DeletePictureForm(forms.Form):
+    confirm = forms.BooleanField(label="Confirm Deletion")
