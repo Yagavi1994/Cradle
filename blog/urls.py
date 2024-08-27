@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import add_favourite, remove_favourite, profile_view, edit_profile_picture, edit_profile_picture, confirm_profile_picture
+from .views import add_remove_favourite, profile_view, edit_profile_picture, edit_profile_picture, confirm_profile_picture
 
 from . import views
 
@@ -12,8 +12,7 @@ urlpatterns = [
     path('comments/', views.view_comments, name='view_comments'),
     path('profile/delete/', views.delete_profile_view, name='delete_profile_view'),
     path('delete_profile/', views.delete_profile, name='delete_profile'),
-    path('add_favourite/<int:post_id>/', add_favourite, name='add_favourite'),
-    path('remove_favourite/<int:post_id>/', remove_favourite, name='remove_favourite'),
+    path('add_remove_favourite/', views.add_remove_favourite, name='add_remove_favourite'),
     path('<slug:slug>/', views.post_detail, name='post_detail'),
     path('<slug:slug>/edit_comment/<int:comment_id>',
          views.comment_edit, name='comment_edit'),

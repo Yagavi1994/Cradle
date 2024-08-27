@@ -6,7 +6,7 @@
 <ul>
     {% for fav in blog_favourites %}
     <li>{{ fav.post.title }}</li>
+    <li>{{ fav.post.excerpt }}</li>
     {% endfor %}
-</ul>
 <a href="{% url 'profile' %}">Back to Profile</a>
 {% endblock content %}

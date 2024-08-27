@@ -51,6 +51,8 @@ for (let button of deleteButtons) {
   });
 }
 
+// Search query
+
 function checkSearchQuery() {
   var query = document.getElementById('searchInput').value.trim();
   if (query === "") {
@@ -60,6 +62,7 @@ function checkSearchQuery() {
   return true; // Allow the form to submit if there is a query
 }
 
+// To add and remove favourites.
 
 function toggleFavourite(element) {
   var postId = element.getAttribute('data-post-id');
@@ -92,6 +95,7 @@ function toggleFavourite(element) {
 }
 
 // Helper function to get CSRF token from cookies
+
 function getCookie(name) {
   let cookieValue = null;
   if (document.cookie && document.cookie !== '') {

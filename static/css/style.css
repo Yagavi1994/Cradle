@@ -53,6 +53,7 @@
  .hover:hover {
    color: #b13686 !important;
    transform: scale(1.02) !important;
+   transition: transform 0.3s ease;
  }
 
  .enlarge {

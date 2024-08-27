@@ -32,8 +32,8 @@
             <div class="col-12" id="icons">
                 <strong>
                     <button type="submit" name="favourites" id="favourites" class="btn-enlarge"><i
-                            class="fa-heart fs-2 {% if post in user.favourite_set.all %}fa-strong{% else %}fa-regular{% endif %}"
-                            data-post-id="{{ post.id }}" onclick="toggleFavourite(this)"></i>
+                            class="fa-heart fa-regular heart-icon fs-2"
+                            data-post-id="{{ post.id }}"></i>
                     </button>
                 </strong>
             </div>
@@ -144,6 +144,45 @@
                 }, 3000); 
             }
         }
+    });
+</script>
+<script>
+    // Include the JavaScript code here or in an external JS file
+    document.addEventListener('DOMContentLoaded', function () {
+        const heartIcons = document.querySelectorAll('.heart-icon');
+    
+        heartIcons.forEach(function (icon) {
+            icon.addEventListener('click', function (event) {
+                const postId = event.target.dataset.postId;
+                const url = "{% url 'add_remove_favourite' %}"; // Using the URL template tag
+                const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken,
+                    },
+                    body: JSON.stringify({ post_id: postId }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        if (data.added) {
+                            event.target.classList.remove('fa-regular');
+                            event.target.classList.add('fa-strong');
+                            alert('Post added to favorites!');
+                        } else {
+                            event.target.classList.remove('fa-strong');
+                            event.target.classList.add('fa-regular');
+                            alert('Post removed from favorites!');
+                        }
+                    } else {
+                        alert('There was an error processing your request.');
+                    }
+                });
+            });
+        });
     });
 </script>
 

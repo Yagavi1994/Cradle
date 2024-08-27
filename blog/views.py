@@ -211,27 +211,32 @@ def delete_profile_view(request):
     else:
         return redirect('profile')
 
-@require_POST
-@login_required
-def add_favourite(request, post_id):
-    post = get_object_or_404(Post, id=post_id)
-    Favourite.objects.get_or_create(author=request.user, post=post)
-    return JsonResponse({'status': 'added'})
-
-@require_POST
-@login_required
-def remove_favourite(request, post_id):
-    post = get_object_or_404(Post, id=post_id)
-    favourite = Favourite.objects.filter(author=request.user, post=post)
-    if favourite.exists():
-        favourite.delete()
-        return JsonResponse({'status': 'removed'})
-    return JsonResponse({'status': 'not found'})
 
 @login_required
 def view_favourites(request):
     favourites = Favourite.objects.filter(author=request.user)
     return render(request, 'blog/favourites.html', {'favourites': favourites})
+    
+
+@login_required
+def add_remove_favourite(request):
+    if request.method == 'POST':
+        post_id = request.POST.get('post_id')
+        post = get_object_or_404(Post, id=post_id)
+
+        favourite, created = Favourite.objects.get_or_create(post=post, author=request.user)
+
+        if not created:
+            favourite.delete()
+            response = {'success': True, 'added': False}
+            messages.success(request, 'Post removed from favorites.')
+        else:
+            response = {'success': True, 'added': True}
+            messages.success(request, 'Post added to favorites.')
+
+        return JsonResponse(response)
+    
+    return JsonResponse({'success': False})
 
 @login_required
 def view_comments(request):
