@@ -112,6 +112,9 @@
    padding: 15px !important;
  }
 
+ .card-header {
+  background-color: rgba(0, 0, 0, 0.5);
+ }
  /* Colors */
 
  #favourites {
@@ -128,7 +131,7 @@
  }
 
  .white-font {
-   color: #ffffff;
+   color: #ffffff !important;
  }
 
  .yellow-font {
@@ -197,11 +200,19 @@
 
  .circle-image {
    max-height: 300px;
+   border-radius: 50%;
+ }
+
+ .nav-link.circle-border {
+  border-radius: 50% !important;
+  padding: 3px !important;
+  border: 2px solid #b13686 !important;
  }
 
  .circle-border {
   border-radius: 50%;
-  border: 3px double #b13686;
+  padding: 3px;
+  border: 2px solid #b13686;
  }
 
  /* Profile */

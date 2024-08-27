@@ -154,10 +154,12 @@ def profile_view(request):
             form = ProfilePictureForm(request.POST, request.FILES, instance=profile)
             if form.is_valid():
                 form.save()
+                messages.add_message(request, messages.SUCCESS, 'Profile picture changed successfully!')
                 return redirect('profile')
         elif 'delete' in request.POST:
             profile.profile_picture = 'nnn7jme2crgxnlba6ygb'
             profile.save()
+            messages.add_message(request, messages.SUCCESS, 'Profile picture deleted successfully!')
             return redirect('profile')
     else:
         form = ProfilePictureForm(instance=profile)

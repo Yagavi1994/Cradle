@@ -5,8 +5,8 @@
 <section class="bg-yellow box-shadow h-100 m-0 p-4">
     <div class="container-fluid h-custom">
         <div class="row d-flex justify-content-center align-items-center pt-3">
-            <div class="col-md-5 col-lg-3 col-xl-2 p-1 text-center align-items-center img-fluid circle-image pb-2">
-                <img src="{{ profile.profile_picture.url }}" class="img-fluid circle-image pb-2" alt="Profile Picture"
+            <div class="col-md-5 col-lg-3 col-xl-2 text-center align-items-center img-fluid circle-image pb-2">
+                <img src="{{ profile.profile_picture.url }}" class="img-fluid circle-image circle-border shadow" alt="Profile Picture"
                     id="profile-pic">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#editModal"><i
                         class="fa-solid fa-pen-to-square pink-font fs-4 enlarge col-8 m-3"></i></a>
@@ -39,12 +39,13 @@
         </div>
     </div>
 
+
    <!-- Edit Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Edit Profile Picture</h5>
+                    <h5 class="modal-title card-header" id="editModalLabel">Edit Profile Picture</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -75,7 +76,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Delete Profile Picture</h5>
+                    <h5 class="modal-title card-header" id="deleteModalLabel">Delete Profile Picture</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

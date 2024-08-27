@@ -40,7 +40,7 @@
   <!-- Responsive navbar-->
   <nav class="navbar navbar-expand-lg bg-dark">
     <div class="container">
-      <a class="text-decoration-none text-reset p-2 me-3" id="title" href="{% url 'home' %}"><img
+      <a class="text-decoration-none text-reset me-3" id="title" href="{% url 'home' %}"><img
           src="{% static 'images/logo.png' %}" class="logo p-2 yellow-font">Cradle</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
@@ -50,8 +50,8 @@
           <input class="form-control" id="searchInput" type="text" name="q" placeholder="Search by title, category"
             aria-label="Search">
           <button class="btn btn-primary btn-enlarge p-2" type="submit">Search</button>
-        </form>
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 salsa-regular">
+        </form> 
+        <ul class="navbar-nav ms-auto fs-5 mb-lg-0 salsa-regular">
           <li class="enlarge nav-item"><a class="nav-link {% if request.path == home_url %}active"
               aria-current="page{% endif %}" href="{% url 'home' %}">Home</a></li>
           <li class="enlarge nav-item"><a class="nav-link {% if request.path == about_url %}active"
@@ -59,9 +59,9 @@
           <li class="enlarge nav-item"><a class="nav-link {% if request.path == contact_url %}active"
               aria-current="page{% endif %}" href="{% url 'contact' %}">Contact</a></li>
           <li class="enlarge nav-item dropdown">
-            <a class="nav-link {% if request.path == category_posts %}active"
-            aria-current="page{% endif %} dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
+            <a class="nav-link {% if request.resolver_match.url_name == 'category_posts' %}active"
+              aria-current="page{% endif %} dropdown-toggle" href="#" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
               Category
             </a>
             <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
@@ -71,25 +71,17 @@
               {% endfor %}
             </ul>
           </li>
-        {% if user.is_authenticated %}
+          {% if user.is_authenticated %}
           <li class="enlarge nav-item">
             <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}"
               href="{% url 'account_logout' %}">Logout</a>
           </li>
-          <div class="text-center p-3">
-            <li class="enlarge nav-item">
-              <a class="nav-link {% if request.path == profile %}active" aria-current="page{% endif %}"
-                href="{% url 'profile' %}">
-                {% if "placeholder" in profile.profile_picture.url %}
-                <img src="{% static 'images/placeholder.webp' %}" class="img-fluid profile-icon shadow"
-                  alt="placeholder image">
-                {% else %}
-                <img src="{{ profile.profile_picture.url }}" class="img-fluid profile-icon shadow"
-                  alt="Profile Picture">
-                {% endif %}
-                Profile
-              </a>
-            </li>
+          <li class="enlarge nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'profile' %}circle-border{% endif %}" aria-current="page"
+              href="{% url 'profile' %}">
+              <img src="{{ profile.profile_picture.url }}" class="img-fluid profile-icon shadow" alt="Profile Picture">
+          </a>
+          </li>
           {% else %}
           <li class="enlarge nav-item">
             <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %}"

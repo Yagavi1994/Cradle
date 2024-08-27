@@ -9,14 +9,14 @@
         {% for comment in comments %}
         <div class="col-10 col-md-8 mb-4 mt-2 ">
             <a class="pb-3 text-decoration-none text-reset" href="{% url 'post_detail' comment.post.slug %}">
-                <div class="card mb-4 p-2 comments shadow hover">
-                    <div class="border-bottom pt-1">
+                <div class="card mb-4 ms-2 p-2 comments shadow hover">
+                    <div class="card-header">
                         <strong class="fs-4 salsa-regular">
                             {{ comment.post.title }}</strong><br>
                         <br>
                     </div>
                     <div>
-                        <p class="pt-2"><strong class="text-capitalize">
+                        <p class="pt-2 ps-2"><strong class="text-capitalize">
                                 {{ comment.author }}</strong><br>
                             <span class="font-weight-normal">
                                 {{ comment.created_on }}
@@ -24,11 +24,11 @@
                         </p>
                     </div>
                     <div id="comment{{ comment.id }}"
-                        class="{% if not comment.approved and comment.author == user %}text-muted{% endif %}">
+                        class="{% if not comment.approved and comment.author == user %}text-muted{% endif %} ps-2">
                         {{ comment.body | linebreaks }}
                     </div>
                     {% if not comment.approved and comment.author == user %}
-                    <p class="approval text-muted">
+                    <p class="approval ps-2 text-muted">
                         This comment is awaiting approval
                     </p>
                     {% endif %}
@@ -51,4 +51,4 @@
             Profile</a></strong>
     </div>
 
-    {% endblock content %}
+{% endblock content %}

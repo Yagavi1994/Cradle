@@ -17,7 +17,6 @@ class ProfilePictureForm(forms.ModelForm):
             'folder': 'profile_pictures',
             'tags': ['profile_pic'],
             'format': 'jpg',
-            'crop': 'limit', 'width': 200, 'height': 200, 
             'folder': 'profile_pictures',
         }
     )
