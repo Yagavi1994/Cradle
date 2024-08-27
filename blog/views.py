@@ -155,12 +155,18 @@ def profile_view(request):
             if form.is_valid():
                 form.save()
                 messages.add_message(request, messages.SUCCESS, 'Profile picture changed successfully!')
-                return redirect('profile')
-        elif 'delete' in request.POST:
-            profile.profile_picture = 'nnn7jme2crgxnlba6ygb'
-            profile.save()
-            messages.add_message(request, messages.SUCCESS, 'Profile picture deleted successfully!')
+            else:
+                messages.add_message(request, messages.ERROR, 'Error updating the picture, try again later!')
             return redirect('profile')
+        elif 'delete' in request.POST:
+            try:
+                profile.profile_picture = 'nnn7jme2crgxnlba6ygb'
+                profile.save()
+                messages.add_message(request, messages.SUCCESS, 'Profile picture deleted successfully!')
+            except Exception as e:
+                messages.add_message(request, messages.ERROR, 'Error deleting the picture, try again later!')
+            return redirect('profile')
+
     else:
         form = ProfilePictureForm(instance=profile)
         delete_form = DeletePictureForm()
@@ -229,8 +235,9 @@ def view_favourites(request):
 
 @login_required
 def view_comments(request):
-    comments = Comment.objects.filter(author=request.user)
+    comments = Comment.objects.filter(author=request.user).select_related('post')
     return render(request, 'blog/comments.html', {'comments': comments})
+
 
 @login_required
 def delete_profile(request):

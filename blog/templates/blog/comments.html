@@ -8,7 +8,7 @@
         <h1 class="salsa-regular ps-1 p-3 pt-4">Your Comments:</h1>
         {% for comment in comments %}
         <div class="col-10 col-md-8 mb-4 mt-2 ">
-            <a class="pb-3 text-decoration-none text-reset" href="{% url 'post_detail' comment.post.slug %}">
+            <a class="pb-3 text-decoration-none text-reset" href="{% url 'post_detail' slug=comment.post.slug %}#comment-{{ comment.id }}">
                 <div class="card mb-4 ms-2 p-2 comments shadow hover">
                     <div class="card-header">
                         <strong class="fs-4 salsa-regular">
@@ -50,5 +50,7 @@
         <a href="{% url 'profile' %}" class="text-decoration-none text-reset p-3 salsa-regular fs-4"><i class="fa-solid fa-arrow-left"></i> <strong>Back to
             Profile</a></strong>
     </div>
+    <p>Request Path: {{ request.path }}</p>
+    <p>URL Name: {{ request.resolver_match.url_name }}</p>
 
 {% endblock content %}

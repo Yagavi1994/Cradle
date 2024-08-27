@@ -63,6 +63,13 @@
    transform: scale(1.05) !important;
  }
 
+ .comment-highlight {
+    background-color: #fdddf7 !important;
+    border: 2px solid #b13686 !important;
+    padding: 10px !important;
+    transition: background-color 0.5s ease-in-out !important;
+ }
+
  /* Bootstrap classes */
 
  .nav-link {

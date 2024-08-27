@@ -49,9 +49,9 @@
                     <!-- We want a for loop inside the empty control tags
           to iterate through each comment in comments -->
                     {% for comment in comments %}
-                    <div class="card mb-4 p-2 comments shadow
+                    <div class="card mb-4 p-2 comment shadow
           {% if not comment.approved and comment.author == user %}
-          text-muted{% elif not comment.approved %} d-none{% endif %}">
+          text-muted{% elif not comment.approved %} d-none{% endif %}" id="comment-{{ comment.id }}">
                         <p class="border-bottom pb-2"><strong class="text-capitalize">
                                 {{ comment.author }}</strong><br>
                             <span class="font-weight-normal">
@@ -128,5 +128,24 @@
 {% endblock content %}
 
 {% block extras %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Check if there is a hash in the URL
+        var commentId = window.location.hash.substring(1);
+
+        if (commentId) {
+            var commentElement = document.getElementById(commentId);
+            
+            if (commentElement) {
+                // Add the highlight class
+                commentElement.classList.add('comment-highlight');
+                setTimeout(function() {
+                    commentElement.classList.remove('comment-highlight');
+                }, 3000); 
+            }
+        }
+    });
+</script>
+
 <script src="{% static 'js/scripts.js' %}"></script>
 {% endblock %}
