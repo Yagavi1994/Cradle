@@ -60,7 +60,8 @@ def post_detail(request, slug):
             )
 
     comment_form = CommentForm()
-
+    
+    
     return render(
         request, 
         "blog/post_detail.html", 
@@ -89,7 +90,8 @@ def comment_edit(request, slug, comment_id):
             messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
         else:
             messages.add_message(request, messages.ERROR, 'Error updating comment!')
-
+    
+  
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 def comment_delete(request, slug, comment_id):
@@ -106,6 +108,7 @@ def comment_delete(request, slug, comment_id):
     else:
         messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
 
+    
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
@@ -126,6 +129,7 @@ def search_results(request):
     
     paginate_by = 5
 
+ 
     return render(
         request, 
         'blog/search_results.html', 
@@ -138,6 +142,7 @@ def category_posts(request, slug):
     posts = Post.objects.filter(category=category)
     paginate_by = 5
 
+    
     return render(request, 'blog/category_posts.html', {
         'category': category,
         'posts': posts,
@@ -165,6 +170,7 @@ def profile_view(request):
                 messages.add_message(request, messages.SUCCESS, 'Profile picture deleted successfully!')
             except Exception as e:
                 messages.add_message(request, messages.ERROR, 'Error deleting the picture, try again later!')
+    
             return redirect('profile')
 
     else:
@@ -182,6 +188,7 @@ def profile_view(request):
         'comments': comments,
     }
 
+    
     return render(request, 'blog/profile.html', context)
 
 
@@ -197,24 +204,30 @@ def edit_profile_picture(request):
     else:
         form = ProfilePictureForm(instance=profile)
 
+    
     return render(request, 'blog/edit_profile_picture.html', {'form': form, 'profile': profile})
+
 
 @login_required
 def confirm_profile_picture(request):
+   
     return redirect('profile')
 
 
 @login_required
 def delete_profile_view(request):
     if request.method == 'POST':
+        close_old_connections()
         return render(request, 'blog/delete_profile.html')
     else:
+      
         return redirect('profile')
 
 
 @login_required
 def view_favourites(request):
     favourites = Favourite.objects.filter(author=request.user)
+   
     return render(request, 'blog/favourites.html', {'favourites': favourites})
     
 
@@ -236,11 +249,13 @@ def add_remove_favourite(request):
 
         return JsonResponse(response)
     
+
     return JsonResponse({'success': False})
 
 @login_required
 def view_comments(request):
     comments = Comment.objects.filter(author=request.user).select_related('post')
+  
     return render(request, 'blog/comments.html', {'comments': comments})
 
 

@@ -56,6 +56,10 @@
    transition: transform 0.3s ease;
  }
 
+ .change-color:hover {
+   color: #b13686 !important;
+ }
+
  .enlarge {
   transition: transform 0.3s ease;
 }
