@@ -27,15 +27,16 @@
                 </div>
             </div>
         </div>
-        <!-- Displaying count of comments -->
+        <!-- Add or Remove Favourites -->
         <div class="row">
             <div class="col-12" id="icons">
-                <strong>
-                    <button type="submit" name="favourites" id="favourites" class="btn-enlarge"><i
-                            class="fa-heart fa-regular heart-icon fs-2"
-                            data-post-id="{{ post.id }}"></i>
-                    </button>
-                </strong>
+                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                <button type="button" id="favourites" class="btn-enlarge">
+                    <strong>
+                        <i class="fa-heart {% if is_favourite %}fa-solid{% else %}fa-regular{% endif %} heart-icon fs-2" data-post-id="{{ post.id }}"></i>
+                    </strong>
+                </button>
+                <div id="alert-container" class="my-3"></div>
             </div>
             <div class="col-12">
                 <hr>
@@ -147,41 +148,65 @@
     });
 </script>
 <script>
-    // Include the JavaScript code here or in an external JS file
     document.addEventListener('DOMContentLoaded', function () {
-        const heartIcons = document.querySelectorAll('.heart-icon');
-    
-        heartIcons.forEach(function (icon) {
-            icon.addEventListener('click', function (event) {
-                const postId = event.target.dataset.postId;
-                const url = "{% url 'add_remove_favourite' %}"; // Using the URL template tag
-                const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    
-                fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': csrfToken,
-                    },
-                    body: JSON.stringify({ post_id: postId }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        if (data.added) {
-                            event.target.classList.remove('fa-regular');
-                            event.target.classList.add('fa-strong');
-                            alert('Post added to favorites!');
-                        } else {
-                            event.target.classList.remove('fa-strong');
-                            event.target.classList.add('fa-regular');
-                            alert('Post removed from favorites!');
-                        }
+        const heartIcon = document.querySelector('.heart-icon');
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        heartIcon.addEventListener('click', function (event) {
+            const postId = event.target.dataset.postId;
+
+            if (!postId) {
+                alert('Post ID is missing!');
+                return;
+            }
+
+            const url = "/add_remove_favourite/";
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken,
+                },
+                body: JSON.stringify({ post_id: postId }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                let alertBox = document.createElement('div');
+                alertBox.className = 'alert alert-dismissible fade show';
+                alertBox.role = 'alert';
+                
+                if (data.success) {
+                    if (data.added) {
+                        event.target.classList.remove('fa-regular');
+                        event.target.classList.add('fa-solid');
+                        alertBox.classList.add('alert-success');
+                        alertBox.innerHTML = 'Post added to your Favorites successfully!';
                     } else {
-                        alert('There was an error processing your request.');
+                        event.target.classList.remove('fa-solid');
+                        event.target.classList.add('fa-regular');
+                        alertBox.classList.add('alert-info');
+                        alertBox.innerHTML = 'Post removed from your Favorites successfully!';
                     }
-                });
-            });
+                } else {
+                    alertBox.classList.add('alert-danger');
+                    alertBox.innerHTML = 'There was an error processing your request.';
+                }
+
+                // Append the alert box to the #alert-container div
+                const alertContainer = document.getElementById('alert-container');
+                alertContainer.appendChild(alertBox);
+               
+                // Automatically remove the alert after 2 seconds
+                setTimeout(function () {
+                    alertBox.classList.remove('show');
+                    alertBox.classList.add('fade');
+                    alertBox.addEventListener('transitionend', function () {
+                        alertBox.remove();
+                    });
+                }, 2000);
+            })
+            .catch(error => console.error('Error:', error));
         });
     });
 </script>

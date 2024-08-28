@@ -9,12 +9,13 @@
             <!-- Blog entries-->
             <div class="col-lg-12">
                 {% if results %}
-                <h2 class = "pt-4 mt-2 salsa-regular text-center">Search results for <strong class="pink-font text-capitalize">"{{ query }}"</strong></h2>
+                <h2 class="pt-4 mt-2 salsa-regular text-center">Search results for <strong
+                        class="pink-font text-capitalize">"{{ query }}"</strong></h2>
                 {% endif %}
                 {% for post in results %}
                 <!-- Blog post-->
                 {% if forloop.counter|divisibleby:2 %}
-                <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-pink rounded">
+                <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-pink rounded enlarge">
                     <div class="col-md-5 p-3 order-md-1">
                         {% if "placeholder" in post.featured_image.url %}
                         <a href="{% url 'post_detail' post.slug %}"><img class="circle-image img-fluid"
@@ -29,20 +30,24 @@
                         <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
                             <h2 class="card-title h4 salsa-regular">{{ post.title }}</h2>
                         </a>
-                        <p class="card-text card-body handlee-regular p-2">{{ post.excerpt }}</p>
+                        <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
+                            <p class="card-text card-body handlee-regular p-2">{{ post.excerpt }}</p>
+                        </a>
                         <a class="btn btn-primary my-custom-button btn-enlarge post-link"
                             href="{% url 'post_detail' post.slug %}">Read more →</a>
                     </div>
                 </div>
 
                 {% else %}
-                <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-purple rounded">
+                <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-purple rounded enlarge">
                     <div class="col-md-7 order-2 order-md-1">
                         <div class="small p-2">{{ post.created_on}}</div>
                         <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
                             <h2 class="card-title h4 salsa-regular">{{ post.title }}</h2>
                         </a>
-                        <p class="card-text card-body handlee-regular p-2">{{ post.excerpt }}</p>
+                        <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
+                            <p class="card-text card-body handlee-regular p-2">{{ post.excerpt }}</p>
+                        </a>
                         <a class="btn btn-primary btn-enlarge post-link" href="{% url 'post_detail' post.slug %}">Read
                             more
                             →</a>
@@ -59,13 +64,14 @@
                 </div>
                 {% endif %}
                 {% endfor %}
-            
+
                 <!-- Display a message if no results are found -->
                 {% if not results %}
                 <div class="row my-5 justify-content-center">
                     <div class="col-10">
                         <div class="card shadow text-center">
-                            <h3 class = "p-4 salsa-regular text-center">No results found for <strong class="pink-font text-capitalize">"{{ query }}"</strong></h3>
+                            <h3 class="p-4 salsa-regular text-center">No results found for <strong
+                                    class="pink-font text-capitalize">"{{ query }}"</strong></h3>
                         </div>
                     </div>
                 </div>

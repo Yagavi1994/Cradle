@@ -1,12 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content %}
 
-<h1>Your Favourites</h1>
-<ul>
-    {% for fav in blog_favourites %}
-    <li>{{ fav.post.title }}</li>
-    <li>{{ fav.post.excerpt }}</li>
+{% block content %}
+<h2>Your Favorite Posts</h2>
+
+{% if favourites %}
+    <ul>
+    {% for favourite in favourites %}
+        <li>
+            <a href="{% url 'post_detail' slug=favourite.post.slug %}">
+                {{ favourite.post.title }}
+            </a>
+            <p>{{ favourite.post.excerpt }}</p>
+        </li>
     {% endfor %}
-<a href="{% url 'profile' %}">Back to Profile</a>
-{% endblock content %}
+    </ul>
+{% else %}
+    <p>You have no favorite posts.</p>
+{% endif %}
+
+{% endblock %}

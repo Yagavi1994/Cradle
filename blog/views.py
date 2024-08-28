@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
@@ -5,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
+from django.http import JsonResponse
 from .models import Post, Comment, Category, Favourite, Profile
 from .forms import CommentForm, ProfilePictureForm, DeletePictureForm
 
@@ -47,6 +49,7 @@ def post_detail(request, slug):
     post = get_object_or_404(queryset, slug=slug)
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
+    is_favourite = Favourite.objects.filter(post=post, author=request.user).exists()
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -68,7 +71,8 @@ def post_detail(request, slug):
         {"post": post,
         "comments": comments,
         "comment_count": comment_count,
-        "comment_form" : CommentForm,},
+        "comment_form" : CommentForm,
+        "is_favourite": is_favourite,},
         )
 
 def comment_edit(request, slug, comment_id):
@@ -226,31 +230,34 @@ def delete_profile_view(request):
 
 @login_required
 def view_favourites(request):
-    favourites = Favourite.objects.filter(author=request.user)
-   
+    favourites = Favourite.objects.filter(author=request.user).select_related('post')
     return render(request, 'blog/favourites.html', {'favourites': favourites})
     
 
 @login_required
 def add_remove_favourite(request):
     if request.method == 'POST':
-        post_id = request.POST.get('post_id')
-        post = get_object_or_404(Post, id=post_id)
+        try:
+            data = json.loads(request.body)
+            post_id = data.get('post_id')
 
-        favourite, created = Favourite.objects.get_or_create(post=post, author=request.user)
+            if not post_id:
+                return JsonResponse({'success': False, 'error': 'Post ID not provided'})
 
-        if not created:
-            favourite.delete()
-            response = {'success': True, 'added': False}
-            messages.success(request, 'Post removed from favorites.')
-        else:
-            response = {'success': True, 'added': True}
-            messages.success(request, 'Post added to favorites.')
+            post = get_object_or_404(Post, id=post_id)
 
-        return JsonResponse(response)
-    
+            favourite, created = Favourite.objects.get_or_create(post=post, author=request.user)
+
+            if not created:
+                favourite.delete()
+                return JsonResponse({'success': True, 'added': False})
+
+            return JsonResponse({'success': True, 'added': True})
+        except json.JSONDecodeError:
+            return JsonResponse({'success': False, 'error': 'Invalid JSON'})
 
     return JsonResponse({'success': False})
+    
 
 @login_required
 def view_comments(request):
