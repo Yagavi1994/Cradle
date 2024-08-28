@@ -223,7 +223,6 @@ def delete_profile_view(request):
     if request.method == 'POST':
         return render(request, 'blog/delete_profile.html')
     else:
-      
         return redirect('profile')
 
 
@@ -265,9 +264,15 @@ def view_comments(request):
     return render(request, 'blog/comments.html', {'comments': comments})
 
 
+
 @login_required
 def delete_profile(request):
     if request.method == 'POST':
+        try:
             request.user.delete()
             messages.add_message(request, messages.SUCCESS, 'Profile deleted Successfully!')
+            return redirect('home')
+        except User.DoesNotExist:
+            messages.add_message(request, messages.ERROR, 'Profile does not exist!')
+            return redirect('profile')
     return render(request, 'account/login.html')
