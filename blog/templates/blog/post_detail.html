@@ -164,7 +164,7 @@
                 return;
             }
 
-            const url = "/add_remove_favourite/";
+            const url = "{% url 'add_remove_favourite' %}";
 
             fetch(url, {
                 method: 'POST',
@@ -185,12 +185,12 @@
                         event.target.classList.remove('fa-regular');
                         event.target.classList.add('fa-solid');
                         alertBox.classList.add('alert-success');
-                        alertBox.innerHTML = 'Post added to your Favorites successfully!';
+                        alertBox.innerHTML = 'Post added to your favourites successfully!';
                     } else {
                         event.target.classList.remove('fa-solid');
                         event.target.classList.add('fa-regular');
                         alertBox.classList.add('alert-info');
-                        alertBox.innerHTML = 'Post removed from your Favorites successfully!';
+                        alertBox.innerHTML = 'Post removed from your favourites successfully!';
                     }
                 } else {
                     alertBox.classList.add('alert-danger');

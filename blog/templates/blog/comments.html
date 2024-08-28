@@ -4,9 +4,11 @@
 
 <!-- Displaying Comments -->
 <div class="bg-yellow h-100">
-    <div class="row ms-3">
-        <h2 class="pt-4 mt-2 salsa-regular text-center">Your <strong
+    <div class="row d-flex justify-content-center">
+        {% if comments.count != 0 %}
+        <h2 class="pt-4 mb-4 mt-3 salsa-regular text-center">Your <strong
             class="pink-font text-capitalize">"Comments"</strong></h2>
+        {% endif %}
         {% for comment in comments %}
         <div class="col-10 col-md-8 mb-4 mt-2 ">
             <a class="pb-3 text-decoration-none text-reset"
@@ -39,11 +41,12 @@
         </div>
         {% endfor %}
         {% if comments.count == 0 %}
-        <div class="card col-10 mb-4 p-2 comments shadow">
-            <div class="border-bottom pt-1">
-                <strong class="fs-6 salsa-regular">
-                    Sorry, You have not made any comments yet.</strong><br>
-                <br>
+        <div class="row my-5 justify-content-center">
+            <div class="col-10">
+                <div class="card shadow text-center">
+                    <h3 class="p-4 salsa-regular text-center">Sorry, you have not made any <strong
+                            class="pink-font text-capitalize">"Comments"</strong></h3>
+                </div>
             </div>
         </div>
         {% endif %}
@@ -63,8 +66,8 @@
             {% endif %}
         </nav>
     </div>
-    <div class="pb-3 ps-3">
-        <a href="{% url 'profile' %}" class="text-decoration-none text-reset p-3 salsa-regular fs-4"><button class="btn btn-primary btn-enlarge"><strong>&laquo; Back to
+    <div class="pb-3 text-center mb-3">
+        <a href="{% url 'profile' %}" class="text-decoration-none text-reset salsa-regular fs-5"><button class="btn btn-primary btn-enlarge"><strong>&laquo; Back to
                 Profile</a></strong></button>
     </div>
 </div>
