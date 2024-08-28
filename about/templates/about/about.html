@@ -4,7 +4,7 @@
 
 <div class="masthead bg-yellow box-shadow pt-5">
   <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="text-center salsa-regular">
         <!-- Title goes between these h2 tags -->
         <h2>{{ about.title }}</h2>
@@ -15,8 +15,8 @@
         alt="{{ about.title }}">
       </div>
       <!-- Content -->
-      <div class="card mx-1 my-3 mb-4 mt-3 p-4 shadow">
-        <p class="handlee-regular my-3">{{ about.content | safe }}</p>
+      <div class="card col-10 mx-1 my-3 mb-4 mt-3 p-4 shadow">
+        <p class="my-3">{{ about.content | safe }}</p>
       </div>
     </div>
     <div class="row">

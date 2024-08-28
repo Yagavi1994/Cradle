@@ -81,6 +81,13 @@
   border: 1px solid #b13686 !important;
 }
 
+
+#backToTopBtn {
+  background-color: inherit;
+  border: none;
+  color: #fff;
+}
+
  /* Bootstrap classes */
 
  .nav-link {
@@ -134,6 +141,11 @@
   background-color: rgba(0, 0, 0, 0.5);
  }
  /* Colors */
+
+ .pink-underline {
+  text-decoration: underline #b13686;
+  text-underline-offset: 8px
+ }
 
  #favourites {
    border: none;

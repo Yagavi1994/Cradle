@@ -50,7 +50,7 @@
           <input class="form-control" id="searchInput" type="text" name="q" placeholder="Search by title, category"
             aria-label="Search">
           <button class="btn btn-primary btn-enlarge p-2" type="submit">Search</button>
-        </form> 
+        </form>
         <ul class="navbar-nav ms-auto fs-5 mb-lg-0 salsa-regular">
           <li class="enlarge nav-item"><a class="nav-link {% if request.path == home_url %}active"
               aria-current="page{% endif %}" href="{% url 'home' %}">Home</a></li>
@@ -77,10 +77,11 @@
               href="{% url 'account_logout' %}">Logout</a>
           </li>
           <li class="enlarge nav-item">
-            <a class="nav-link" aria-current="page"
-              href="{% url 'profile' %}">
-              <img src="{{ profile.profile_picture.url }}" class="img-fluid profile-icon shadow {% if request.resolver_match.url_name == 'profile' %}circle-border{% endif %}" alt="Profile Picture">
-          </a>
+            <a class="nav-link" aria-current="page" href="{% url 'profile' %}">
+              <img src="{{ profile.profile_picture.url }}"
+                class="img-fluid profile-icon shadow {% if request.resolver_match.url_name == 'profile' %}circle-border{% endif %}"
+                alt="Profile Picture">
+            </a>
           </li>
           {% else %}
           <li class="enlarge nav-item">
@@ -127,6 +128,10 @@
       <div class="text-white mb-3 mr-3">
         Copyright © Cradle 2024. All rights reserved.
       </div>
+      <!-- Back to top button -->
+      <div class="text-white mb-3 mr-3">
+        <button id="backToTopBtn" class="pink-underline enlarge" title="Go to top">Back to Top</button>
+      </div>
       <!-- Right -->
       <div class="ml-3">
         <a href="#!" class="text-white me-4">
@@ -153,6 +158,16 @@
   <script src="{% static 'js/scripts.js' %}"></script>
 
   {% block extras %}
+  <script>
+    document.addEventListener('click', function (event) {
+      if (event.target && event.target.id === 'backToTopBtn') {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+    });
+  </script>
   {% endblock %}
 </body>
 
