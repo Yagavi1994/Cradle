@@ -11,18 +11,19 @@
       </div>
       <!-- Image -->
       <div class="text-center p-3">
-      <img src="{{ about.about_image.url }}" class="img-fluid circle-image circle-border shadow"
-        alt="{{ about.title }}">
+        <img src="{{ about.about_image.url }}" class="img-fluid circle-image circle-border shadow"
+          alt="{{ about.title }}">
       </div>
       <!-- Content -->
-      <div class="card col-10 mx-1 my-3 mb-4 mt-3 p-4 shadow">
-        <p class="my-3">{{ about.content | safe }}</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col text-right">
+      <div class="container">
+        <div class="card mx-1 my-3 mb-4 mt-3 p-4 shadow">
+          <p class="my-3">{{ about.content | safe }}</p>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col text-right">
+          </div>
         <!-- Updated on field goes in here -->
-
         <p class="text-end"><em>Updated on: {{ about.updated_on }}</em></p>
       </div>
     </div>

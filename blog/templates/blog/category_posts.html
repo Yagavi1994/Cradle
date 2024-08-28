@@ -9,49 +9,103 @@
             <!-- Blog entries-->
             <div class="col-lg-12">
                 <h2 class="pt-4 mt-2 salsa-regular text-center">Posts in <strong class="pink-font text-capitalize">
-                    "{{ category.name }}"</strong></h2>
+                        "{{ category.name }}"</strong></h2>
                 {% for post in posts %}
                 <!-- Blog post-->
                 {% if forloop.counter|divisibleby:2 %}
                 <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-pink rounded enlarge">
                     <div class="col-md-5 p-3 text-center order-md-1">
-                        <a href="{% url 'post_detail' post.slug %}"><img class="circle-image shadow img-fluid"
-                                src="{{ post.featured_image.url }}" alt="{{ post.title }}"></a>
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'post_detail' post.slug %}">
+                            <img class="circle-image shadow img-fluid" src="{{ post.featured_image.url }}"
+                                alt="{{ post.title }}">
+                        </a>
+                        {% else %}
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <img class="circle-image shadow img-fluid" src="{{ post.featured_image.url }}"
+                                alt="{{ post.title }}">
+                        </a>
+                        {% endif %}
                     </div>
                     <div class="col-md-7 order-md-2">
-                        <div class="small mb-2">{{ post.created_on}}</div>
+                        <div class="small mb-2">{{ post.created_on }}</div>
+                        {% if user.is_authenticated %}
                         <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
                             <h2 class="card-title h4 salsa-regular">{{ post.title }}</h2>
                         </a>
+                        {% else %}
+                        <a href="#" class="text-reset text-decoration-none" data-bs-toggle="modal"
+                            data-bs-target="#loginModal">
+                            <h2 class="card-title h4 salsa-regular">{{ post.title }}</h2>
+                        </a>
+                        {% endif %}
+                        {% if user.is_authenticated %}
                         <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
                             <p class="card-text card-body handlee-regular mt-2">{{ post.excerpt }}</p>
                         </a>
-                        <a class="btn btn-primary my-custom-button btn-enlarge post-link mt-2"
+                        {% else %}
+                        <a href="#" class="text-reset text-decoration-none" data-bs-toggle="modal"
+                            data-bs-target="#loginModal">
+                            <p class="card-text card-body handlee-regular mt-2">{{ post.excerpt }}</p>
+                        </a>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                        <a class="btn btn-primary btn-enlarge post-link ms-4 mt-2"
                             href="{% url 'post_detail' post.slug %}">Read more →</a>
+                        {% else %}
+                        <a class="btn btn-primary btn-enlarge post-link ms-4 mt-2" href="#" data-bs-toggle="modal"
+                            data-bs-target="#loginModal">Read more →</a>
+                        {% endif %}
                     </div>
                 </div>
-
                 {% else %}
                 <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-purple rounded enlarge">
                     <div class="col-md-7 order-2 order-md-1">
-                        <div class="small ps-4 mb-2">{{ post.created_on}}</div>
+                        <div class="small ps-4 mb-2">{{ post.created_on }}</div>
+                        {% if user.is_authenticated %}
                         <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
                             <h2 class="card-title h4 salsa-regular ps-4">{{ post.title }}</h2>
                         </a>
+                        {% else %}
+                        <a href="#" class="text-reset text-decoration-none" data-bs-toggle="modal"
+                            data-bs-target="#loginModal">
+                            <h2 class="card-title h4 salsa-regular ps-4">{{ post.title }}</h2>
+                        </a>
+                        {% endif %}
+                        {% if user.is_authenticated %}
                         <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
                             <p class="card-text card-body handlee-regular mt-2 ps-4">{{ post.excerpt }}</p>
                         </a>
+                        {% else %}
+                        <a href="#" class="text-reset text-decoration-none" data-bs-toggle="modal"
+                            data-bs-target="#loginModal">
+                            <p class="card-text card-body handlee-regular mt-2 ps-4">{{ post.excerpt }}</p>
+                        </a>
+                        {% endif %}
+                        {% if user.is_authenticated %}
                         <a class="btn btn-primary btn-enlarge post-link ms-4 mt-2"
-                            href="{% url 'post_detail' post.slug %}">Read
-                            more
-                            →</a>
+                            href="{% url 'post_detail' post.slug %}">Read more →</a>
+                        {% else %}
+                        <a class="btn btn-primary btn-enlarge post-link ms-4 mt-2" href="#" data-bs-toggle="modal"
+                            data-bs-target="#loginModal">Read more →</a>
+                        {% endif %}
                     </div>
                     <div class="col-md-5 text-center order-1 order-md-2 p-3">
-                        <a href="{% url 'post_detail' post.slug %}"><img class="circle-image shadow img-fluid"
-                                src="{{ post.featured_image.url }}" alt="{{ post.title }}"></a>
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'post_detail' post.slug %}">
+                            <img class="circle-image shadow img-fluid" src="{{ post.featured_image.url }}"
+                                alt="{{ post.title }}">
+                        </a>
+                        {% else %}
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <img class="circle-image shadow img-fluid" src="{{ post.featured_image.url }}"
+                                alt="{{ post.title }}">
+                        </a>
+                        {% endif %}
                     </div>
                 </div>
                 {% endif %}
+
                 {% endfor %}
 
                 <!-- Pagination (optional)-->
@@ -69,6 +123,24 @@
                     </ul>
                     {% endif %}
                 </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Login Required</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                Please log in to view this post.
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'account_login' %}" class="btn btn-primary">Login</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
