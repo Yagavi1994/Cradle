@@ -7,7 +7,7 @@
     <div class="row d-flex justify-content-center">
         {% if comments.count != 0 %}
         <h2 class="pt-4 mb-4 mt-3 salsa-regular text-center">Your <strong
-            class="pink-font text-capitalize">"Comments"</strong></h2>
+                class="pink-font text-capitalize">"Comments"</strong></h2>
         {% endif %}
         {% for comment in comments %}
         <div class="col-10 col-md-8 mb-4 mt-2 ">
@@ -19,20 +19,20 @@
                             {{ comment.post.title }}</strong><br>
                         <br>
                     </div>
-                    <div>
-                        <p class="pt-2 ps-2"><strong class="text-capitalize">
-                                {{ comment.author }}</strong><br>
-                            <span class="font-weight-normal">
-                                {{ comment.created_on }}
-                            </span> wrote:
+                    <div class="comment-author d-flex align-items-center">
+                        <img src="{{ comment.author.profile.profile_picture.url }}" class="m-2 profile-icon"
+                            alt="{{ comment.author.username }}'s profile picture">
+                        <p class="pt-2 ps-2 mb-0">
+                            <strong class="text-capitalize">{{ comment.author }}</strong><br>
+                            <span class="font-weight-normal">{{ comment.created_on }}</span> wrote:
                         </p>
                     </div>
                     <div id="comment{{ comment.id }}"
-                        class="{% if not comment.approved and comment.author == user %}text-muted{% endif %} ps-2">
+                        class="ms-3 mt-3 {% if not comment.approved and comment.author == user %}text-muted{% endif %} ps-2">
                         {{ comment.body | linebreaks }}
                     </div>
                     {% if not comment.approved and comment.author == user %}
-                    <p class="approval ps-2 text-muted">
+                    <p class="approval ms-3 ps-2 text-muted">
                         This comment is awaiting approval
                     </p>
                     {% endif %}
@@ -67,8 +67,9 @@
         </nav>
     </div>
     <div class="pb-3 text-center mb-3">
-        <a href="{% url 'profile' %}" class="text-decoration-none text-reset salsa-regular fs-5"><button class="btn btn-primary btn-enlarge"><strong>&laquo; Back to
-                Profile</a></strong></button>
+        <a href="{% url 'profile' %}" class="text-decoration-none text-reset salsa-regular fs-5"><button
+                class="btn btn-primary btn-enlarge"><strong>&laquo; Back to
+                    Profile</a></strong></button>
     </div>
 </div>
 </div>

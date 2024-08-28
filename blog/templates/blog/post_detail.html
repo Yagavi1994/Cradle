@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block content %}
 {% load static %}
 {% load crispy_forms_tags %}
@@ -33,7 +33,8 @@
                 <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
                 <button type="button" id="favourites" class="btn-enlarge">
                     <strong>
-                        <i class="fa-heart {% if is_favourite %}fa-solid{% else %}fa-regular{% endif %} heart-icon fs-2" data-post-id="{{ post.id }}"></i>
+                        <i class="fa-heart {% if is_favourite %}fa-solid{% else %}fa-regular{% endif %} heart-icon fs-2"
+                            data-post-id="{{ post.id }}"></i>
                     </strong>
                 </button>
                 <div id="alert-container" class="my-3"></div>
@@ -53,17 +54,21 @@
                     <div class="card mb-4 p-2 comment shadow
           {% if not comment.approved and comment.author == user %}
           text-muted{% elif not comment.approved %} d-none{% endif %}" id="comment-{{ comment.id }}">
-                        <p class="border-bottom pb-2"><strong class="text-capitalize">
+                    <div class=" d-flex align-items-center border-bottom">
+                        <img src="{{ comment.author.profile.profile_picture.url }}" class="m-2 profile-icon"
+                            alt="{{ comment.author.username }}'s profile picture">
+                        <p class="pt-3"><strong class="text-capitalize">
                                 {{ comment.author }}</strong><br>
                             <span class="font-weight-normal">
                                 {{ comment.created_on }}
                             </span> wrote:
                         </p>
-                        <div id="comment{{ comment.id }}">
+                    </div>
+                        <div id="comment{{ comment.id }}" class="ms-3 mt-3">
                             {{ comment.body | linebreaks }}
                         </div>
                         {% if not comment.approved and comment.author == user %}
-                        <p class="approval">
+                        <p class="approval ms-3">
                             This comment is awaiting approval
                         </p>
                         {% endif %}
@@ -115,7 +120,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete your comment?
+                Are you sure you want to delete your comment?<br>
                 This action cannot be undone.
             </div>
             <div class="modal-footer">
@@ -132,26 +137,26 @@
 <script>
     // Add highlights to the comment
 
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         // Check if there is a hash in the URL
         var commentId = window.location.hash.substring(1);
 
         if (commentId) {
             var commentElement = document.getElementById(commentId);
-            
+
             if (commentElement) {
                 // Add the highlight class
                 commentElement.classList.add('comment-highlight');
-                setTimeout(function() {
+                setTimeout(function () {
                     commentElement.classList.remove('comment-highlight');
-                }, 3000); 
+                }, 3000);
             }
         }
     });
 </script>
 <script>
     // Add or remove favourites
-    
+
     document.addEventListener('DOMContentLoaded', function () {
         const heartIcon = document.querySelector('.heart-icon');
         const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
@@ -174,44 +179,44 @@
                 },
                 body: JSON.stringify({ post_id: postId }),
             })
-            .then(response => response.json())
-            .then(data => {
-                let alertBox = document.createElement('div');
-                alertBox.className = 'alert alert-dismissible fade show';
-                alertBox.role = 'alert';
-                
-                if (data.success) {
-                    if (data.added) {
-                        event.target.classList.remove('fa-regular');
-                        event.target.classList.add('fa-solid');
-                        alertBox.classList.add('alert-success');
-                        alertBox.innerHTML = 'Post added to your favourites successfully!';
-                    } else {
-                        event.target.classList.remove('fa-solid');
-                        event.target.classList.add('fa-regular');
-                        alertBox.classList.add('alert-info');
-                        alertBox.innerHTML = 'Post removed from your favourites successfully!';
-                    }
-                } else {
-                    alertBox.classList.add('alert-danger');
-                    alertBox.innerHTML = 'There was an error processing your request.';
-                }
+                .then(response => response.json())
+                .then(data => {
+                    let alertBox = document.createElement('div');
+                    alertBox.className = 'alert alert-dismissible fade show';
+                    alertBox.role = 'alert';
 
-                // Append the alert box to the #alert-container div
-                alertBox.classList.add('custom-alert');
-                const alertContainer = document.getElementById('alert-container');
-                alertContainer.appendChild(alertBox);
-               
-                // Automatically remove the alert after 2 seconds
-                setTimeout(function () {
-                    alertBox.classList.remove('show');
-                    alertBox.classList.add('fade');
-                    alertBox.addEventListener('transitionend', function () {
-                        alertBox.remove();
-                    });
-                }, 2000);
-            })
-            .catch(error => console.error('Error:', error));
+                    if (data.success) {
+                        if (data.added) {
+                            event.target.classList.remove('fa-regular');
+                            event.target.classList.add('fa-solid');
+                            alertBox.classList.add('alert-success');
+                            alertBox.innerHTML = 'Post added to your favourites successfully!';
+                        } else {
+                            event.target.classList.remove('fa-solid');
+                            event.target.classList.add('fa-regular');
+                            alertBox.classList.add('alert-info');
+                            alertBox.innerHTML = 'Post removed from your favourites successfully!';
+                        }
+                    } else {
+                        alertBox.classList.add('alert-danger');
+                        alertBox.innerHTML = 'There was an error processing your request.';
+                    }
+
+                    // Append the alert box to the #alert-container div
+                    alertBox.classList.add('custom-alert');
+                    const alertContainer = document.getElementById('alert-container');
+                    alertContainer.appendChild(alertBox);
+
+                    // Automatically remove the alert after 2 seconds
+                    setTimeout(function () {
+                        alertBox.classList.remove('show');
+                        alertBox.classList.add('fade');
+                        alertBox.addEventListener('transitionend', function () {
+                            alertBox.remove();
+                        });
+                    }, 2000);
+                })
+                .catch(error => console.error('Error:', error));
         });
     });
 </script>
