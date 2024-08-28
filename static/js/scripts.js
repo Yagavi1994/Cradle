@@ -9,8 +9,6 @@ const deleteButtons = document.getElementsByClassName("btn-delete");
 const deleteConfirm = document.getElementById("deleteConfirm");
 
 
-
-
 // Edit Comment
 /**
 * Initializes edit functionality for the provided edit buttons.
@@ -27,6 +25,10 @@ for (let button of editButtons) {
     let commentId = e.target.getAttribute("comment_id");
     let commentContent = document.getElementById(`comment${commentId}`).innerText;
     commentText.value = commentContent;
+    commentText.classList.add('comment-highlight');
+    setTimeout(function () {
+      commentText.classList.remove('comment-highlight');
+    }, 3000);
     submitButton.innerText = "Update";
     commentForm.setAttribute("action", `edit_comment/${commentId}`);
   });
@@ -62,81 +64,32 @@ function checkSearchQuery() {
   return true; // Allow the form to submit if there is a query
 }
 
-// To add and remove favourites.
-
-function toggleFavourite(element) {
-  var postId = element.getAttribute('data-post-id');
-  var isFavourite = element.classList.contains('fa-strong');
-  var url = isFavourite ? '/remove_favourite/' : '/add_favourite/';
-  var method = 'POST';
-
-  var xhr = new XMLHttpRequest();
-  xhr.open(method, url + postId + '/', true);
-  xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
-  xhr.setRequestHeader('Content-Type', 'application/json');
-
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200) {
-        if (isFavourite) {
-          element.classList.remove('fa-strong');
-          element.classList.add('fa-regular');
-        } else {
-          element.classList.remove('fa-regular');
-          element.classList.add('fa-strong');
-        }
-      } else {
-        console.error('Error toggling favourite:', xhr.responseText);
-      }
-    }
-  };
-
-  xhr.send();
-}
-
-// Helper function to get CSRF token from cookies
-
-function getCookie(name) {
-  let cookieValue = null;
-  if (document.cookie && document.cookie !== '') {
-    const cookies = document.cookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-      const cookie = cookies[i].trim();
-      if (cookie.substring(0, name.length + 1) === (name + '=')) {
-        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        break;
-      }
-    }
-  }
-  return cookieValue;
-}
-
 // Delete Account
 
 let deleteModalNew = new bootstrap.Modal(document.getElementById("deleteModal2"));
 let deleteAccount = document.getElementById("delete-account");
 
 deleteAccount.addEventListener("click", (e) => {
-    deleteAccount.innerText = "Update"
-    deleteModalNew.show(); 
+  deleteAccount.innerText = "Update"
+  deleteModalNew.show();
 });
 
 
 // Add highlights to comments
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Check if there is a hash in the URL
   var commentId = window.location.hash.substring(1);
 
   if (commentId) {
-      var commentElement = document.getElementById(commentId);
-      
-      if (commentElement) {
-          // Add the highlight class
-          commentElement.classList.add('comment-highlight');
-          setTimeout(function() {
-              commentElement.classList.remove('comment-highlight');
-          }, 3000); 
-      }
+    var commentElement = document.getElementById(commentId);
+
+    if (commentElement) {
+      // Add the highlight class
+      commentElement.classList.add('comment-highlight');
+      setTimeout(function () {
+        commentElement.classList.remove('comment-highlight');
+      }, 3000);
+    }
   }
 });

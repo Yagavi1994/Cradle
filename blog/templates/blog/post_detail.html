@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row blog-post">
             <div class="text-center">
-                <img src="{% static 'images/default.jpg' %}" class="scale img-fluid rounded blog-post-image"
+                <img src="{{ post.featured_image.url }}" class="scale img-fluid rounded blog-post-image"
                     alt="placeholder">
             </div>
             <div>
@@ -130,6 +130,8 @@
 
 {% block extras %}
 <script>
+    // Add highlights to the comment
+
     document.addEventListener("DOMContentLoaded", function() {
         // Check if there is a hash in the URL
         var commentId = window.location.hash.substring(1);
@@ -148,6 +150,8 @@
     });
 </script>
 <script>
+    // Add or remove favourites
+    
     document.addEventListener('DOMContentLoaded', function () {
         const heartIcon = document.querySelector('.heart-icon');
         const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
@@ -194,6 +198,7 @@
                 }
 
                 // Append the alert box to the #alert-container div
+                alertBox.classList.add('custom-alert');
                 const alertContainer = document.getElementById('alert-container');
                 alertContainer.appendChild(alertBox);
                

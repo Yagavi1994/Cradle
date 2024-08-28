@@ -26,24 +26,19 @@
             <!-- Blog post-->
             {% if forloop.counter|divisibleby:2 %}
             <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-pink rounded enlarge">
-                <div class="col-md-5 p-3 order-md-1">
-                    {% if "placeholder" in post.featured_image.url %}
-                    <a href="{% url 'post_detail' post.slug %}"><img class="circle-image img-fluid"
-                            src="{% static 'images/default.jpg' %}" alt="placeholder image"></a>
-                    {% else %}
-                    <a href="{% url 'post_detail' post.slug %}"><img class="circle-image img-fluid"
-                            src="{{ post.featured_image.url }}" alt="{{ post.title }}"></a>
-                    {% endif %}
+                <div class="col-md-5 p-3 text-center order-md-1">
+                    <a href="{% url 'post_detail' post.slug %}"><img class="circle-image shadow img-fluid"
+                        src="{{ post.featured_image.url }}" alt="{{ post.title }}"></a>
                 </div>
                 <div class="col-md-7 order-md-2">
-                    <div class="small p-2">{{ post.created_on}}</div>
+                    <div class="small mb-2">{{ post.created_on}}</div>
                     <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
                         <h2 class="card-title h4 salsa-regular">{{ post.title }}</h2>
                     </a>
                     <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
-                        <p class="card-text card-body handlee-regular p-2">{{ post.excerpt }}</p>
+                        <p class="card-text card-body handlee-regular mt-2">{{ post.excerpt }}</p>
                     </a>
-                    <a class="btn btn-primary my-custom-button btn-enlarge post-link"
+                    <a class="btn btn-primary my-custom-button btn-enlarge post-link mt-2"
                         href="{% url 'post_detail' post.slug %}">Read more →</a>
                 </div>
             </div>
@@ -51,25 +46,20 @@
             {% else %}
             <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-purple rounded enlarge">
                 <div class="col-md-7 order-2 order-md-1">
-                    <div class="small p-2">{{ post.created_on}}</div>
+                    <div class="small ps-4 mb-2">{{ post.created_on}}</div>
                     <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
-                        <h2 class="card-title h4 salsa-regular">{{ post.title }}</h2>
+                        <h2 class="card-title h4 salsa-regular ps-4">{{ post.title }}</h2>
                     </a>
                     <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
-                        <p class="card-text card-body handlee-regular p-2">{{ post.excerpt }}</p>
+                        <p class="card-text card-body handlee-regular ps-4">{{ post.excerpt }}</p>
                     </a>
-                    <a class="btn btn-primary btn-enlarge post-link" href="{% url 'post_detail' post.slug %}">Read
+                    <a class="btn btn-primary btn-enlarge post-link ms-4 mt-2" href="{% url 'post_detail' post.slug %}">Read
                         more
                         →</a>
                 </div>
-                <div class="col-md-5 order-1 order-md-2 p-3">
-                    {% if "placeholder" in post.featured_image.url %}
-                    <a href="{% url 'post_detail' post.slug %}"><img class="circle-image float-end img-fluid"
-                            src="{% static 'images/default.jpg' %}" alt="placeholder image"></a>
-                    {% else %}
-                    <a href="{% url 'post_detail' post.slug %}"><img class="circle-image float-end img-fluid"
+                <div class="col-md-5 text-center order-1 order-md-2 p-3">
+                    <a href="{% url 'post_detail' post.slug %}"><img class="circle-image shadow img-fluid"
                             src="{{ post.featured_image.url }}" alt="{{ post.title }}"></a>
-                    {% endif %}
                 </div>
             </div>
             {% endif %}

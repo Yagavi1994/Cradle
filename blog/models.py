@@ -22,7 +22,7 @@ class Post(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_posts"
     )
-    featured_image = CloudinaryField('image', default='placeholder')
+    featured_image = CloudinaryField('image', default='default_jubihg')
     source = models.CharField(max_length=400)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True, related_name='posts')
     content = models.TextField()

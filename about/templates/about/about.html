@@ -11,13 +11,8 @@
       </div>
       <!-- Image -->
       <div class="text-center p-3">
-        {% if "placeholder" in about.about_image.url %}
-      <img src="{% static 'images/about-image.jpg' %}" class="img-fluid circle-image circle-border shadow"
-        alt="placeholder image" >
-      {% else %}
-      <img src="{{ about.about_image.url }}" class="img-fluid circle-image shadow"
+      <img src="{{ about.about_image.url }}" class="img-fluid circle-image circle-border shadow"
         alt="{{ about.title }}">
-      {% endif %}
       </div>
       <!-- Content -->
       <div class="card mx-1 my-3 mb-4 mt-3 p-4 shadow">

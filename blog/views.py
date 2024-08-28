@@ -221,7 +221,6 @@ def confirm_profile_picture(request):
 @login_required
 def delete_profile_view(request):
     if request.method == 'POST':
-        close_old_connections()
         return render(request, 'blog/delete_profile.html')
     else:
       

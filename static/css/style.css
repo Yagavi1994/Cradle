@@ -75,6 +75,12 @@
     transition: background-color 0.5s ease-in-out !important;
  }
 
+ .custom-alert {
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid #b13686 !important;
+}
+
  /* Bootstrap classes */
 
  .nav-link {
