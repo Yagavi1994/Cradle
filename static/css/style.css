@@ -92,6 +92,10 @@
   text-align: justify !important;
 }
 
+.white-border {
+  border: 3px solid #fff;
+}
+
  /* Bootstrap classes */
 
  .nav-link {
@@ -186,7 +190,7 @@
  }
 
  .bg-pink {
-   background-color: #cc5170;
+   background-color: #c85975;
  }
 
  .bg-purple {
