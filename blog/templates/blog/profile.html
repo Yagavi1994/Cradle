@@ -10,29 +10,29 @@
                     alt="Profile Picture" id="profile-pic">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#editModal"><i
                         class="fa-solid fa-pen-to-square pink-font fs-4 enlarge col-8 m-3"></i></a>
-                <h2 class="salsa-regular grey-font"><strong>{{ request.user.username }}</strong></h2>
+                <h2 class="nunito-sans-regular grey-font d-md-none d-lg-block"><strong>{{ request.user.username }}</strong></h2>
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-5 mt-lg-0">
                 <div class="card shadow">
                     <div class="card-header text-center">
-                        <h4 class="text-capitalize salsa-regular">{{ request.user.username }}'s Profile</h4>
+                        <h4 class="text-capitalize nunito-sans-regular"><strong>{{ request.user.username }}'s Profile</strong></h4>
                     </div>
                     <div class="card-body fs-5">
-                        <p class="pb-2"><i class="fa-solid fa-envelope pe-2 fs-md-5 pink-font"></i> 
+                        <p class="pb-2 nunito-sans-regular"><i class="fa-solid fa-envelope pe-2 fs-md-5 pink-font"></i>
                             {{ request.user.email }}</p>
-                        <p class="pb-2 hover"><a href="{% url 'view_favourites' %}"
+                        <p class="pb-2 hover nunito-sans-regular"><a href="{% url 'view_favourites' %}"
                                 class="text-decoration-none text-reset"><i
                                     class="fa-solid fa-heart pe-2 fs-md-5 pink-font"></i>
                                 My Favourites</a></p>
                         <p class="pb-2 hover"><a href="{% url 'view_comments' %}"
-                                class="text-decoration-none text-reset"><i
+                                class="text-decoration-none nunito-sans-regular text-reset"><i
                                     class="fa-solid fa-comment pe-2 fs-md-5 pink-font"></i>
                                 My Comments</a></p>
                         <form action="{% url 'delete_profile_view' %}" method="POST">
                             {% csrf_token %}
-                            <button type="submit" class="text-decoration-none text-reset pb-2 hover border-0 main-bg"
+                            <button type="submit" class="text-decoration-none nunito-sans-regular text-reset pb-2 hover border-0 main-bg"
                                 id="delete-account">
-                                <i class="fa-solid fa-trash pe-2 fs-md-5 pink-font"></i>Delete</button>
+                                <i class="fa-solid fa-trash pe-2 fs-md-5 pink-font"></i>Delete Profile</button>
                         </form>
                     </div>
                 </div>
@@ -53,50 +53,52 @@
                         {% csrf_token %}
                         <div class="mb-3 text-center">
                             <!-- Image preview -->
-                            <img id="imgPreview" src="{{ profile.get_profile_picture_url }}" alt="Profile Picture Preview"
-                                class="img-thumbnail" style="width: 200px; height: 200px; border-radius: 50%;">
+                            <img id="imgPreview" src="{{ profile.get_profile_picture_url }}"
+                                alt="Profile Picture Preview" class="img-thumbnail"
+                                style="width: 200px; height: 200px; border-radius: 50%;">
                         </div>
                         <div class="mb-3 text-center">
                             <!-- File input with the correct ID -->
                             <input type="file" id="fileInput" name="profile_picture" class="form-control">
                         </div>
-                        
+
                         <h5 class="text-center">Or choose an avatar:</h5>
                         <div class="avatar-container text-center">
                             <!-- Avatar 1 -->
                             <label>
-                                <input type="radio" name="avatar_choice" value="selected_avatar" 
-                                    {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar.url %}checked{% endif %} hidden>
-                                <img src="{{ profile.selected_avatar.url }}" alt="Avatar 1" 
+                                <input type="radio" name="avatar_choice" value="selected_avatar" {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar.url %}checked{% endif %} hidden>
+                                <img src="{{ profile.selected_avatar.url }}" alt="Avatar 1"
                                     class="avatar {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar.url %}selected{% endif %}">
                             </label>
-                        
+
                             <!-- Avatar 2 -->
                             <label>
-                                <input type="radio" name="avatar_choice" value="selected_avatar1" 
-                                    {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar1.url %}checked{% endif %} hidden>
-                                <img src="{{ profile.selected_avatar1.url }}" alt="Avatar 2" 
+                                <input type="radio" name="avatar_choice" value="selected_avatar1" {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar1.url %}checked{% endif %}
+                                    hidden>
+                                <img src="{{ profile.selected_avatar1.url }}" alt="Avatar 2"
                                     class="avatar {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar1.url %}selected{% endif %}">
                             </label>
-                        
+
                             <!-- Avatar 3 -->
                             <label>
-                                <input type="radio" name="avatar_choice" value="selected_avatar2" 
-                                    {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar2.url %}checked{% endif %} hidden>
-                                <img src="{{ profile.selected_avatar2.url }}" alt="Avatar 3" 
+                                <input type="radio" name="avatar_choice" value="selected_avatar2" {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar2.url %}checked{% endif %}
+                                    hidden>
+                                <img src="{{ profile.selected_avatar2.url }}" alt="Avatar 3"
                                     class="avatar {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar2.url %}selected{% endif %}">
                             </label>
                         </div>
-                        
+
                         <div id="error-message" class="text-danger"></div>
                         <button type="submit" class="btn btn-primary mt-3" name="confirm">Confirm</button>
-                        <button type="submit" class="btn btn-danger enlarge mt-3" name="delete">Delete Picture</button>
+                        <button type="button" class="btn btn-danger enlarge mt-3" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal">
+                            Delete Picture
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    
 
     <!-- Delete Modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -111,7 +113,7 @@
                         <br><br>This action cannot be undone.
                         <hr>
                     </p>
-                    <form method="post" action="{% url 'profile' %}">
+                    <form method="post" action="{% url 'edit_profile_picture' %}">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger enlarge mt-3" name="delete">Delete</button>
                         <button type="button" class="btn btn-primary enlarge ms-2 mt-3"
@@ -125,58 +127,6 @@
 {% endblock content %}
 
 {% block extras %}
-<!-- <script>
-    document.addEventListener("DOMContentLoaded", function() {
-    const avatars = document.querySelectorAll('.avatar');
-    const radioButtons = document.querySelectorAll('input[name="selected_avatar"]');
-
-    avatars.forEach((avatar, index) => {
-        avatar.addEventListener('click', function() {
-            // Unselect all avatars
-            avatars.forEach(av => av.classList.remove('selected'));
-            
-            // Select the clicked avatar
-            avatar.classList.add('selected');
-        });
-    });
-});
-
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-    const avatars = document.querySelectorAll('.avatar');
-    const radioButtons = document.querySelectorAll('input[name="selected_avatar"]');
-    const imgPreview = document.getElementById('imgPreview');
-
-    avatars.forEach((avatar, index) => {
-        avatar.addEventListener('click', function() {
-            // Unselect all avatars
-            avatars.forEach(av => av.classList.remove('selected'));
-            
-            // Select the clicked avatar
-            avatar.classList.add('selected');
-
-            // Update the preview image to the selected avatar
-            imgPreview.src = avatar.src;
-
-            // Check the corresponding radio button
-            radioButtons[index].checked = true;
-        });
-    });
-
-    // Live preview for uploaded image
-    document.getElementById('fileInput').addEventListener('change', function(event) {
-        const file = event.target.files[0];
-        if (file) {
-            imgPreview.src = URL.createObjectURL(file);
-
-            // Unselect all avatars if a custom image is uploaded
-            avatars.forEach(av => av.classList.remove('selected'));
-            radioButtons.forEach(rb => rb.checked = false);
-        }
-    });
-});
-</script> -->
 <script src="{% static 'js/delete_profile.js' %}"></script>
 <script src="{% static 'js/profile_pic.js' %}"></script>
 <script src="{% static 'js/comments.js' %}"></script>

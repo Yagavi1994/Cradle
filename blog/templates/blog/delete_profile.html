@@ -13,19 +13,21 @@
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-5 mt-lg-0">
                 <div class="card shadow">
                     <div class="card-header text-center">
-                        <h4 class="text-capitalize salsa-regular">Delete Profile</h4>
+                        <h4 class="text-capitalize nunito-sans-regular">Delete Profile</h4>
                     </div>
                     <div class="card-body fs-5">
-                        <div class="modal-body text-center">
-                            Are you sure you want to delete your Profile?<br>
-                            <strong>This action cannot be undone.</strong>
+                        <div class="modal-body nunito-sans-regular text-center">
+                            <strong>Are you sure you want to delete your Profile?</strong><br>
+                            This action cannot be undone.
                         </div>
-                        <div class="modal-footer p-3 justify-content-center">
-                            <button type="button" class="btn btn-secondary btn-enlarge m-2" data-bs-dismiss="modal"><a href="{% url 'profile' %}" class="text-decoration-none text-reset">Cancel</a></button>
+                        <div class="modal-footer border-top mt-4 p-3 justify-content-center">
+                            <a href="{% url 'profile' %}" class="btn btn-secondary btn-enlarge m-2 text-decoration-none text-reset nunito-sans-regular">
+                                Cancel
+                            </a>
                             <form action="{% url 'delete_profile' %}" method="POST">
                                 {% csrf_token %}
                                 <button id="deleteConfirm" type="submit" class="btn
-                                btn-danger btn-enlarge m-2">Delete</button>
+                                btn-danger btn-enlarge nunito-sans-regular m-2">Delete</button>
                             </form>
                         </div>
                     </div>
@@ -35,21 +37,5 @@
     </div>
 </section>
 
-<!-- Delete confirmation modal -->
-<div class="modal fade" id="deleteModal2" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Delete profile?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            
-        </div>
-    </div>
-</div>
 
 {% endblock content %}
-
-{% block extras %}
-<script src="{% static 'js/scripts.js' %}"></script>
-{% endblock %}

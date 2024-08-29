@@ -245,8 +245,6 @@ def edit_profile_picture(request):
     return render(request, 'blog/profile.html', {'form': form, 'profile': profile})
 
 
-
-
 @login_required
 def delete_profile_view(request):
     if request.method == 'POST':
