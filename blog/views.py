@@ -1,4 +1,6 @@
 import json
+from allauth.account.views import SignupView
+from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
@@ -276,3 +278,11 @@ def delete_profile(request):
             messages.add_message(request, messages.ERROR, 'Profile does not exist!')
             return redirect('profile')
     return render(request, 'account/login.html')
+
+
+
+class CustomSignupView(SignupView):
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        return redirect(reverse_lazy('account_email_verification_sent'))

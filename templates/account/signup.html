@@ -30,18 +30,6 @@
                 <button type="submit" class="btn btn-primary">{% trans "Sign Up" %}</button>
               </div>
             </form>
-            <hr>
-            <div class="text-center">
-              <p>{% trans "Or sign up with" %}</p>
-              <!-- Google Sign Up Button -->
-              <a href="#" class="btn btn-outline-danger btn-block w-100 mb-2">
-                <i class="fab fa-google"></i> {% trans "Sign Up with Google" %}
-              </a>
-              <!-- Facebook Sign Up Button -->
-              <a href="#" class="btn btn-outline-primary btn-block w-100">
-                <i class="fab fa-facebook-f"></i> {% trans "Sign Up with Facebook" %}
-              </a>
-            </div>
           </div>
           <div class="card-footer text-center">
             <p>{% trans "Already have an account?" %} <a href="{% url 'account_login' %}">{% trans "Login" %}</a></p>

@@ -1,6 +1,5 @@
 from django.urls import path
 from .views import add_remove_favourite, profile_view, edit_profile_picture, edit_profile_picture, confirm_profile_picture
-
 from . import views
 
 urlpatterns = [

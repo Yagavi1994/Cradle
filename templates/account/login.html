@@ -31,18 +31,6 @@
                                 <button type="submit" class="btn btn-primary">{% trans "Login" %}</button>
                             </div>
                         </form>
-                        <hr>
-                        <div class="text-center">
-                            <p>{% trans "Or login with" %}</p>
-                            <!-- Google Login Button -->
-                            <a href="#" class="btn btn-outline-danger btn-block w-100 mb-2">
-                                <i class="fab fa-google"></i> {% trans "Login with Google" %}
-                            </a>
-                            <!-- Facebook Login Button -->
-                            <a href="#" class="btn btn-outline-primary btn-block w-100">
-                                <i class="fab fa-facebook-f"></i> {% trans "Login with Facebook" %}
-                            </a>
-                        </div>
                     </div>
                     <div class="card-footer text-center">
                         <p>{% trans "Don't have an account?" %}" <a href="{% url 'account_signup' %}">{% trans "Sign up" %}</a></p>
