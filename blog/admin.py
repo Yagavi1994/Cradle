@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import Post, Comment, Category, Favourite
+from .models import Post, Comment, Category, Favourite, Profile
 
 # Register your models here.
 
@@ -23,3 +23,8 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Favourite)
 class FavouriteAdmin(admin.ModelAdmin):
     list_display = ('author', 'post')
+
+@admin.register(Profile)
+class Profileadmin(admin.ModelAdmin):
+    list_display = ('user', 'profile_picture', 'selected_avatar', 'selected_avatar1', 'selected_avatar2')
+

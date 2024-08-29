@@ -9,6 +9,7 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.http import JsonResponse
+from cloudinary.uploader import upload
 from .models import Post, Comment, Category, Favourite, Profile
 from .forms import CommentForm, ProfilePictureForm, DeletePictureForm
 
@@ -156,7 +157,6 @@ def category_posts(request, slug):
     })
 
 
-
 @login_required
 def profile_view(request):
     profile = get_object_or_404(Profile, user=request.user)
@@ -195,7 +195,6 @@ def profile_view(request):
         'comments': comments,
     }
 
-    
     return render(request, 'blog/profile.html', context)
 
 
@@ -204,21 +203,48 @@ def edit_profile_picture(request):
     profile = get_object_or_404(Profile, user=request.user)
 
     if request.method == 'POST':
+        if 'delete' in request.POST:
+            # Handle deletion of profile picture
+            profile.profile_picture = None
+            profile.selected_avatar = None  # Clear the avatar selection
+            profile.selected_avatar1 = None
+            profile.selected_avatar2 = None
+            profile.save()
+            messages.success(request, 'Profile picture deleted successfully')
+            return redirect('profile')
+
         form = ProfilePictureForm(request.POST, request.FILES, instance=profile)
+
         if form.is_valid():
-            form.save()
-            return render(request, 'blog/preview_profile_picture.html', {'profile': profile})
+            avatar_choice = form.cleaned_data.get('avatar_choice')
+            profile_picture = request.FILES.get('profile_picture')  # Get directly from FILES
+
+            if profile_picture:
+                profile.profile_picture = profile_picture
+                # Clear any previously selected avatar since a custom picture is uploaded
+                profile.selected_avatar = None
+                profile.selected_avatar1 = None
+                profile.selected_avatar2 = None
+            elif avatar_choice:
+                # If no custom picture is uploaded, process the avatar selection
+                selected_avatar = getattr(profile, avatar_choice)
+                profile.profile_picture = selected_avatar
+                # Clear other avatars
+                profile.selected_avatar = None
+                profile.selected_avatar1 = None
+                profile.selected_avatar2 = None
+
+            profile.save()
+            messages.success(request, 'Profile picture changed successfully')
+            return redirect('profile')
+        else:
+            messages.error(request, 'There was an error with your submission.')
     else:
         form = ProfilePictureForm(instance=profile)
 
-    
-    return render(request, 'blog/edit_profile_picture.html', {'form': form, 'profile': profile})
+    return render(request, 'blog/profile.html', {'form': form, 'profile': profile})
 
 
-@login_required
-def confirm_profile_picture(request):
-   
-    return redirect('profile')
 
 
 @login_required

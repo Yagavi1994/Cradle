@@ -237,6 +237,27 @@
     "YTLC" 500;
 }
 
+/* Avatar Stylings */
+
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 0 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  object-fit: cover;
+}
+
+.avatar.selected {
+  border: 2px solid #b13686 /* Highlight the selected avatar */
+}
 
 
  /* Post_Detail Template */

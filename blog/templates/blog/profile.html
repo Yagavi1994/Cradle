@@ -6,8 +6,8 @@
     <div class="container-fluid h-custom">
         <div class="row d-flex justify-content-center align-items-center pt-3">
             <div class="col-md-5 col-lg-3 col-xl-2 text-center align-items-center img-fluid circle-image pb-2">
-                <img src="{{ profile.profile_picture.url }}" class="img-fluid circle-image circle-border shadow" alt="Profile Picture"
-                    id="profile-pic">
+                <img src="{{ profile.profile_picture.url }}" class="img-fluid circle-image circle-border shadow"
+                    alt="Profile Picture" id="profile-pic">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#editModal"><i
                         class="fa-solid fa-pen-to-square pink-font fs-4 enlarge col-8 m-3"></i></a>
                 <h2 class="salsa-regular grey-font"><strong>{{ request.user.username }}</strong></h2>
@@ -18,7 +18,8 @@
                         <h4 class="text-capitalize salsa-regular">{{ request.user.username }}'s Profile</h4>
                     </div>
                     <div class="card-body fs-5">
-                        <p class="pb-2"><i class="fa-solid fa-envelope pe-2 fs-md-5 pink-font"></i> {{ request.user.email }}</p>
+                        <p class="pb-2"><i class="fa-solid fa-envelope pe-2 fs-md-5 pink-font"></i> 
+                            {{ request.user.email }}</p>
                         <p class="pb-2 hover"><a href="{% url 'view_favourites' %}"
                                 class="text-decoration-none text-reset"><i
                                     class="fa-solid fa-heart pe-2 fs-md-5 pink-font"></i>
@@ -39,7 +40,7 @@
         </div>
     </div>
 
-   <!-- Edit Modal -->
+    <!-- Edit Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -48,17 +49,45 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" enctype="multipart/form-data" action="{% url 'profile' %}">
+                    <form method="post" enctype="multipart/form-data" action="{% url 'edit_profile_picture' %}">
                         {% csrf_token %}
                         <div class="mb-3 text-center">
                             <!-- Image preview -->
-                            <img id="imgPreview" src="{{ profile.profile_picture.url }}" 
-                                alt="Profile Picture Preview" class="img-thumbnail" style="width: 200px; height: 200px;">
+                            <img id="imgPreview" src="{{ profile.get_profile_picture_url }}" alt="Profile Picture Preview"
+                                class="img-thumbnail" style="width: 200px; height: 200px; border-radius: 50%;">
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3 text-center">
                             <!-- File input with the correct ID -->
                             <input type="file" id="fileInput" name="profile_picture" class="form-control">
                         </div>
+                        
+                        <h5 class="text-center">Or choose an avatar:</h5>
+                        <div class="avatar-container text-center">
+                            <!-- Avatar 1 -->
+                            <label>
+                                <input type="radio" name="avatar_choice" value="selected_avatar" 
+                                    {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar.url %}checked{% endif %} hidden>
+                                <img src="{{ profile.selected_avatar.url }}" alt="Avatar 1" 
+                                    class="avatar {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar.url %}selected{% endif %}">
+                            </label>
+                        
+                            <!-- Avatar 2 -->
+                            <label>
+                                <input type="radio" name="avatar_choice" value="selected_avatar1" 
+                                    {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar1.url %}checked{% endif %} hidden>
+                                <img src="{{ profile.selected_avatar1.url }}" alt="Avatar 2" 
+                                    class="avatar {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar1.url %}selected{% endif %}">
+                            </label>
+                        
+                            <!-- Avatar 3 -->
+                            <label>
+                                <input type="radio" name="avatar_choice" value="selected_avatar2" 
+                                    {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar2.url %}checked{% endif %} hidden>
+                                <img src="{{ profile.selected_avatar2.url }}" alt="Avatar 3" 
+                                    class="avatar {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar2.url %}selected{% endif %}">
+                            </label>
+                        </div>
+                        
                         <div id="error-message" class="text-danger"></div>
                         <button type="submit" class="btn btn-primary mt-3" name="confirm">Confirm</button>
                         <button type="submit" class="btn btn-danger enlarge mt-3" name="delete">Delete Picture</button>
@@ -67,6 +96,7 @@
             </div>
         </div>
     </div>
+    
 
     <!-- Delete Modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -77,11 +107,15 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="text-center"><strong>Are you sure you want to delete your profile picture?</strong> <br><br>This action cannot be undone.<hr></p>
+                    <p class="text-center"><strong>Are you sure you want to delete your profile picture?</strong>
+                        <br><br>This action cannot be undone.
+                        <hr>
+                    </p>
                     <form method="post" action="{% url 'profile' %}">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger enlarge mt-3" name="delete">Delete</button>
-                        <button type="button" class="btn btn-primary enlarge ms-2 mt-3" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary enlarge ms-2 mt-3"
+                            data-bs-dismiss="modal">Cancel</button>
                     </form>
                 </div>
             </div>
@@ -91,6 +125,58 @@
 {% endblock content %}
 
 {% block extras %}
+<!-- <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const avatars = document.querySelectorAll('.avatar');
+    const radioButtons = document.querySelectorAll('input[name="selected_avatar"]');
+
+    avatars.forEach((avatar, index) => {
+        avatar.addEventListener('click', function() {
+            // Unselect all avatars
+            avatars.forEach(av => av.classList.remove('selected'));
+            
+            // Select the clicked avatar
+            avatar.classList.add('selected');
+        });
+    });
+});
+
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const avatars = document.querySelectorAll('.avatar');
+    const radioButtons = document.querySelectorAll('input[name="selected_avatar"]');
+    const imgPreview = document.getElementById('imgPreview');
+
+    avatars.forEach((avatar, index) => {
+        avatar.addEventListener('click', function() {
+            // Unselect all avatars
+            avatars.forEach(av => av.classList.remove('selected'));
+            
+            // Select the clicked avatar
+            avatar.classList.add('selected');
+
+            // Update the preview image to the selected avatar
+            imgPreview.src = avatar.src;
+
+            // Check the corresponding radio button
+            radioButtons[index].checked = true;
+        });
+    });
+
+    // Live preview for uploaded image
+    document.getElementById('fileInput').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            imgPreview.src = URL.createObjectURL(file);
+
+            // Unselect all avatars if a custom image is uploaded
+            avatars.forEach(av => av.classList.remove('selected'));
+            radioButtons.forEach(rb => rb.checked = false);
+        }
+    });
+});
+</script> -->
 <script src="{% static 'js/delete_profile.js' %}"></script>
 <script src="{% static 'js/profile_pic.js' %}"></script>
 <script src="{% static 'js/comments.js' %}"></script>

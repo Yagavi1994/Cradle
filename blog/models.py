@@ -63,7 +63,20 @@ class Favourite(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = CloudinaryField('image', default='nnn7jme2crgxnlba6ygb')
+    selected_avatar = CloudinaryField('image', default='profile_pictures/mlu4iynnxdgpam21jrli')
+    selected_avatar1 = CloudinaryField('image', default='profile_pictures/cd4uhjgqvhj0kbwcmtqk')
+    selected_avatar2 = CloudinaryField('image', default='profile_pictures/y7wgg6bw81hry1cs5bap')
 
     def __str__(self):
         return self.user.username
 
+    def get_profile_picture_url(self):
+        if self.profile_picture:
+            return self.profile_picture.url 
+        if self.selected_avatar:
+            return self.selected_avatar.url
+        if self.selected_avatar1:
+            return self.selected_avatar1.url
+        if self.selected_avatar2:
+            return self.selected_avatar2.url  
+        
