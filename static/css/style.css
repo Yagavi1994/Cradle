@@ -113,17 +113,8 @@
 
  .btn-primary {
    background-color: #292D3D !important;
-   color: white !important;
-   padding: 10px 20px !important;
+   font-family: "Nunito Sans", sans-serif !important;
    border: none !important;
-   border-radius: 5px !important;
-   font-family: "Salsa", cursive !important;
-   font-weight: 400 !important;
-   font-style: normal !important;
-   font-size: 16px !important;
-   text-transform: capitalize !important;
-   cursor: pointer !important;
-   transition: background-color 0.3s ease, transform 0.2s ease !important;
  }
 
  .btn-primary:hover {
