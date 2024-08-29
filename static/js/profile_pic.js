@@ -1,33 +1,3 @@
-// Delete Account
-
-let deleteModalNew = new bootstrap.Modal(document.getElementById("deleteModal2"));
-let deleteAccount = document.getElementById("delete-account");
-
-deleteAccount.addEventListener("click", (e) => {
-  deleteAccount.innerText = "Update"
-  deleteModalNew.show();
-});
-
-
-// Add highlights to comments
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Check if there is a hash in the URL
-  var commentId = window.location.hash.substring(1);
-
-  if (commentId) {
-    var commentElement = document.getElementById(commentId);
-
-    if (commentElement) {
-      // Add the highlight class
-      commentElement.classList.add('comment-highlight');
-      setTimeout(function () {
-        commentElement.classList.remove('comment-highlight');
-      }, 3000);
-    }
-  }
-});
-
 // Preview profile pic in edit modal
 
 document.addEventListener('DOMContentLoaded', function () {
