@@ -39,7 +39,6 @@
         </div>
     </div>
 
-
    <!-- Edit Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -57,19 +56,17 @@
                                 alt="Profile Picture Preview" class="img-thumbnail" style="width: 200px; height: 200px;">
                         </div>
                         <div class="mb-3">
-                            {{ form.profile_picture }}
+                            <!-- File input with the correct ID -->
+                            <input type="file" id="fileInput" name="profile_picture" class="form-control">
                         </div>
                         <div id="error-message" class="text-danger"></div>
                         <button type="submit" class="btn btn-primary mt-3" name="confirm">Confirm</button>
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                            <button type="submit" class="btn btn-danger enlarge mt-3" name="confirm">Delete Picture</button>
-                        </a>
+                        <button type="submit" class="btn btn-danger enlarge mt-3" name="delete">Delete Picture</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 
     <!-- Delete Modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -84,9 +81,7 @@
                     <form method="post" action="{% url 'profile' %}">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger enlarge mt-3" name="delete">Delete</button>
-                        <a href="{% url 'profile' %}">
-                            <button type="submit" class="btn btn-primary enlarge ms-2 mt-3" name="confirm">Cancel</button>
-                        </a>
+                        <button type="button" class="btn btn-primary enlarge ms-2 mt-3" data-bs-dismiss="modal">Cancel</button>
                     </form>
                 </div>
             </div>
@@ -96,9 +91,13 @@
 {% endblock content %}
 
 {% block extras %}
+
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-    const fileInput = document.querySelector('input[type="file"]');
+
+// Preview profile pic in edit modal
+
+document.addEventListener('DOMContentLoaded', function () {
+    const fileInput = document.getElementById('fileInput');
     const imgPreview = document.getElementById('imgPreview');
     const errorMessage = document.getElementById('error-message');
     
@@ -124,5 +123,7 @@
         }
     });
 });
+
 </script>
+<script src="{% static 'js/profile.js' %}"></script>
 {% endblock %}
