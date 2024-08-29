@@ -88,6 +88,10 @@
   color: #fff;
 }
 
+.justify {
+  text-align: justify !important;
+}
+
  /* Bootstrap classes */
 
  .nav-link {
