@@ -14,6 +14,7 @@ class ProfilePictureForm(forms.ModelForm):
         ('selected_avatar', 'Avatar 1'),
         ('selected_avatar1', 'Avatar 2'),
         ('selected_avatar2', 'Avatar 3'),
+        ('selected_avatar3', 'Avatar 4'),
     ]
 
     avatar_choice = forms.ChoiceField(
@@ -49,8 +50,6 @@ class ProfilePictureForm(forms.ModelForm):
             raise forms.ValidationError('You must select an avatar or upload a profile picture.')
 
         return cleaned_data
-
-
 
 
 class DeletePictureForm(forms.Form):

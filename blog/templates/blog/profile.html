@@ -64,6 +64,14 @@
 
                         <h5 class="text-center">Or choose an avatar:</h5>
                         <div class="avatar-container text-center">
+                            <!-- Avatar 4 -->
+                            <label>
+                                <input type="radio" name="avatar_choice" value="selected_avatar3" {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar3.url %}checked{% endif %}
+                                    hidden>
+                                <img src="{{ profile.selected_avatar3.url }}" alt="Avatar 4"
+                                    class="avatar {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar3.url %}selected{% endif %}">
+                            </label>
+
                             <!-- Avatar 1 -->
                             <label>
                                 <input type="radio" name="avatar_choice" value="selected_avatar" {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar.url %}checked{% endif %} hidden>
@@ -86,6 +94,7 @@
                                 <img src="{{ profile.selected_avatar2.url }}" alt="Avatar 3"
                                     class="avatar {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar2.url %}selected{% endif %}">
                             </label>
+
                         </div>
 
                         <div id="error-message" class="text-danger"></div>

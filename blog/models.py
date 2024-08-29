@@ -63,9 +63,10 @@ class Favourite(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = CloudinaryField('image', default='nnn7jme2crgxnlba6ygb')
-    selected_avatar = CloudinaryField('image', default='profile_pictures/mlu4iynnxdgpam21jrli')
-    selected_avatar1 = CloudinaryField('image', default='profile_pictures/cd4uhjgqvhj0kbwcmtqk')
-    selected_avatar2 = CloudinaryField('image', default='profile_pictures/y7wgg6bw81hry1cs5bap')
+    selected_avatar = CloudinaryField('image', default='avatar1_dw6wb7')
+    selected_avatar1 = CloudinaryField('image', default='kjxyk9iaiqwwximms8cc')
+    selected_avatar2 = CloudinaryField('image', default='profile_pictures/inuqkebcm65yyrfhsmfj')
+    selected_avatar3 = CloudinaryField('image', default='nnn7jme2crgxnlba6ygb')
 
     def __str__(self):
         return self.user.username
@@ -78,5 +79,7 @@ class Profile(models.Model):
         if self.selected_avatar1:
             return self.selected_avatar1.url
         if self.selected_avatar2:
-            return self.selected_avatar2.url  
+            return self.selected_avatar2.url
+        if self.selected_avatar3:
+            return self.selected_avatar3.url  
         

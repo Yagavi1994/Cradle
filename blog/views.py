@@ -209,6 +209,7 @@ def edit_profile_picture(request):
             profile.selected_avatar = None  # Clear the avatar selection
             profile.selected_avatar1 = None
             profile.selected_avatar2 = None
+            profile.selected_avatar3 = None
             profile.save()
             messages.success(request, 'Profile picture deleted successfully')
             return redirect('profile')
@@ -225,6 +226,7 @@ def edit_profile_picture(request):
                 profile.selected_avatar = None
                 profile.selected_avatar1 = None
                 profile.selected_avatar2 = None
+                profile.selected_avatar3 = None
             elif avatar_choice:
                 # If no custom picture is uploaded, process the avatar selection
                 selected_avatar = getattr(profile, avatar_choice)
@@ -233,6 +235,7 @@ def edit_profile_picture(request):
                 profile.selected_avatar = None
                 profile.selected_avatar1 = None
                 profile.selected_avatar2 = None
+                profile.selected_avatar3 = None
 
             profile.save()
             messages.success(request, 'Profile picture changed successfully')
