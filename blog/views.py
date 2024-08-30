@@ -11,7 +11,7 @@ from django.views.decorators.http import require_POST
 from django.http import JsonResponse
 from cloudinary.uploader import upload
 from .models import Post, Comment, Category, Favourite, Profile
-from .forms import CommentForm, ProfilePictureForm, DeletePictureForm
+from .forms import CommentForm, ProfilePictureForm, DeletePictureForm, CustomSignUpForm
 
 
 # Create your views here.
@@ -314,3 +314,15 @@ class CustomSignupView(SignupView):
     def form_valid(self, form):
         response = super().form_valid(form)
         return redirect(reverse_lazy('account_email_verification_sent'))
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = CustomSignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('account_login')  # or wherever you want to redirect after signup
+    else:
+        form = CustomSignUpForm()
+    
+    return render(request, 'signup.html', {'form': form})

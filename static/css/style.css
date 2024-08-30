@@ -131,6 +131,13 @@
    border: none !important;
  }
 
+ .btn-pink {
+  background-color: #b13686 !important;
+  font-family: "Nunito Sans", sans-serif !important;
+  border: none !important;
+  color: #fff;
+}
+
  .btn-primary:hover {
    transform: scale(1.05) !important;
  }
@@ -159,6 +166,10 @@
  .pink-underline {
   text-decoration: underline #b13686;
   text-underline-offset: 8px
+ }
+
+ .bg-dark-pink {
+  background-color: #b13686 !important;
  }
 
  #favourites {
@@ -265,6 +276,24 @@
   border: 2px solid #b13686 /* Highlight the selected avatar */
 }
 
+/* Form Stylings */
+
+.form-group label {
+  font-weight: bold;
+}
+
+.text-danger {
+  color: #dc3545; /* Bootstrap's red color for danger alerts */
+}
+
+label[aria-expanded="true"] .fa-chevron-down {
+  transform: rotate(180deg);
+  transition: transform 0.2s ease;
+}
+
+label[aria-expanded="false"] .fa-chevron-down {
+  transition: transform 0.2s ease;
+}
 
  /* Post_Detail Template */
 
