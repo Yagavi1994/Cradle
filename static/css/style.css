@@ -312,7 +312,6 @@
   width: 100%;
   max-width: 250px; /* Reduce the size of the image */
   height: auto;
-  margin-bottom: 1rem; /* Reduce the gap between the image and card */
 }
 
 .card-body-profile {

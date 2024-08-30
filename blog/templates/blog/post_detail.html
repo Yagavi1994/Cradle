@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+{% load cloudinary %}
 {% load crispy_forms_tags %}
 
 <div class="masthead box-shadow bg-yellow">
@@ -55,7 +56,7 @@
           {% if not comment.approved and comment.author == user %}
           text-muted{% elif not comment.approved %} d-none{% endif %}" id="comment-{{ comment.id }}">
                         <div class=" d-flex align-items-center border-bottom">
-                            <img src="{{ comment.author.profile.profile_picture.url }}" class="m-2 profile-icon"
+                            <img src="{% cloudinary_url comment.author.profile.profile_picture width=50 height=50 crop='fill' gravity='face' quality='auto:best' %}" class="m-2 profile-icon"
                                 alt="{{ comment.author.username }}'s profile picture">
                             <p class="pt-3"><strong class="text-capitalize nunito-sans-regular">
                                     {{ comment.author }}</strong><br>

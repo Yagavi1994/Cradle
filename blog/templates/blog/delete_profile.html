@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load cloudinary %}
 
 {% block content %}
 <section class="bg-yellow box-shadow h-100 m-0 p-4">
     <div class="container-fluid h-custom">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-md-5 col-lg-3 col-xl-2 p-2 text-center align-items-center">
-                <img src="{{ profile.profile_picture.url }}" class="img-fluid circle-image circle-border shadow" alt="Profile Picture"
+                <img src="{% cloudinary_url profile.profile_picture width=300 height=300 crop='fill' gravity='face' quality='auto:best' %}" class="img-fluid circle-image shadow" alt="Profile Picture"
                     id="profile-pic">
                 <h3 class="salsa-regular my-3"><strong>{{ request.user.username }}</strong></h3>
             </div>

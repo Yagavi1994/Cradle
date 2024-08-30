@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load cloudinary %}
 {% block content %}
 
 <!-- Displaying Comments -->
@@ -20,19 +21,19 @@
                         <br>
                     </div>
                     <div class="comment-author d-flex align-items-center">
-                        <img src="{{ comment.author.profile.profile_picture.url }}" class="m-2 profile-icon"
+                        <img src="{% cloudinary_url comment.author.profile.profile_picture width=50 height=50 crop='fill' gravity='face' quality='auto:best' %}" class="m-2 profile-icon border-bottom"
                             alt="{{ comment.author.username }}'s profile picture">
-                        <p class="pt-2 ps-2 mb-0">
+                        <p class="pt-2 ps-2 mb-0 border-bottom pb-3">
                             <strong class="text-capitalize">{{ comment.author }}</strong><br>
                             <span class="font-weight-normal">{{ comment.created_on }}</span> wrote:
                         </p>
                     </div>
                     <div id="comment{{ comment.id }}"
-                        class="ms-3 mt-3 {% if not comment.approved and comment.author == user %}text-muted{% endif %} ps-2">
+                        class="ms-5 mt-3 {% if not comment.approved and comment.author == user %}text-muted{% endif %} ps-3">
                         {{ comment.body | linebreaks }}
                     </div>
                     {% if not comment.approved and comment.author == user %}
-                    <p class="approval ms-3 ps-2 text-muted">
+                    <p class="approval ms-5 ps-3 text-muted">
                         This comment is awaiting approval
                     </p>
                     {% endif %}
@@ -67,9 +68,9 @@
         </nav>
     </div>
     <div class="pb-3 text-center mb-3">
-        <a href="{% url 'profile' %}" class="text-decoration-none text-reset salsa-regular fs-5"><button
-                class="btn btn-primary btn-enlarge"><strong>&laquo; Back to
-                    Profile</a></strong></button>
+        <a href="{% url 'profile' %}" class="text-decoration-none text-reset nunito-sans-regular fs-5"><button
+                class="btn btn-primary btn-enlarge">&laquo; Back to
+                    Profile</a></button>
     </div>
 </div>
 </div>
