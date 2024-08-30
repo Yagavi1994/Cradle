@@ -10,8 +10,8 @@
                 <!-- Post title goes in these h1 tags -->
                 <h1 class="post-title salsa-regular">{{ post.title }}</h1>
                 <!-- Post author goes before the | the post's created date goes after -->
-                <p class="post-subtitle"><a href="{{ post.source }}" target="_blank">Source Link</a></p>
-                <p class="post-subtitle"> {{ post.created_on }} </p>
+                <p class="post-subtitle nunito-sans-regular"><a href="{{ post.source }}" target="_blank">Source Link</a></p>
+                <p class="post-subtitle nunito-sans-regular"> {{ post.created_on }} </p>
             </div>
         </div>
     </div>
@@ -45,7 +45,7 @@
         </div>
         <!-- Displaying Comments -->
         <div class="row">
-            <div class="col-md-8 mb-4  mt-3 ">
+            <div class="col-md-8 mb-4 nunito-sans-regular mt-3 ">
                 <h3>{{ comment_count }} Comments:</h3>
                 <div>
                     <!-- We want a for loop inside the empty control tags
@@ -57,18 +57,18 @@
                         <div class=" d-flex align-items-center border-bottom">
                             <img src="{{ comment.author.profile.profile_picture.url }}" class="m-2 profile-icon"
                                 alt="{{ comment.author.username }}'s profile picture">
-                            <p class="pt-3"><strong class="text-capitalize">
+                            <p class="pt-3"><strong class="text-capitalize nunito-sans-regular">
                                     {{ comment.author }}</strong><br>
-                                <span class="font-weight-normal">
+                                <span class="font-weight-normal nunito-sans-regular">
                                     {{ comment.created_on }}
-                                </span> wrote:
+                                </span> Wrote:
                             </p>
                         </div>
-                        <div id="comment{{ comment.id }}" class="ms-3 mt-3">
+                        <div id="comment{{ comment.id }}" class="ms-3 mt-3 nunito-sans-regular">
                             {{ comment.body | linebreaks }}
                         </div>
                         {% if not comment.approved and comment.author == user %}
-                        <p class="approval ms-3">
+                        <p class="approval ms-3 nunito-sans-regular">
                             This comment is awaiting approval
                         </p>
                         {% endif %}
@@ -77,7 +77,7 @@
                             <button
                                 class="btn btn-edit btn-enlarge btn-primary col-3 col-md-2 col-lg-1 p-2 me-2 ms-2 text-center"
                                 comment_id="{{ comment.id }}">Edit</button>
-                            <button class="btn btn-delete btn-enlarge btn-danger col-3 col-md-2 col-lg-2 text-center"
+                            <button class="btn btn-delete btn-enlarge btn-danger nunito-sans-regular col-3 col-md-2 col-lg-2 text-center"
                                 comment_id="{{ comment.id }}">Delete</button>
                         </div>
                         {% endif %}
@@ -88,18 +88,18 @@
             </div>
             <!-- Creating New Comments -->
             <div class="col-md-4 card shadow col-10 mx-3 d-flex align-items-center mx-md-0 mb-4 mt-3">
-                <div class="card-body justify-content-center">
+                <div class="card-body nunito-sans-regular justify-content-center">
                     {% if user.is_authenticated %}
                     <h3>Leave a comment:</h3>
                     <p>Posting as: {{ user.username }}</p>
-                    <form id="commentForm" method="post" style="margin-top: 1.3em;">
+                    <form id="commentForm" method="post" class="nunito-sans-regular" style="margin-top: 1.3em;">
                         {{ comment_form | crispy }}
                         {% csrf_token %}
                         <button id="submitButton" type="submit"
                             class="btn btn-primary btn-lg btn-enlarge">Submit</button>
                     </form>
                     {% else %}
-                    <div class="text-center">
+                    <div class="text-center nunito-sans-regular">
                         <p class="text-center">Please login to comment</p>
                         <a href="{% url 'account_login' %}"><button type="submit"
                                 class="justify-content-center btn btn-primary btn-enlarge text-center">Login</button></a>

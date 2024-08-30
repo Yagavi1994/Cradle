@@ -96,6 +96,7 @@
   border: 3px solid #fff;
 }
 
+
  /* Bootstrap classes */
 
  .nav-link {
@@ -109,6 +110,19 @@
  .nav-link.active {
    text-decoration: underline #b13686;
    text-underline-offset: 8px
+ }
+
+ .btn-secondary {
+   background-color: #292D3D !important;
+   font-family: "Nunito Sans", sans-serif !important;
+   border: none !important;
+   color: #fff !important;
+ }
+
+ .btn-danger {
+  background-color: #a21515 !important;
+   font-family: "Nunito Sans", sans-serif !important;
+   border: none !important;
  }
 
  .btn-primary {
@@ -139,6 +153,7 @@
  .card-header {
   background-color: rgba(0, 0, 0, 0.5);
  }
+
  /* Colors */
 
  .pink-underline {
@@ -259,9 +274,18 @@
 
  /* About Template */
 
+ .img.circle-image {
+    width: 300px !important; 
+    height: 300px !important; 
+    border-radius: 50%;
+    object-fit: cover;
+}
+
  .circle-image {
-   max-height: 300px;
-   border-radius: 50%;
+  width: 300px; 
+  height: 300px; 
+  border-radius: 50%;
+  object-fit: contain;
  }
 
  .nav-link.circle-border {
@@ -284,8 +308,12 @@
    border-radius: 50%;
  }
 
- /* Media Query for smaller screens */
- @media (max-width: 767.98px) {}
+ /* Media Query for large screens */
+ @media (min-width: 767.98px) {
+  .fs-md-3 {
+    font-size: 2rem !important; /* Example size for md screens */
+}
+ }
 
 
  /* Start Bootstrap Template CSS */

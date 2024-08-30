@@ -13,7 +13,7 @@
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-5 mt-lg-0">
                 <div class="card shadow">
                     <div class="card-header text-center">
-                        <h4 class="text-capitalize nunito-sans-regular">Delete Profile</h4>
+                        <h4 class="text-capitalize fw-bold nunito-sans-regular">Delete Profile</h4>
                     </div>
                     <div class="card-body fs-5">
                         <div class="modal-body nunito-sans-regular text-center">
@@ -21,7 +21,7 @@
                             This action cannot be undone.
                         </div>
                         <div class="modal-footer border-top mt-4 p-3 justify-content-center">
-                            <a href="{% url 'profile' %}" class="btn btn-secondary btn-enlarge m-2 text-decoration-none text-reset nunito-sans-regular">
+                            <a href="{% url 'profile' %}" class="btn btn-primary btn-enlarge m-2 text-decoration-none nunito-sans-regular">
                                 Cancel
                             </a>
                             <form action="{% url 'delete_profile' %}" method="POST">
