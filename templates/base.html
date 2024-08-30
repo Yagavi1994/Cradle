@@ -52,7 +52,7 @@
         <form method="GET" action="{% url 'search_results' %}" onsubmit="return checkSearchQuery();" class="d-flex">
           <input class="form-control" id="searchInput" type="text" name="q" placeholder="Search by title, category"
             aria-label="Search">
-          <button class="btn btn-primary btn-enlarge p-2" type="submit">Search</button>
+          <button class="btn btn-secondary btn-enlarge p-2" type="submit">Search</button>
         </form>
         <ul class="navbar-nav ms-auto fs-5 mb-lg-0 nunito-sans-regular">
           <li class="enlarge nav-item"><a class="nav-link {% if request.path == home_url %}active"

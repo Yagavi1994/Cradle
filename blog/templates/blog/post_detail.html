@@ -73,11 +73,11 @@
                         </p>
                         {% endif %}
                         {% if user.is_authenticated and comment.author == user %}
-                        <div class="row g-2">
+                        <div class="g-2">
                             <button
-                                class="btn btn-edit btn-enlarge btn-primary col-3 col-md-2 col-lg-1 p-2 me-2 ms-2 text-center"
+                                class="btn btn-edit btn-enlarge btn-primary mx-2 text-center"
                                 comment_id="{{ comment.id }}">Edit</button>
-                            <button class="btn btn-delete btn-enlarge btn-danger nunito-sans-regular col-3 col-md-2 col-lg-2 text-center"
+                            <button class="btn btn-delete btn-enlarge btn-danger nunito-sans-regular text-center"
                                 comment_id="{{ comment.id }}">Delete</button>
                         </div>
                         {% endif %}
@@ -96,7 +96,7 @@
                         {{ comment_form | crispy }}
                         {% csrf_token %}
                         <button id="submitButton" type="submit"
-                            class="btn btn-primary btn-lg btn-enlarge">Submit</button>
+                            class="btn btn-primary btn-enlarge">Submit</button>
                     </form>
                     {% else %}
                     <div class="text-center nunito-sans-regular">
@@ -116,17 +116,17 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
+                <h5 class="modal-title nunito-sans-regular fw-bold" id="deleteModalLabel">Delete comment?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                Are you sure you want to delete your comment?<br>
+            <div class="modal-body nunito-sans-regular text-center">
+                <span class="fw-bold p-2 mb-4">Are you sure you want to delete your comment?</span><br>
                 This action cannot be undone.
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary btn-enlarge nunito-sans-regular" data-bs-dismiss="modal">Close</button>
                 <a id="deleteConfirm" href="#" class="btn
-          btn-danger btn-enlarge">Delete</a>
+          btn-danger btn-enlarge nunito-sans-regular">Delete</a>
             </div>
         </div>
     </div>
