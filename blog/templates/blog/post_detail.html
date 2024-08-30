@@ -11,7 +11,7 @@
                 <!-- Post title goes in these h1 tags -->
                 <h1 class="post-title salsa-regular">{{ post.title }}</h1>
                 <!-- Post author goes before the | the post's created date goes after -->
-                <p class="post-subtitle nunito-sans-regular"><a href="{{ post.source }}" target="_blank">Source Link</a></p>
+                <p class="post-subtitle nunito-sans-regular"><a href="{{ post.source }}" class="hover" target="_blank">Source Link</a></p>
                 <p class="post-subtitle nunito-sans-regular"> {{ post.created_on }} </p>
             </div>
         </div>
@@ -23,7 +23,7 @@
                     alt="placeholder">
             </div>
             <div>
-                <div class="card shadow mb-4 mt-5 left top p-3">
+                <div class="card shadow mb-4 mt-5 left top p-3 nunito-sans-regular">
                     <article class="card-body nunito-sans-regular">{{ post.content | safe }}</article>
                 </div>
             </div>
@@ -125,7 +125,7 @@
                 This action cannot be undone.
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-enlarge nunito-sans-regular" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn-enlarge nunito-sans-regular" data-bs-dismiss="modal">Close</button>
                 <a id="deleteConfirm" href="#" class="btn
           btn-danger btn-enlarge nunito-sans-regular">Delete</a>
             </div>

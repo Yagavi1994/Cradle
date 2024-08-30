@@ -20,21 +20,21 @@
                         <h4 class="fw-bold">{% trans "Login" %}</h4>
                     </div>
                     <div class="card-body">
-                        <!-- Django's default login form -->
-                        <form method="POST" action="{% url 'account_login' %}">
+                        
+                        <form method="POST" action="{% url 'account_login' %}" class="nunito-sans-regular">
                             {% csrf_token %}
                             {{ form.as_p }}
                             {% if redirect_field_value %}
                             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                             {% endif %}
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary">{% trans "Login" %}</button>
+                                <button type="submit" class="btn btn-primary mb-3">{% trans "Login" %}</button>
+                                <p><a href="{% url 'account_reset_password' %}" class="hover text-decoration-none fw-bold">{% trans "Forgot your password?" %}</a></p>
                             </div>
                         </form>
                     </div>
                     <div class="card-footer text-center">
-                        <p>{% trans "Don't have an account?" %}" <a href="{% url 'account_signup' %}" class="hover">{% trans "Sign up" %}</a></p>
-                        <p><a href="{% url 'account_reset_password' %}" class="hover">{% trans "Forgot your password?" %}</a></p>
+                        <a href="{% url 'account_signup' %}" class="enlarge btn btn-secondary text-decoration-none mt-3">{% trans "Sign up" %}</a></p>
                     </div>
                 </div>
             </div>

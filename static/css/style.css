@@ -113,7 +113,7 @@
  }
 
  .btn-secondary {
-   background-color: #292D3D !important;
+   background-color: #b13686 !important;
    font-family: "Nunito Sans", sans-serif !important;
    border: none !important;
    color: #fff !important;
@@ -131,8 +131,8 @@
    border: none !important;
  }
 
- .btn-pink {
-  background-color: #b13686 !important;
+ .btn-info {
+  background-color: #5049cd !important;
   font-family: "Nunito Sans", sans-serif !important;
   border: none !important;
   color: #fff;
