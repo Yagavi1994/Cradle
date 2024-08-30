@@ -3,47 +3,50 @@
 {% load cloudinary %}
 
 {% block content %}
-<section class="bg-yellow box-shadow h-100 m-0 p-4">
+<section class="bg-yellow box-shadow h-100 m-0 p-4 d-flex justify-content-center align-items-center">
     <div class="container-fluid h-custom">
-        <div class="row d-flex justify-content-center align-items-center pt-3">
-            <div class="col-md-5 col-lg-3 col-xl-2 text-center align-items-center img-fluid circle-image pb-2">
+        <div class="row d-flex justify-content-center align-items-center">
+            <!-- Profile Picture and Edit Button -->
+            <div class="col-md-4 col-lg-3 text-center align-items-center img-fluid mb-4 mb-md-0">
                 <div class="profile-picture-container">
-                    <img src="{% cloudinary_url profile.profile_picture width=400 height=400 crop='fill' gravity='face' quality='auto:best' %}" 
-                    alt="Profile Picture" class="img-fluid circle-image circle-border shadow" id="profile-pic">
+                    <img src="{% cloudinary_url profile.profile_picture width=300 height=300 crop='fill' gravity='face' quality='auto:best' %}"
+                        alt="Profile Picture" class="img-fluid circle-image circle-border shadow" id="profile-pic">
                 </div>
-                <a href="#" data-bs-toggle="modal" data-bs-target="#editModal"><i
-                        class="fa-solid fa-pen-to-square pink-font fs-3 fw-bold pt-3 pt-md-0 enlarge col-8 m-3"></i></a>
-                <h2 class="salsa-regular grey-font d-none d-lg-block"><strong>{{ request.user.username }}</strong></h2>
+                <div>
+                    <a href="#" class="btn btn-primary text-decoration-none d-inline-flex align-items-center justify-content-center mt-3" data-bs-toggle="modal" data-bs-target="#editModal">
+                        <i class="fa-solid fa-pen-to-square pe-2 text-white"></i> Edit Picture
+                    </a>
+                    <p class="nunito-sans-regular mt-3 fs-5 pink-underline"><i class="fa-solid fa-envelope pe-2 fs-md-5 pink-font"></i>
+                        {{ request.user.email }}</p>
+                </div>
             </div>
-            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-5 mt-lg-0">
-                <div class="card shadow">
+
+            <!-- Profile Details -->
+            <div class="col-md-8 col-lg-6 col-xl-5 d-flex justify-content-center align-items-center">
+                <div class="card shadow ms-md-5 rounded w-100">
                     <div class="card-header text-center">
-                        <h4 class="nunito-sans-regular fw-bold">{{ request.user.username }}'s Profile</h4>
+                        <h4 class="salsa-regular fw-bold">{{ request.user.username }}'s Profile</h4>
                     </div>
-                    <div class="card-body fs-5">
-                        <div>
-                            <p class="pb-2 nunito-sans-regular text-nowrap"><i class="fa-solid fa-envelope pe-2 fs-md-5 pink-font"></i>
-                            {{ request.user.email }}</p>
-                        </div>
-                        <p class="pb-2 hover nunito-sans-regular"><a href="{% url 'view_favourites' %}"
-                                class="text-decoration-none text-reset"><i
+                    <div class="card-body text-center fs-5">
+                        <p class="pb-2 pt-3 hover nunito-sans-regular"><a href="{% url 'view_favourites' %}"
+                                class="text-decoration-none text-reset pb-3 border-bottom"><i
                                     class="fa-solid fa-heart pe-2 fs-md-5 pink-font"></i>
                                 My Favourites</a></p>
-                        <p class="pb-2 hover"><a href="{% url 'view_comments' %}"
-                                class="text-decoration-none nunito-sans-regular text-reset"><i
+                        <p class="pb-2 hover nunito-sans-regular"><a href="{% url 'view_comments' %}"
+                                class="text-decoration-none text-reset pb-3 border-bottom"><i
                                     class="fa-solid fa-comment pe-2 fs-md-5 pink-font"></i>
                                 My Comments</a></p>
                         <form action="{% url 'delete_profile_view' %}" method="POST">
                             {% csrf_token %}
-                            <button type="submit" class="text-decoration-none nunito-sans-regular text-reset pb-2 hover border-0 main-bg"
-                                id="delete-account">
-                                <i class="fa-solid fa-trash pe-2 fs-md-5 pink-font"></i>Delete Profile</button>
+                            <button type="submit" class="text-decoration-none border-0 main-bg hover nunito-sans-regular" id="delete-account">
+                                <i class="fa-solid fa-trash pe-3 fs-md-5"></i>Delete Profile</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Edit Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
