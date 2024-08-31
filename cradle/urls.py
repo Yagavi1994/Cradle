@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.decorators.csrf import ensure_csrf_cookie
+from allauth.account.views import LoginView
 from blog.views import CustomSignupView
 
 urlpatterns = [
     path("about/", include("about.urls"), name="about-urls"),
+    path('accounts/login/', ensure_csrf_cookie(LoginView.as_view()), name='account_login'),
     path('accounts/signup/', CustomSignupView.as_view(), name='account_signup'),
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
