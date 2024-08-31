@@ -350,6 +350,7 @@ label[aria-expanded="false"] .fa-chevron-down {
   align-items: center;
 }
 
+
  /* Media Query for large screens */
  @media (min-width: 767.98px) {
   .fs-md-3 {

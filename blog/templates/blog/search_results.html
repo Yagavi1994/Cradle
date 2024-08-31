@@ -29,21 +29,25 @@
                         <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
                             <p class="card-text card-body handlee-regular mt-2">{{ post.excerpt }}</p>
                         </a>
-                        <a class="btn btn-primary btn-enlarge post-link mt-2"
-                            href="{% url 'post_detail' post.slug %}">Read more &raquo;</a>
+                        <div class="d-grid d-sm-flex justify-content-sm-center justify-content-md-start mt-5">
+                            <a class="btn btn-primary btn-enlarge post-link"
+                                href="{% url 'post_detail' post.slug %}">Read more &raquo;</a>
+                        </div>
                     </div>
                 </div>
                 {% else %}
                 <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-purple rounded enlarge">
                     <div class="col-md-7 order-2 order-md-1">
                         <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
-                            <h2 class="card-title h4 salsa-regular ps-4">{{ post.title }}</h2>
+                            <h2 class="card-title h4 salsa-regular ps-md-4">{{ post.title }}</h2>
                         </a>
                         <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
-                            <p class="card-text card-body handlee-regular mt-2 ps-4">{{ post.excerpt }}</p>
+                            <p class="card-text card-body handlee-regular mt-2 ps-md-4">{{ post.excerpt }}</p>
                         </a>
-                        <a class="btn btn-primary btn-enlarge post-link ms-4 mt-2"
-                            href="{% url 'post_detail' post.slug %}">Read more &raquo;</a>
+                        <div class="d-grid d-sm-flex justify-content-sm-center justify-content-md-start ps-md-4 mt-5">
+                            <a class="btn btn-primary btn-enlarge post-link"
+                                href="{% url 'post_detail' post.slug %}">Read more &raquo;</a>
+                        </div>
                     </div>
                     <div class="col-md-5 text-center order-1 order-md-2 p-3">
                         <a href="{% url 'post_detail' post.slug %}">
