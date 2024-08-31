@@ -22,7 +22,6 @@
                                 src="{{ favourite.post.featured_image.url }}" alt="{{ favourite.post.title }}"></a>
                     </div>
                     <div class="col-md-7 order-md-2">
-                        <div class="small mb-2">{{ favourite.post.created_on}}</div>
                         <a href="{% url 'post_detail' favourite.post.slug %}" class="text-reset text-decoration-none">
                             <h2 class="card-title h4 salsa-regular">{{ favourite.post.title }}</h2>
                         </a>
@@ -37,7 +36,6 @@
                 {% else %}
                 <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-purple rounded enlarge">
                     <div class="col-md-7 order-2 order-md-1">
-                        <div class="small ps-4 mb-2">{{ favourite.post.created_on}}</div>
                         <a href="{% url 'post_detail' favourite.post.slug %}" class="text-reset text-decoration-none">
                             <h2 class="card-title h4 salsa-regular ps-4">{{ favourite.post.title }}</h2>
                         </a>

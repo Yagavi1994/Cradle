@@ -52,58 +52,74 @@ def post_detail(request, slug):
     post = get_object_or_404(queryset, slug=slug)
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
-    is_favourite = Favourite.objects.filter(post=post, author=request.user).exists()
-    if request.method == "POST":
-        comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.author = request.user
-            comment.post = post
-            comment.save()
-            messages.add_message(
-            request, messages.SUCCESS,
-            'Comment submitted and awaiting approval'
-            )
+    
+    # Handle favorite status for authenticated users
+    if request.user.is_authenticated:
+        is_favourite = Favourite.objects.filter(post=post, author=request.user).exists()
+    else:
+        is_favourite = False  # Default for anonymous users
 
-    comment_form = CommentForm()
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            comment_form = CommentForm(data=request.POST)
+            if comment_form.is_valid():
+                comment = comment_form.save(commit=False)
+                comment.author = request.user
+                comment.post = post
+                comment.save()
+                messages.add_message(
+                    request, messages.SUCCESS,
+                    'Comment submitted and awaiting approval'
+                )
+                return HttpResponseRedirect(request.path_info)
+        else:
+            messages.add_message(request, messages.ERROR, 'You must be logged in to submit a comment.')
+            return redirect('account_login')
     
-    
+    else:
+        comment_form = CommentForm()
+
     return render(
         request, 
         "blog/post_detail.html", 
-        {"post": post,
-        "comments": comments,
-        "comment_count": comment_count,
-        "comment_form" : CommentForm,
-        "is_favourite": is_favourite,},
-        )
+        {
+            "post": post,
+            "comments": comments,
+            "comment_count": comment_count,
+            "comment_form": comment_form,
+            "is_favourite": is_favourite,
+        }
+    )
+
 
 def comment_edit(request, slug, comment_id):
     """
-    view to edit comments
+    View to edit comments
     """
+    queryset = Post.objects.filter(status=1)
+    post = get_object_or_404(queryset, slug=slug)
+    comment = get_object_or_404(Comment, pk=comment_id)
+
     if request.method == "POST":
-
-        queryset = Post.objects.filter(status=1)
-        post = get_object_or_404(queryset, slug=slug)
-        comment = get_object_or_404(Comment, pk=comment_id)
-        comment_form = CommentForm(data=request.POST, instance=comment)
-
-        if comment_form.is_valid() and comment.author == request.user:
-            comment = comment_form.save(commit=False)
-            comment.post = post
-            comment.approved = False
-            comment.save()
-            messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
+        if comment.author == request.user:
+            comment_form = CommentForm(data=request.POST, instance=comment)
+            if comment_form.is_valid():
+                comment = comment_form.save(commit=False)
+                comment.post = post
+                comment.approved = False
+                comment.save()
+                messages.add_message(request, messages.SUCCESS, 'Comment updated!')
+            else:
+                messages.add_message(request, messages.ERROR, 'Error updating comment!')
         else:
-            messages.add_message(request, messages.ERROR, 'Error updating comment!')
-    
-  
+            messages.add_message(request, messages.ERROR, 'You are not authorized to edit this comment!')
+
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
 
 def comment_delete(request, slug, comment_id):
     """
-    view to delete comment
+    View to delete a comment
     """
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
@@ -115,8 +131,8 @@ def comment_delete(request, slug, comment_id):
     else:
         messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
 
-    
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
 
 
 def search_results(request):
