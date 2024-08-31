@@ -278,15 +278,17 @@ def view_favourites(request):
     return render(request, 'blog/favourites.html', {'favourites': favourites})
     
 
-@login_required
 def add_remove_favourite(request):
+    if not request.user.is_authenticated:
+        return JsonResponse({'success': False, 'error': 'not_authenticated'}, status=401)
+
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
             post_id = data.get('post_id')
 
             if not post_id:
-                return JsonResponse({'success': False, 'error': 'Post ID not provided'})
+                return JsonResponse({'success': False, 'error': 'Post ID not provided'}, status=400)
 
             post = get_object_or_404(Post, id=post_id)
 
@@ -298,9 +300,9 @@ def add_remove_favourite(request):
 
             return JsonResponse({'success': True, 'added': True})
         except json.JSONDecodeError:
-            return JsonResponse({'success': False, 'error': 'Invalid JSON'})
+            return JsonResponse({'success': False, 'error': 'Invalid JSON'}, status=400)
 
-    return JsonResponse({'success': False})
+    return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
     
 
 @login_required
