@@ -275,6 +275,7 @@ def delete_profile_view(request):
 @login_required
 def view_favourites(request):
     favourites = Favourite.objects.filter(author=request.user).select_related('post')
+    paginate_by = 5
     return render(request, 'blog/favourites.html', {'favourites': favourites})
     
 
@@ -308,7 +309,7 @@ def add_remove_favourite(request):
 @login_required
 def view_comments(request):
     comments = Comment.objects.filter(author=request.user).select_related('post')
-  
+    paginate_by = 5
     return render(request, 'blog/comments.html', {'comments': comments})
 
 
