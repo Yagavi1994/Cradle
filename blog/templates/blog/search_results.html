@@ -22,30 +22,30 @@
                                 alt="{{ post.title }}">
                         </a>
                     </div>
-                    <div class="col-md-7 order-md-2">
+                    <div class="col-md-7 order-md-2 text-center text-md-start mb-3 align-items-center">
                         <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
-                            <h2 class="card-title h4 salsa-regular">{{ post.title }}</h2>
+                            <h2 class="card-title h4 salsa-regular mt-3 mb-3">{{ post.title }}</h2>
                         </a>
                         <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
-                            <p class="card-text card-body handlee-regular mt-2">{{ post.excerpt }}</p>
+                            <p class="card-text card-body handlee-regular mt-2 justify">{{ post.excerpt }}</p>
                         </a>
                         <div class="d-grid d-sm-flex justify-content-sm-center justify-content-md-start mt-5">
-                            <a class="btn btn-primary btn-enlarge post-link"
+                            <a class="btn btn-primary btn-enlarge post-link p-2"
                                 href="{% url 'post_detail' post.slug %}">Read more &raquo;</a>
                         </div>
                     </div>
                 </div>
                 {% else %}
                 <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-purple rounded enlarge">
-                    <div class="col-md-7 order-2 order-md-1">
+                    <div class="col-md-7 order-2 order-md-1 text-center text-md-start mb-3 align-items-center">
                         <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
-                            <h2 class="card-title h4 salsa-regular ps-md-4">{{ post.title }}</h2>
+                            <h2 class="card-title h4 salsa-regular mt-3 mt-md-0 mb-3 ps-md-4">{{ post.title }}</h2>
                         </a>
                         <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
-                            <p class="card-text card-body handlee-regular mt-2 ps-md-4">{{ post.excerpt }}</p>
+                            <p class="card-text card-body handlee-regular mt-2 ps-md-4 justify">{{ post.excerpt }}</p>
                         </a>
                         <div class="d-grid d-sm-flex justify-content-sm-center justify-content-md-start ps-md-4 mt-5">
-                            <a class="btn btn-primary btn-enlarge post-link"
+                            <a class="btn btn-primary btn-enlarge post-link p-2"
                                 href="{% url 'post_detail' post.slug %}">Read more &raquo;</a>
                         </div>
                     </div>

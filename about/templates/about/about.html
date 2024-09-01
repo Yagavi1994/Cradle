@@ -5,10 +5,6 @@
 <div class="masthead bg-yellow box-shadow pt-5">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="text-center salsa-regular">
-        <!-- Title goes between these h2 tags -->
-        <h2>{{ about.title }}</h2>
-      </div>
       <!-- Image -->
       <div class="text-center p-3">
         <img src="{{ about.about_image.url }}" class="img-fluid circle-image circle-border shadow"
@@ -19,12 +15,6 @@
         <div class="card mx-1 my-3 mb-4 mt-3 p-4 shadow">
           <p class="my-3 nunito-sans-regular">{{ about.content | safe }}</p>
         </div>
-        </div>
-        <div class="row">
-          <div class="col text-right">
-          </div>
-        <!-- Updated on field goes in here -->
-        <p class="text-end nunito-sans-regular"><em>Updated on: {{ about.updated_on }}</em></p>
       </div>
     </div>
   </div>

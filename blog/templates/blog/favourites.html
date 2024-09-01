@@ -16,20 +16,20 @@
                 {% for favourite in favourites %}
                 <!-- Blog post-->
                 {% if forloop.counter|divisibleby:2 %}
-                <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-pink rounded enlarge">
-                    <div class="col-md-5 p-3 text-center order-md-1">
+                <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-pink rounded enlarge text-center text-md-start">
+                    <div class="col-md-5 p-3 text-center order-md-1 ">
                         <a href="{% url 'post_detail' favourite.post.slug %}"><img class="circle-image shadow img-fluid"
                                 src="{{ favourite.post.featured_image.url }}" alt="{{ favourite.post.title }}"></a>
                     </div>
-                    <div class="col-md-7 order-md-2">
+                    <div class="col-md-7 order-md-2 mb-3">
                         <a href="{% url 'post_detail' favourite.post.slug %}" class="text-reset text-decoration-none">
-                            <h2 class="card-title h4 salsa-regular">{{ favourite.post.title }}</h2>
+                            <h2 class="card-title h4 salsa-regular mb-3 mt-3">{{ favourite.post.title }}</h2>
                         </a>
                         <a href="{% url 'post_detail' favourite.post.slug %}" class="text-reset text-decoration-none">
-                            <p class="card-text card-body handlee-regular mt-2">{{ favourite.post.excerpt }}</p>
+                            <p class="card-text card-body handlee-regular mt-2 justify">{{ favourite.post.excerpt }}</p>
                         </a>
                         <div class="d-grid d-sm-flex justify-content-sm-center justify-content-md-start mt-5">
-                            <a class="btn btn-primary btn-enlarge post-link"
+                            <a class="btn btn-primary btn-enlarge post-link p-2"
                                 href="{% url 'post_detail' favourite.post.slug %}">Read more &raquo;</a>
                         </div>
                     </div>
@@ -37,15 +37,15 @@
 
                 {% else %}
                 <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-purple rounded enlarge">
-                    <div class="col-md-7 order-2 order-md-1">
-                        <a href="{% url 'post_detail' favourite.post.slug %}" class="text-reset text-decoration-none">
-                            <h2 class="card-title h4 salsa-regular ps-4">{{ favourite.post.title }}</h2>
+                    <div class="col-md-7 order-2 order-md-1 mb-3">
+                        <a href="{% url 'post_detail' favourite.post.slug %}" class="text-reset text-decoration-none text-center text-md-start mt-3 mb-3">
+                            <h2 class="card-title h4 salsa-regular mt-3 mb-3 ps-md-4">{{ favourite.post.title }}</h2>
                         </a>
                         <a href="{% url 'post_detail' favourite.post.slug %}" class="text-reset text-decoration-none">
-                            <p class="card-text card-body handlee-regular ps-4">{{ favourite.post.excerpt }}</p>
+                            <p class="card-text card-body handlee-regular ps-md-4 justify">{{ favourite.post.excerpt }}</p>
                         </a>
                         <div class="d-grid d-sm-flex justify-content-sm-center justify-content-md-start ps-md-4 mt-5">
-                            <a class="btn btn-primary btn-enlarge post-link"
+                            <a class="btn btn-primary btn-enlarge post-link p-2"
                                 href="{% url 'post_detail' favourite.post.slug %}">Read more &raquo;</a>
                         </div>
                     </div>
