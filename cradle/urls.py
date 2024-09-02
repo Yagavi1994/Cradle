@@ -22,7 +22,7 @@ from blog.views import CustomSignupView
 
 urlpatterns = [
     path("about/", include("about.urls"), name="about-urls"),
-    path('accounts/login/', ensure_csrf_cookie(LoginView.as_view()), name='account_login'),
+    path('accounts/login/', name='account_login'),
     path('accounts/signup/', CustomSignupView.as_view(), name='account_signup'),
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
