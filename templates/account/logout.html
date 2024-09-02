@@ -15,11 +15,11 @@
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-4 mt-lg-0">
                 <div class="card text-center ms-3">
-                    <div class="card-header">
-                        <h5>{% trans "Are You Sure You Want to Log Out?" %}</h5>
+                    <div class="card-header nunito-sans-regular">
+                        <h5 class="fw-bold">{% trans "Are You Sure You Want to Log Out?" %}</h5>
                     </div>
                     <div class="card-body">
-                        <p class="card-text border-bottom pb-4">{% blocktrans %} If you log out, you will need to log in again to access your account. {% endblocktrans %}</p>
+                        <p class="card-text nunito-sans-regular border-bottom pb-4">{% blocktrans %} If you log out, you will need to log in again to access your account. {% endblocktrans %}</p>
                         <form method="post" action="{% url 'account_logout' %}">
                             {% csrf_token %}
                             {% if redirect_field_value %}

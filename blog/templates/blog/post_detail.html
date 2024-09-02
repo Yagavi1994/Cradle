@@ -57,13 +57,16 @@
           {% if not comment.approved and comment.author == user %}
           text-muted{% elif not comment.approved %} d-none{% endif %}" id="comment-{{ comment.id }}">
                         <div class=" d-flex align-items-center border-bottom">
-                            <img src="{% cloudinary_url comment.author.profile.profile_picture width=100 height=100 crop='fill' gravity='face' quality='auto:best' %}"
-                                class="m-2 profile-icon" alt="{{ comment.author.username }}'s profile picture">
-                            <p class="pt-3"><strong class="text-capitalize nunito-sans-regular">
-                                    {{ comment.author }}</strong><br>
-                                <span class="font-weight-normal nunito-sans-regular">
-                                    {{ comment.created_on }}
-                                </span> Wrote:
+                            <a href="{% url 'profile' %}"class="enlarge"><img
+                                    src="{% cloudinary_url comment.author.profile.profile_picture width=100 height=100 crop='fill' gravity='face' quality='auto:best' %}"
+                                    class="m-2 profile-icon" alt="{{ comment.author.username }}'s profile picture"></a>
+                            <a href="{% url 'profile' %}" class="text-decoration-none text-reset hover enlarge">
+                                <p class="pt-3" class="text-capitalize nunito-sans-regular fw-bold">
+                                        {{ comment.author }}<br>
+                            </a>
+                            <span class="font-weight-normal nunito-sans-regular">
+                                {{ comment.created_on }}
+                            </span> Wrote:
                             </p>
                         </div>
                         <div id="comment{{ comment.id }}" class="ms-3 mt-3 nunito-sans-regular">
@@ -129,7 +132,7 @@
                 <p class="fw-bold mb-4">Are you sure you want to delete your comment?
                 <p>This action cannot be undone.</p>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer justify-content-center">
                 <button type="button" class="btn btn-primary btn-enlarge nunito-sans-regular"
                     data-bs-dismiss="modal">Close</button>
                 <a id="deleteConfirm" href="#" class="btn
