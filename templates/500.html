@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="bg-yellow box-shadow h-100 d-flex align-items-center justify-content-center m-0 p-4">
+    <div class="container text-center">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-7 col-lg-4 col-xl-3 text-center p-3">
+                <img src="{% static 'images/logo.png' %}" class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-4 mt-lg-0">
+                <div class="card text-center ms-3">
+                    <div class="card-header nunito-sans-regular">
+                        <h1 class="fw-bolder">"500"</h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="fs-5 card-text nunito-sans-regular fw-bold">Sorry! Something went wrong on our end.</p>
+                        <p class="card-text nunito-sans-regular border-bottom pb-4">Go back to the homepage!</p>
+                            <a href="{% url 'home' %}" class="btn btn-primary btn-enlarge mb-3 me-3 mt-2 mb-md-0"><i class="fa-solid fa-house text-white"></i></a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
