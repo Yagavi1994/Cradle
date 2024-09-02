@@ -350,6 +350,20 @@ label[aria-expanded="false"] .fa-chevron-down {
   align-items: center;
 }
 
+/* Pagination */
+.page-item.disabled .page-link {
+  pointer-events: none !important;
+  opacity: 0.6 !important;
+}
+
+.btn-disabled {
+    background-color: #565659 !important;
+    font-family: "Nunito Sans", sans-serif !important;
+    border: none !important;
+    color: #fff !important;
+  }
+
+
 
  /* Media Query for large screens */
  @media (min-width: 767.98px) {

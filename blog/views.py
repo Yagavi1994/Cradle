@@ -9,6 +9,7 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.http import JsonResponse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from cloudinary.uploader import upload
 from .models import Post, Comment, Category, Favourite, Profile
 from .forms import CommentForm, ProfilePictureForm, DeletePictureForm, CustomSignUpForm
@@ -137,9 +138,11 @@ def comment_delete(request, slug, comment_id):
 
 def search_results(request):
     """
-    To search in the search bar
+    To search in the search bar and paginate the results by 5.
     """
     query = request.GET.get('q', '').strip()
+    template_name = "blog/search_results.html"
+    paginate_by = 5
 
     if query:
         results = Post.objects.filter(
@@ -150,26 +153,44 @@ def search_results(request):
         )
     else:
         results = Post.objects.none()
-    
-    paginate_by = 5
 
- 
+    # Set up pagination
+    paginator = Paginator(results, paginate_by)  # 5 results per page
+    page = request.GET.get('page')
+
+    try:
+        paginated_results = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_results = paginator.page(1)
+    except EmptyPage:
+        paginated_results = paginator.page(paginator.num_pages)
+
     return render(
         request, 
-        'blog/search_results.html', 
-        {'results': results, 
-        'query': query,})
-
+        template_name, 
+        {'results': paginated_results, 
+         'query': query,
+        })
 
 def category_posts(request, slug):
     category = get_object_or_404(Category, slug=slug)
     posts = Post.objects.filter(category=category)
     paginate_by = 5
 
-    
+    # Set up pagination
+    paginator = Paginator(posts, paginate_by)  # 5 posts per page
+    page = request.GET.get('page')
+
+    try:
+        paginated_posts = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_posts = paginator.page(1)
+    except EmptyPage:
+        paginated_posts = paginator.page(paginator.num_pages)
+
     return render(request, 'blog/category_posts.html', {
         'category': category,
-        'posts': posts,
+        'posts': paginated_posts,
     })
 
 
@@ -276,7 +297,24 @@ def delete_profile_view(request):
 def view_favourites(request):
     favourites = Favourite.objects.filter(author=request.user).select_related('post')
     paginate_by = 5
-    return render(request, 'blog/favourites.html', {'favourites': favourites})
+
+    # Set up pagination
+    paginator = Paginator(favourites, paginate_by)
+    page = request.GET.get('page')
+
+    try:
+        paginated_favourites = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_favourites = paginator.page(1)
+    except EmptyPage:
+        paginated_favourites = paginator.page(paginator.num_pages)
+
+    return render(request, 'blog/favourites.html', {
+        'favourites': paginated_favourites,
+        'is_paginated': paginated_favourites.has_other_pages(),
+        'page_obj': paginated_favourites,
+    })
+
     
 
 def add_remove_favourite(request):
@@ -310,8 +348,23 @@ def add_remove_favourite(request):
 def view_comments(request):
     comments = Comment.objects.filter(author=request.user).select_related('post')
     paginate_by = 5
-    return render(request, 'blog/comments.html', {'comments': comments})
 
+    # Set up pagination
+    paginator = Paginator(comments, paginate_by)
+    page = request.GET.get('page')
+
+    try:
+        paginated_comments = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_comments = paginator.page(1)
+    except EmptyPage:
+        paginated_comments = paginator.page(paginator.num_pages)
+
+    return render(request, 'blog/comments.html', {
+        'comments': paginated_comments,
+        'is_paginated': paginated_comments.has_other_pages(),
+        'page_obj': paginated_comments,
+    })
 
 
 @login_required

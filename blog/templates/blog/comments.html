@@ -52,23 +52,30 @@
             </div>
         </div>
         {% endif %}
-        <!-- Pagination (optional)-->
+        <!-- Pagination (optional) -->
         {% if is_paginated %}
         <nav aria-label="Pagination">
-            <hr class="my-0" />
             <ul class="pagination justify-content-center p-3 my-4">
-                {% if page_obj.has_previous %}
-                <li><a href="?page={{ page_obj.previous_page_number }}"
-                        class="page-link btn btn-primary text-decoration-none text-white me-4"> &laquo; PREV </a></li>
-                {% endif %}
-                {% if page_obj.has_next %}
-                <li><a href="?page={{ page_obj.next_page_number }}"
-                        class="page-link btn btn-primary text-decoration-none text-white"> NEXT &raquo;</a></li>
-                {% endif %}
+                <!-- Prev Button -->
+                <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+                    <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% else %}#{% endif %}"
+                        class="page-link btn btn-primary text-decoration-none text-white me-4">
+                        &laquo; PREV
+                    </a>
+                </li>
+
+                <!-- Next Button -->
+                <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+                    <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% else %}#{% endif %}"
+                        class="page-link btn btn-primary text-decoration-none text-white">
+                        NEXT &raquo;
+                    </a>
+                </li>
             </ul>
-            {% endif %}
         </nav>
+        {% endif %}
     </div>
+    <hr class="my-0 mb-5" />
     <div class="pb-3 text-center mb-3">
         <a href="{% url 'profile' %}" class="text-decoration-none text-reset nunito-sans-regular fs-5"><button
                 class="btn btn-primary btn-enlarge">&laquo; Back to
