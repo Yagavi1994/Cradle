@@ -39,15 +39,6 @@ class PostList(generic.ListView):
 def post_detail(request, slug):
     """
     Display an individual :model:`blog.Post`.
-
-    **Context**
-
-    ``post``
-        An instance of :model:`blog.Post`.
-
-    **Template:**
-
-    :template:`blog/post_detail.html`
     """
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
@@ -59,6 +50,10 @@ def post_detail(request, slug):
         is_favourite = Favourite.objects.filter(post=post, author=request.user).exists()
     else:
         is_favourite = False  # Default for anonymous users
+
+    # Get the next and previous posts
+    next_post = Post.objects.filter(status=1, created_on__lt=post.created_on).order_by('-created_on').first()
+    previous_post = Post.objects.filter(status=1, created_on__gt=post.created_on).order_by('created_on').first()
 
     if request.method == "POST":
         if request.user.is_authenticated:
@@ -89,9 +84,10 @@ def post_detail(request, slug):
             "comment_count": comment_count,
             "comment_form": comment_form,
             "is_favourite": is_favourite,
+            "next_post": next_post,
+            "previous_post": previous_post,
         }
     )
-
 
 def comment_edit(request, slug, comment_id):
     """

@@ -42,9 +42,24 @@
                 <div id="alert-container" class="my-3"></div>
             </div>
             <div class="col-12">
-                <hr>
             </div>
         </div>
+        <!-- Pagination Links for Next and Previous Posts -->
+        <div class="post-navigation text-center mb-4">
+            <!-- Previous Post Button -->
+            <a href="{% if previous_post %}{% url 'post_detail' previous_post.slug %}{% else %}#{% endif %}"
+                class="btn btn-primary text-decoration-none text-white me-4 {% if not previous_post %}disabled{% endif %}">
+                &laquo; Prev Post
+            </a>
+
+            <!-- Next Post Button -->
+            <a href="{% if next_post %}{% url 'post_detail' next_post.slug %}{% else %}#{% endif %}"
+                class="btn btn-primary text-decoration-none text-white {% if not next_post %}disabled{% endif %}">
+                Next Post &raquo;
+            </a>
+        </div>
+        <hr>
+
         <!-- Displaying Comments -->
         <div class="row">
             <div class="col-md-8 mb-4 nunito-sans-regular mt-3 ">
@@ -57,12 +72,12 @@
           {% if not comment.approved and comment.author == user %}
           text-muted{% elif not comment.approved %} d-none{% endif %}" id="comment-{{ comment.id }}">
                         <div class=" d-flex align-items-center border-bottom">
-                            <a href="{% url 'profile' %}"class="enlarge"><img
+                            <a href="{% url 'profile' %}" class="enlarge"><img
                                     src="{% cloudinary_url comment.author.profile.profile_picture width=100 height=100 crop='fill' gravity='face' quality='auto:best' %}"
                                     class="m-2 profile-icon" alt="{{ comment.author.username }}'s profile picture"></a>
                             <a href="{% url 'profile' %}" class="text-decoration-none text-reset hover enlarge">
                                 <p class="pt-3" class="text-capitalize nunito-sans-regular fw-bold">
-                                        {{ comment.author }}<br>
+                                    {{ comment.author }}<br>
                             </a>
                             <span class="font-weight-normal nunito-sans-regular">
                                 {{ comment.created_on }}
