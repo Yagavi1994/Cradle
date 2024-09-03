@@ -54,11 +54,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <li class="nav-item dropdown">
         <select id="categoryDropdown"
-          class="nav-link form-control dropdown-toggle {% if request.resolver_match.url_name == 'category_posts' %}active{% endif %}"
+          class="nav-link form-control dropdown-toggle"
           role="button" aria-expanded="false" style="border: none; background: none;">
-          <option value="" disabled selected> Select a Category </option>
+          <option value="" disabled selected class="nunito-sans-regular"> Select a Category </option>
           {% for category in categories %}
-          <option value="{% url 'category_posts' category.slug %}">{{ category.name }}</option>
+          <option value="{% url 'category_posts' category.slug %}" class="nunito-sans-regular">{{ category.name }}</option>
           {% endfor %}
         </select>
         <div></div>
