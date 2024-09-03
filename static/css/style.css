@@ -278,6 +278,48 @@
      /* Highlight the selected avatar */
  }
 
+ /* Drop-dowm menu */
+
+/* The container holding the select box */
+
+.choices__inner {
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+/* The selected items within the input area */
+.choices__item--selectable {
+  color: rgb(9, 9, 9);
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.25rem;
+}
+
+/* The dropdown list items */
+.choices__list--dropdown .choices__item {
+  padding: 0.5rem;
+  color: #343a40;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ced4da;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+/* Highlighted item when hovering or navigating with keyboard */
+.choices__list--dropdown .choices__item--highlighted {
+  color: black;
+}
+
+/* The search input inside the dropdown */
+.choices__input {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  width: calc(100% - 1rem);
+  margin: 0.5rem;
+}
+
  /* Form Stylings */
 
  .form-group label {
@@ -336,28 +378,35 @@
  /* Animation for post */
 
  @keyframes fadeInUp {
-  from {
-      opacity: 0;
-      transform: translateY(50px); /* Increased movement distance */
-  }
-  to {
-      opacity: 1;
-      transform: translateY(0);
-  }
-}
+   from {
+     opacity: 0;
+     transform: translateY(50px);
+     /* Increased movement distance */
+   }
+
+   to {
+     opacity: 1;
+     transform: translateY(0);
+   }
+ }
 
  .post-animate {
-  opacity: 0; /* Start hidden */
-  transform: translateY(50px); /* Match the initial transform with the animation */
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Slightly slower, more pronounced animation */
-  margin: 0 auto; /* Center the post */
-}
+   opacity: 0;
+   /* Start hidden */
+   transform: translateY(50px);
+   /* Match the initial transform with the animation */
+   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+   /* Slightly slower, more pronounced animation */
+   margin: 0 auto;
+   /* Center the post */
+   z-index: 1;
+ }
 
-/* Visible state when animation is triggered */
-.post-animate.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+ /* Visible state when animation is triggered */
+ .post-animate.visible {
+   opacity: 1;
+   transform: translateY(0);
+ }
 
 
 
@@ -4393,6 +4442,7 @@
 
  .dropdown-item:hover,
  .dropdown-item:focus {
+   z-index: 2000;
    color: var(--bs-dropdown-link-hover-color);
    background-color: var(--bs-dropdown-link-hover-bg);
  }

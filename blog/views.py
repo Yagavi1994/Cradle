@@ -132,40 +132,6 @@ def comment_delete(request, slug, comment_id):
 
 
 
-def search_results(request):
-    """
-    To search in the search bar and paginate the results by 5.
-    """
-    query = request.GET.get('q', '').strip()
-    template_name = "blog/search_results.html"
-    paginate_by = 5
-
-    if query:
-        results = Post.objects.filter(
-            Q(title__icontains=query) |
-            Q(category__name__icontains=query)
-        )
-    else:
-        results = Post.objects.none()
-
-    # Set up pagination
-    paginator = Paginator(results, paginate_by)  # 5 results per page
-    page = request.GET.get('page')
-
-    try:
-        paginated_results = paginator.page(page)
-    except PageNotAnInteger:
-        paginated_results = paginator.page(1)
-    except EmptyPage:
-        paginated_results = paginator.page(paginator.num_pages)
-
-    return render(
-        request, 
-        template_name, 
-        {'results': paginated_results, 
-         'query': query,
-        })
-
 def category_posts(request, slug):
     category = get_object_or_404(Category, slug=slug)
     posts = Post.objects.filter(category=category)

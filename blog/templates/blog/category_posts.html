@@ -2,90 +2,93 @@
 {% load static %}
 
 {% block content %}
-<!-- Page content-->
-<div>
-    <div class="container">
-        <div class="row">
-            <!-- Blog entries-->
-            <div class="col-lg-12">
-                <h2 class="pt-4 mt-2 salsa-regular text-center">Posts in <strong class="pink-font text-capitalize">
-                        "{{ category.name }}"</strong></h2>
-                {% for post in posts %}
-                <!-- Blog post-->
-                {% if forloop.counter|divisibleby:2 %}
-                <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-pink rounded enlarge">
-                    <div class="col-md-5 p-3 text-center order-md-1">
-                        <a href="{% url 'post_detail' post.slug %}">
-                            <img class="circle-image shadow img-fluid" src="{{ post.featured_image.url }}"
-                                alt="{{ post.title }}">
-                        </a>
-                    </div>
-                    <div class="col-md-7 order-md-2 text-center text-md-start mb-3 mt-3 align-items-center">
-                        <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
-                            <h4 class="card-title h4 salsa-regular mb-3">{{ post.title }}</h4>
-                        </a>
-                        <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
-                            <p class="card-text card-body handlee-regular mt-2 justify">{{ post.excerpt }}</p>
-                        </a>
-                        <div class="d-grid d-sm-flex justify-content-sm-center justify-content-md-start mt-5">
-                            <a class="btn btn-primary btn-enlarge post-link p-2"
-                                href="{% url 'post_detail' post.slug %}">Read more &raquo;</a>
-                        </div>
+<!-- Page content -->
+<div class="container">
+    <div class="row justify-content-center">
+        <!-- Blog entries -->
+        <div class="col-lg-12">
+            <h2 class="pt-4 mt-2 salsa-regular text-center">Posts in <strong class="pink-font text-capitalize">
+                    "{{ category.name }}"</strong></h2>
+            {% for post in posts %}
+            <!-- Blog post -->
+            {% if forloop.counter|divisibleby:2 %}
+            <div class="row p-3 border my-5 shadow align-items-center g-0 bg-pink rounded enlarge post-animate"
+                style="max-width: 960px; margin: 0 auto;">
+                <div class="col-md-5 p-3 text-center order-md-1">
+                    <a href="{% url 'post_detail' post.slug %}">
+                        <img class="circle-image shadow img-fluid" src="{{ post.featured_image.url }}"
+                            alt="{{ post.title }}">
+                    </a>
+                </div>
+                <div class="col-md-7 order-md-2 text-center text-md-start mb-3 mt-3 align-items-center">
+                    <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
+                        <h4 class="card-title h4 salsa-regular mb-3">{{ post.title }}</h4>
+                    </a>
+                    <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
+                        <p class="card-text card-body handlee-regular mt-2 justify">{{ post.excerpt }}</p>
+                    </a>
+                    <div class="d-grid d-sm-flex justify-content-sm-center justify-content-md-start mt-5">
+                        <a class="btn btn-primary btn-enlarge post-link p-2"
+                            href="{% url 'post_detail' post.slug %}">Read more &raquo;</a>
                     </div>
                 </div>
-                {% else %}
-                <div class="container row p-3 border my-5 shadow align-items-center g-0 bg-purple rounded enlarge">
-                    <div class="col-md-7 order-2 order-md-1 text-center text-md-start mb-3 mt-3 align-items-center">
-                        <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
-                            <h4 class="card-title h4 salsa-regular mt-md-0 mb-3 ps-md-4">{{ post.title }}</h4>
-                        </a>
-                        <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
-                            <p class="card-text card-body handlee-regular mt-2 ps-md-4 justify">{{ post.excerpt }}</p>
-                        </a>
-                        <div class="d-grid d-sm-flex justify-content-sm-center justify-content-md-start ps-md-4 mt-5">
-                            <a class="btn btn-primary btn-enlarge post-link p-2"
-                                href="{% url 'post_detail' post.slug %}">Read more &raquo;</a>
-                        </div>
-                    </div>
-                    <div class="col-md-5 text-center order-1 order-md-2 p-3">
-                        <a href="{% url 'post_detail' post.slug %}">
-                            <img class="circle-image shadow img-fluid" src="{{ post.featured_image.url }}"
-                                alt="{{ post.title }}">
-                        </a>
-                    </div>
-                </div>
-                {% endif %}
-
-                {% endfor %}
-
-                <!-- Pagination (optional)-->
-                {% if is_paginated %}
-                <nav aria-label="Pagination">
-                    <hr class="my-0" />
-                    <ul class="pagination justify-content-center p-3 my-4">
-                        {% if page_obj.has_previous %}
-                        <li>
-                            <a href="?page={{ page_obj.previous_page_number }}"
-                                class="page-link btn btn-primary text-decoration-none text-white me-4">
-                                &laquo; PREV
-                            </a>
-                        </li>
-                        {% endif %}
-                        {% if page_obj.has_next %}
-                        <li>
-                            <a href="?page={{ page_obj.next_page_number }}"
-                                class="page-link btn btn-primary text-decoration-none text-white">
-                                NEXT &raquo;
-                            </a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </nav>
-                {% endif %}
-
             </div>
+            {% else %}
+            <div class="row p-3 border my-5 shadow align-items-center g-0 bg-purple rounded enlarge post-animate"
+                style="max-width: 960px; margin: 0 auto;">
+                <div class="col-md-7 order-2 order-md-1 text-center text-md-start mb-3 mt-3 align-items-center">
+                    <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
+                        <h4 class="card-title h4 salsa-regular mt-md-0 mb-3 ps-md-4">{{ post.title }}</h4>
+                    </a>
+                    <a href="{% url 'post_detail' post.slug %}" class="text-reset text-decoration-none">
+                        <p class="card-text card-body handlee-regular mt-2 ps-md-4 justify">{{ post.excerpt }}</p>
+                    </a>
+                    <div class="d-grid d-sm-flex justify-content-sm-center justify-content-md-start ps-md-4 mt-5">
+                        <a class="btn btn-primary btn-enlarge post-link p-2"
+                            href="{% url 'post_detail' post.slug %}">Read more &raquo;</a>
+                    </div>
+                </div>
+                <div class="col-md-5 text-center order-1 order-md-2 p-3">
+                    <a href="{% url 'post_detail' post.slug %}">
+                        <img class="circle-image shadow img-fluid" src="{{ post.featured_image.url }}"
+                            alt="{{ post.title }}">
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
+</div>
+
+<!-- Pagination (optional)-->
+{% if is_paginated %}
+<nav aria-label="Pagination">
+    <hr class="my-0" />
+    <ul class="pagination justify-content-center p-3 my-4">
+        {% if page_obj.has_previous %}
+        <li>
+            <a href="?page={{ page_obj.previous_page_number }}"
+                class="page-link btn btn-primary text-decoration-none text-white me-4">
+                &laquo; PREV
+            </a>
+        </li>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <li>
+            <a href="?page={{ page_obj.next_page_number }}"
+                class="page-link btn btn-primary text-decoration-none text-white">
+                NEXT &raquo;
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+</div>
+</div>
+</div>
 </div>
 {% endblock content %}
 {% block extras %}
