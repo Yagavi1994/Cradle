@@ -41,9 +41,9 @@
  }
 
  .title {
-  font-size: 300% !important;
-  color: #b13686 !important;
-}
+   font-size: 300% !important;
+   color: #b13686 !important;
+ }
 
  .box-shadow {
    box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.8),
@@ -61,40 +61,40 @@
  }
 
  .enlarge {
-  transition: transform 0.3s ease;
-}
+   transition: transform 0.3s ease;
+ }
 
  .enlarge:hover {
    transform: scale(1.05) !important;
  }
 
  .comment-highlight {
-    background-color: #fdddf7 !important;
-    border: 2px solid #b13686 !important;
-    padding: 10px !important;
-    transition: background-color 0.5s ease-in-out !important;
+   background-color: #fdddf7 !important;
+   border: 2px solid #b13686 !important;
+   padding: 10px !important;
+   transition: background-color 0.5s ease-in-out !important;
  }
 
  .custom-alert {
-  background-color: white !important;
-  color: black !important;
-  border: 1px solid #b13686 !important;
-}
+   background-color: white !important;
+   color: black !important;
+   border: 1px solid #b13686 !important;
+ }
 
 
-#backToTopBtn {
-  background-color: inherit;
-  border: none;
-  color: #fff;
-}
+ #backToTopBtn {
+   background-color: inherit;
+   border: none;
+   color: #fff;
+ }
 
-.justify {
-  text-align: justify !important;
-}
+ .justify {
+   text-align: justify !important;
+ }
 
-.white-border {
-  border: 5px solid #fff;
-}
+ .white-border {
+   border: 5px solid #fff;
+ }
 
 
  /* Bootstrap classes */
@@ -120,7 +120,7 @@
  }
 
  .btn-danger {
-  background-color: #a21515 !important;
+   background-color: #a21515 !important;
    font-family: "Nunito Sans", sans-serif !important;
    border: none !important;
  }
@@ -132,11 +132,11 @@
  }
 
  .btn-info {
-  background-color: #5049cd !important;
-  font-family: "Nunito Sans", sans-serif !important;
-  border: none !important;
-  color: #fff;
-}
+   background-color: #5049cd !important;
+   font-family: "Nunito Sans", sans-serif !important;
+   border: none !important;
+   color: #fff;
+ }
 
  .btn-primary:hover {
    transform: scale(1.05) !important;
@@ -158,18 +158,18 @@
  }
 
  .card-header {
-  background-color: rgba(0, 0, 0, 0.5);
+   background-color: rgba(0, 0, 0, 0.5);
  }
 
  /* Colors */
 
  .pink-underline {
-  text-decoration: underline #b13686;
-  text-underline-offset: 8px
+   text-decoration: underline #b13686;
+   text-underline-offset: 8px
  }
 
  .bg-dark-pink {
-  background-color: #b13686 !important;
+   background-color: #b13686 !important;
  }
 
  #favourites {
@@ -177,7 +177,8 @@
    background-color: inherit;
  }
 
- .fa-regular, .fa-solid {
+ .fa-regular,
+ .fa-solid {
    color: #b13686;
  }
 
@@ -190,11 +191,11 @@
  }
 
  .yellow-font {
-  color: #DDC868 !important;
+   color: #DDC868 !important;
  }
 
  .grey-font {
-  color: #1f1d1d;
+   color: #1f1d1d;
  }
 
  .bg-dark-purple {
@@ -244,56 +245,121 @@
    font-style: normal;
  }
 
-.nunito-sans-regular {
-  font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100,
-    "YTLC" 500;
+ .nunito-sans-regular {
+   font-family: "Nunito Sans", sans-serif;
+   font-optical-sizing: auto;
+   font-weight: 400;
+   font-style: normal;
+   font-variation-settings:
+     "wdth" 100,
+     "YTLC" 500;
+ }
+
+ /* Avatar Stylings */
+
+ .avatar-container {
+   display: flex;
+   justify-content: center;
+   margin-top: 10px;
+ }
+
+ .avatar {
+   width: 60px;
+   height: 60px;
+   border-radius: 50%;
+   margin: 0 10px;
+   cursor: pointer;
+   border: 2px solid transparent;
+   object-fit: cover;
+ }
+
+ .avatar.selected {
+   border: 2px solid #b13686
+     /* Highlight the selected avatar */
+ }
+
+ /* Form Stylings */
+
+ .form-group label {
+   font-weight: bold;
+ }
+
+ .text-danger {
+   color: #dc3545;
+   /* Bootstrap's red color for danger alerts */
+ }
+
+ label[aria-expanded="true"] .fa-chevron-down {
+   transform: rotate(180deg);
+   transition: transform 0.2s ease;
+ }
+
+ label[aria-expanded="false"] .fa-chevron-down {
+   transition: transform 0.2s ease;
+ }
+
+ /* Index Template */
+ /* Animation for header */
+ @keyframes fadeIn {
+   from {
+     opacity: 0;
+     transform: translateY(20px);
+   }
+
+   to {
+     opacity: 1;
+     transform: translateY(0);
+   }
+ }
+
+ .fade-in {
+   opacity: 0;
+   /* Start hidden */
+   animation: fadeIn 1s ease-in forwards;
+ }
+
+ .delay-1 {
+   animation-delay: 0.5s;
+   /* Delay for logo */
+ }
+
+ .delay-2 {
+   animation-delay: 1s;
+   /* Delay for title */
+ }
+
+ .delay-3 {
+   animation-delay: 1.5s;
+   /* Delay for tagline */
+ }
+
+ /* Animation for post */
+
+ @keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(50px); /* Increased movement distance */
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }
 
-/* Avatar Stylings */
-
-.avatar-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
+ .post-animate {
+  opacity: 0; /* Start hidden */
+  transform: translateY(50px); /* Match the initial transform with the animation */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Slightly slower, more pronounced animation */
+  margin: 0 auto; /* Center the post */
 }
 
-.avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin: 0 10px;
-  cursor: pointer;
-  border: 2px solid transparent;
-  object-fit: cover;
+/* Visible state when animation is triggered */
+.post-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.avatar.selected {
-  border: 2px solid #b13686 /* Highlight the selected avatar */
-}
 
-/* Form Stylings */
-
-.form-group label {
-  font-weight: bold;
-}
-
-.text-danger {
-  color: #dc3545; /* Bootstrap's red color for danger alerts */
-}
-
-label[aria-expanded="true"] .fa-chevron-down {
-  transform: rotate(180deg);
-  transition: transform 0.2s ease;
-}
-
-label[aria-expanded="false"] .fa-chevron-down {
-  transition: transform 0.2s ease;
-}
 
  /* Post_Detail Template */
 
@@ -304,29 +370,29 @@ label[aria-expanded="false"] .fa-chevron-down {
  /* About Template */
 
  .img.circle-image {
-    width: 300px !important; 
-    height: 300px !important; 
-    border-radius: 50%;
-    object-fit: cover;
-}
+   width: 300px !important;
+   height: 300px !important;
+   border-radius: 50%;
+   object-fit: cover;
+ }
 
  .circle-image {
-  width: 300px; 
-  height: 300px; 
-  border-radius: 50%;
-  object-fit: contain;
+   width: 300px;
+   height: 300px;
+   border-radius: 50%;
+   object-fit: contain;
  }
 
  .nav-link.circle-border {
-  border-radius: 50% !important;
-  padding: 3px !important;
-  border: 2px solid #b13686 !important;
+   border-radius: 50% !important;
+   padding: 3px !important;
+   border: 2px solid #b13686 !important;
  }
 
  .circle-border {
-  border-radius: 50%;
-  padding: 3px;
-  border: 2px solid #b13686;
+   border-radius: 50%;
+   padding: 3px;
+   border: 2px solid #b13686;
  }
 
  /* Profile */
@@ -338,38 +404,38 @@ label[aria-expanded="false"] .fa-chevron-down {
  }
 
  #profile-pic {
-  width: 100%;
-  max-width: 250px; /* Reduce the size of the image */
-  height: auto;
-}
+   width: 100%;
+   max-width: 250px;
+   height: auto;
+ }
 
-.card-body-profile {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+ .card-body-profile {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+ }
 
-/* Pagination */
-.page-item.disabled .page-link {
-  pointer-events: none !important;
-  opacity: 0.6 !important;
-}
+ /* Pagination */
+ .page-item.disabled .page-link {
+   pointer-events: none !important;
+   opacity: 0.6 !important;
+ }
 
-.btn-disabled {
-    background-color: #565659 !important;
-    font-family: "Nunito Sans", sans-serif !important;
-    border: none !important;
-    color: #fff !important;
-  }
+ .btn-disabled {
+   background-color: #565659 !important;
+   font-family: "Nunito Sans", sans-serif !important;
+   border: none !important;
+   color: #fff !important;
+ }
 
 
 
  /* Media Query for large screens */
  @media (min-width: 767.98px) {
-  .fs-md-3 {
-    font-size: 2rem !important; 
-}
+   .fs-md-3 {
+     font-size: 2rem !important;
+   }
  }
 
 
