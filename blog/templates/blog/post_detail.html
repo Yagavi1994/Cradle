@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col-12" id="icons">
                 <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-                <button type="button" id="favourites" class="btn-enlarge">
+                <button type="button" id="favourites" class="btn-enlarge ms-3">
                     <strong>
                         <i class="fa-heart {% if is_favourite %}fa-solid{% else %}fa-regular{% endif %} heart-icon fs-2"
                             data-post-id="{{ post.id }}"></i>
@@ -61,15 +61,15 @@
         <hr>
         <!-- Creating New Comments -->
         <div class="row container">
-            <div class="bg-dark p-3 mt-5 rounded text-white col-md-8 d-flex align-items-center mx-md-0 mb-4">
+            <div class="bg-dark p-3 mt-5 rounded text-white col-md-8 d-flex align-items-center mb-4">
                 <div class="card-body nunito-sans-regular justify-content-center">
                     {% if user.is_authenticated %}
-                    <h3 class="pink-underline">Leave a comment:</h3>
+                    <h3 class="pink-underline">Leave a comment :</h3>
                     <p class="mt-4 mb-1">Posting as: <a href = "{% url 'profile' %}" class="text-decoration-none text-reset hover">{{ user.username }}</p></a>
                     <form id="commentForm" method="post" class="nunito-sans-regular">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label for="{{ comment_form.body.id_for_label }}" class="mb-2 fs-5">Comment:</label>
+                            <label for="{{ comment_form.body.id_for_label }}" class="mb-2 fs-5">Comment :</label>
                             <!-- Replace 'body' with your field name -->
                             {{ comment_form.body }}
                             {% if comment_form.body.errors %}
@@ -80,7 +80,8 @@
                         </div>
                         <div class="text-center">
                             <button id="submitButton" type="submit"
-                                class="btn btn-secondary enlarge mt-4 px-5">Submit</button>
+                                class="btn btn-secondary enlarge mt-4">Submit</button>
+                            <button id="cancelButton" type="button" class="btn btn-info text-white btn-enlarge ms-3 mt-4">Cancel</button> 
                         </div>
                     </form>
                     {% else %}

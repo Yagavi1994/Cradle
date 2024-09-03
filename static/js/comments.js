@@ -4,6 +4,7 @@ const editButtons = document.getElementsByClassName("btn-edit");
 const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
 const submitButton = document.getElementById("submitButton");
+const cancelButton = document.getElementById("cancelButton");
 const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
 const deleteButtons = document.getElementsByClassName("btn-delete");
 const deleteConfirm = document.getElementById("deleteConfirm");
@@ -24,15 +25,39 @@ for (let button of editButtons) {
   button.addEventListener("click", (e) => {
     let commentId = e.target.getAttribute("comment_id");
     let commentContent = document.getElementById(`comment${commentId}`).innerText;
+    
+    // Populate the form with the comment content
     commentText.value = commentContent;
+    
+    // Highlight the comment input/textarea
     commentText.classList.add('comment-highlight');
     setTimeout(function () {
       commentText.classList.remove('comment-highlight');
     }, 3000);
+    
+    // Change the submit button text to "Update"
     submitButton.innerText = "Update";
+    
+    // Update the form action to point to the edit endpoint
     commentForm.setAttribute("action", `edit_comment/${commentId}`);
+    
+    // Scroll to the comment form smoothly
+    commentForm.scrollIntoView({ behavior: "smooth" });
   });
 }
+
+// Cancel Edit
+cancelButton.addEventListener("click", () => {
+  // Clear the comment textarea
+  commentText.value = '';
+  
+  // Reset the submit button text
+  submitButton.innerText = "Submit";
+  
+  // Optionally reset the form action
+  commentForm.setAttribute("action", `add_comment`);
+});
+
 
 // Delete Comment
 /**
