@@ -143,9 +143,7 @@ def search_results(request):
     if query:
         results = Post.objects.filter(
             Q(title__icontains=query) |
-            Q(content__icontains=query) |
-            Q(category__name__icontains=query) |
-            Q(tags__icontains=query)
+            Q(category__name__icontains=query)
         )
     else:
         results = Post.objects.none()
