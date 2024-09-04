@@ -21,3 +21,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+
+// Choices Dropdown Menu
+
+document.addEventListener('DOMContentLoaded', function () {
+  var categoryDropdown = document.getElementById('categoryDropdown');
+  const choices = new Choices(categoryDropdown, {
+    searchEnabled: true, // Enables search within the dropdown
+    itemSelectText: '',  // Remove default 'Press to select' text
+  });
+
+  // Optional: Redirect to the selected URL on change
+  categoryDropdown.addEventListener('change', function () {
+    window.location.href = this.value;
+  });
+});

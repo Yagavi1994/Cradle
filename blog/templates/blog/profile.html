@@ -9,38 +9,52 @@
             <!-- Profile Picture and Edit Button -->
             <div class="col-md-4 col-lg-3 text-center align-items-center img-fluid mb-4 mb-md-0">
                 <div class="profile-picture-container">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#editModal"><img src="{% cloudinary_url profile.profile_picture width=500 height=500 crop='fill' gravity='face' quality='auto:best' %}"
-                        alt="Profile Picture" class="img-fluid circle-image shadow" id="profile-pic"></a>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#editModal"><img
+                            src="{% cloudinary_url profile.profile_picture width=500 height=500 crop='fill' gravity='face' quality='auto:best' %}"
+                            alt="Profile Picture" class="img-fluid circle-image shadow" id="profile-pic"></a>
                 </div>
                 <div>
-                    <a href="#" class="btn btn-primary text-decoration-none d-inline-flex align-items-center justify-content-center mt-3" data-bs-toggle="modal" data-bs-target="#editModal">
+                    <a href="#"
+                        class="btn btn-primary text-decoration-none d-inline-flex align-items-center justify-content-center mt-3"
+                        data-bs-toggle="modal" data-bs-target="#editModal">
                         <i class="fa-solid fa-pen-to-square pe-2 text-white"></i> Edit Picture
                     </a>
-                    <p class="nunito-sans-regular mt-3 fs-5 pink-underline"><i class="fa-solid fa-envelope pe-2 fs-md-5 pink-font"></i>
+                    <p class="nunito-sans-regular mt-3 fs-5 pink-underline"><i
+                            class="fa-solid fa-envelope pe-2 fs-md-5 pink-font"></i>
                         {{ request.user.email }}</p>
                 </div>
             </div>
 
             <!-- Profile Details -->
             <div class="col-md-8 col-lg-6 col-xl-5 d-flex justify-content-center align-items-center">
-                <div class="card shadow ms-md-5 rounded w-100">
+                <div class="card shadow ms-md-5 rounded w-100 text-center">
                     <div class="card-header text-center">
                         <h4 class="salsa-regular">{{ request.user.username }}'s Profile</h4>
                     </div>
                     <div class="card-body text-center fs-5">
-                        <p class="pb-2 pt-3 hover nunito-sans-regular"><a href="{% url 'view_favourites' %}"
-                                class="text-decoration-none text-reset pb-3 border-bottom"><i
-                                    class="fa-solid fa-heart pe-2 fs-md-5 pink-font"></i>
-                                My Favourites</a></p>
-                        <p class="pb-2 hover nunito-sans-regular"><a href="{% url 'view_comments' %}"
-                                class="text-decoration-none text-reset pb-3 border-bottom"><i
-                                    class="fa-solid fa-comment pe-2 fs-md-5 pink-font"></i>
-                                My Comments</a></p>
+                        <p class="pb-2 pt-3 hover nunito-sans-regular">
+                            <a href="{% url 'view_favourites' %}"
+                                class="text-decoration-none text-reset pb-3 border-bottom">
+                                <i class="fa-solid fa-heart pe-2 fs-md-5 pink-font"></i> My Favourites
+                            </a>
+                        </p>
+                        <p class="pb-2 hover nunito-sans-regular">
+                            <a href="{% url 'view_comments' %}"
+                                class="text-decoration-none text-reset pb-3 border-bottom">
+                                <i class="fa-solid fa-comment pe-2 fs-md-5 pink-font"></i> My Comments
+                            </a>
+                        </p>
                         <form action="{% url 'delete_profile_view' %}" method="POST">
                             {% csrf_token %}
-                            <button type="submit" class="text-decoration-none border-0 main-bg hover nunito-sans-regular" id="delete-account">
-                                <i class="fa-solid fa-trash pe-3 fs-md-5"></i>Delete Profile</button>
+                            <button type="submit"
+                                class="text-decoration-none border-0 main-bg hover nunito-sans-regular p-2 pb-3"
+                                id="delete-account">
+                                <i class="fa-solid fa-trash pe-3 fs-md-5"></i>Delete Profile
+                            </button>
                         </form>
+                            <a href="{% url 'account_logout' %}" class="text-decoration-none p-2 mt-2 enlarge text-white btn btn-primary">
+                                <i class="fa-solid fa-right-from-bracket pe-2 fs-md-5 text-white"></i> Log Out
+                            </a>
                     </div>
                 </div>
             </div>
@@ -53,7 +67,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title card-header nunito-sans-regular fw-bold" id="editModalLabel">Edit Profile Picture</h5>
+                    <h5 class="modal-title card-header nunito-sans-regular fw-bold" id="editModalLabel">Edit Profile
+                        Picture</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -89,7 +104,8 @@
 
                             <!-- Avatar 2 -->
                             <label>
-                                <input type="radio" name="avatar_choice" value="selected_avatar1" {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar1.url %}checked{% endif %}
+                                <input type="radio" name="avatar_choice" value="selected_avatar1" 
+                                {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar1.url %}checked{% endif %}
                                     hidden>
                                 <img src="{{ profile.selected_avatar1.url }}" alt="Avatar 2"
                                     class="avatar {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar1.url %}selected{% endif %}">
@@ -97,7 +113,8 @@
 
                             <!-- Avatar 3 -->
                             <label>
-                                <input type="radio" name="avatar_choice" value="selected_avatar2" {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar2.url %}checked{% endif %}
+                                <input type="radio" name="avatar_choice" value="selected_avatar2" 
+                                {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar2.url %}checked{% endif %}
                                     hidden>
                                 <img src="{{ profile.selected_avatar2.url }}" alt="Avatar 3"
                                     class="avatar {% if profile.profile_picture and profile.profile_picture.url == profile.selected_avatar2.url %}selected{% endif %}">
@@ -124,11 +141,13 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title card-header nunito-sans-regular fw-bold" id="deleteModalLabel">Delete Profile Picture</h5>
+                    <h5 class="modal-title card-header nunito-sans-regular fw-bold" id="deleteModalLabel">Delete Profile
+                        Picture</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                    <p class="text-center nunito-sans-regular"><strong>Are you sure you want to delete your profile picture?</strong>
+                    <p class="text-center nunito-sans-regular"><strong>Are you sure you want to delete your profile
+                            picture?</strong>
                         <br><br>This action cannot be undone.
                         <hr>
                     </p>
