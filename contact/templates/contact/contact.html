@@ -19,7 +19,9 @@
                     <form method="post">
                         {{ contact_form | crispy }}
                         {% csrf_token %}
-                        <button class="btn btn-primary" type="submit">Submit</button>
+                    <div class="text-center">
+                        <button class="btn btn-primary px-4 mt-3" type="submit">Submit</button>
+                    </div>
                     </form>
                 </div>
             </div>
