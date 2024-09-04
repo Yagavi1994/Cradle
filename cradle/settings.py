@@ -161,7 +161,7 @@ ACCOUNT_SIGNUP_REDIRECT_URL = reverse_lazy('account_email_verification_sent')
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/London'
 
 USE_I18N = True
 
