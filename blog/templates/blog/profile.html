@@ -32,7 +32,7 @@
                         <h4 class="salsa-regular">{{ request.user.username }}'s Profile</h4>
                     </div>
                     <div class="card-body text-center fs-5">
-                        <p class="pb-2 pt-3 hover nunito-sans-regular">
+                        <p class="pb-2 pt-1 hover nunito-sans-regular">
                             <a href="{% url 'view_favourites' %}"
                                 class="text-decoration-none text-reset pb-3 border-bottom">
                                 <i class="fa-solid fa-heart pe-2 fs-md-5 pink-font"></i> My Favourites
@@ -52,8 +52,8 @@
                                 <i class="fa-solid fa-trash pe-3 fs-md-5"></i>Delete Profile
                             </button>
                         </form>
-                        <div class="card-footer pb-4">
-                            <a href="{% url 'account_logout' %}" class="text-decoration-none p-2 mt-2 px-3 enlarge text-white btn btn-primary">
+                        <div class="card-footer pb-3">
+                            <a href="{% url 'account_logout' %}" class="text-decoration-none mt-2 px-3 enlarge text-white btn btn-primary">
                                 <i class="fa-solid fa-right-from-bracket pe-2 fs-md-5 text-white"></i> Log Out
                             </a>
                         </div>
