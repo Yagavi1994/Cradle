@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // If the user is not logged in, show a warning alert
                 if (response.status === 401) {
                     alertBox.classList.add('alert-warning');
-                    alertBox.innerHTML = 'Please login to add this post to your favourites.';
+                    alertBox.innerHTML = 'Please login or signup to add post to your favourites.';
                     displayAlert(alertBox);
                     return;
                 }
@@ -129,6 +129,6 @@ document.addEventListener('DOMContentLoaded', function () {
             alertBox.addEventListener('transitionend', function () {
                 alertBox.remove();
             });
-        }, 2000);
+        }, 3000);
     }
 });

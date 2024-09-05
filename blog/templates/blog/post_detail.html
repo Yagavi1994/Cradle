@@ -103,7 +103,7 @@
         <!-- Displaying Comments -->
         <div class="row">
             <div class="col-md-8 mb-4 nunito-sans-regular mt-3 ">
-                <h3>{{ comment_count }} Comment{% if comment_count >= 2 %}s{% endif %} :</h3>
+                <h3 class="{% if comment_count == 0 %}d-none{% endif %}">{{ comment_count }} Comment{% if comment_count >= 2 %}s{% endif %} :</h3>
                 <div>
                     <!-- We want a for loop inside the empty control tags
           to iterate through each comment in comments -->
@@ -119,9 +119,7 @@
                                 <p class="pt-3" class="text-capitalize nunito-sans-regular fw-bold">
                                     {{ comment.author }}<br>
                             </a>
-                            <span class="font-weight-normal nunito-sans-regular">
-                                {{ comment.created_on }}
-                            </span> Wrote:
+                              Wrote:
                             </p>
                         </div>
                         <div id="comment{{ comment.id }}" class="ms-3 mt-3 nunito-sans-regular">
@@ -131,13 +129,19 @@
                         <p class="approval ms-3 nunito-sans-regular">
                             This comment is awaiting approval
                         </p>
+                        <hr>
                         {% endif %}
                         {% if user.is_authenticated and comment.author == user %}
-                        <div class="g-2">
-                            <button class="btn btn-edit btn-enlarge btn-primary mx-2 text-center"
-                                comment_id="{{ comment.id }}">Edit</button>
-                            <button class="btn btn-delete btn-enlarge btn-danger nunito-sans-regular text-center"
-                                comment_id="{{ comment.id }}">Delete</button>
+                        <div class="justify-content-between">
+                            <div class="float-start">
+                                <button class="btn btn-edit btn-enlarge btn-primary mx-2 px-4 text-center"
+                                    comment_id="{{ comment.id }}">Edit</button>
+                                <button class="btn btn-delete btn-enlarge btn-danger nunito-sans-regular text-center"
+                                    comment_id="{{ comment.id }}">Delete</button>
+                            </div>
+                            <div class="float-end mt-2 mt-md-0">
+                                <p>{{ comment.created_on }}</p>
+                            </div>
                         </div>
                         {% endif %}
                     </div>
