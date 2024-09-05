@@ -435,9 +435,8 @@ def view_comments(request):
 
     :template:`blog/comments.html`
     """
-    comments = Comment.objects.filter(author=request.user).select_related(
-        'post'
-    )
+    comments = Comment.objects.filter(author=request.user).select_related('post')
+    comment_count = comments.count()  # Count the number of comments
     paginate_by = 5
 
     # Set up pagination
@@ -455,6 +454,7 @@ def view_comments(request):
         'comments': paginated_comments,
         'is_paginated': paginated_comments.has_other_pages(),
         'page_obj': paginated_comments,
+        'comment_count': comment_count,
     })
 
 

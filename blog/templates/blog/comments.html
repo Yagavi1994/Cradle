@@ -6,7 +6,7 @@
 <!-- Displaying Comments -->
 <div class="bg-yellow h-100">
     <div class="row d-flex justify-content-center">
-        {% if comments.count != 0 %}
+        {% if comment_count != 0 %}
         <h2 class="pt-4 mb-4 mt-3 salsa-regular text-center">Your <strong
                 class="pink-font text-capitalize">"Comments"</strong></h2>
         {% endif %}
@@ -42,16 +42,16 @@
             </a>
         </div>
         {% endfor %}
-        {% if comments.count == 0 %}
-        <div class="row my-5 justify-content-center">
-            <div class="col-10">
-                <div class="card shadow text-center">
-                    <h3 class="p-4 salsa-regular text-center">Sorry, you have not made any <strong
-                            class="pink-font text-capitalize">"Comments"</strong></h3>
-                </div>
+    {% if  comment_count == 0 %}
+    <div class="row my-5 d-flex align-items-center flex justify-content-center">
+        <div class="col-10 pt-5 pb-5">
+            <div class="card shadow text-center">
+                <h3 class="p-4 salsa-regular text-center">Sorry, you have<strong
+                        class="pink-font text-capitalize">"No Comments"</strong></h3>
             </div>
         </div>
-        {% endif %}
+    </div>
+    {% endif %}
         <!-- Pagination (optional) -->
         {% if is_paginated %}
         <nav aria-label="Pagination">

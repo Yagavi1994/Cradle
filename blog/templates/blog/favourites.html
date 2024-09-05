@@ -4,7 +4,20 @@
 {% block content %}
 
 <!-- Page content -->
-<div class="{% if not favourites %} box-shadow bg-yellow h-100 align-items-center m-0 {% endif %}">
+<div class="box-shadow bg-yellow h-100 align-items-center m-0">
+    <!-- Display a message if no results are found -->
+    {% if not favourites %}
+    <div class="container align-items-center py-5">
+        <div class="row justify-content-center py-5">
+            <div class="col-10 py-5">
+                <div class="card shadow text-center">
+                    <h3 class="p-4 salsa-regular text-center">Sorry, you have <strong
+                            class="pink-font text-capitalize">"No Favourite Posts"</strong></h3>
+                </div>
+            </div>
+        </div> 
+    </div>
+    {% endif %}
     <div class="container">
         <div class="row justify-content-center">
             <!-- Blog entries -->
@@ -65,19 +78,13 @@
             </div>
         </div>
     </div>
-</div>
-
-<!-- Display a message if no results are found -->
-{% if not favourites %}
-<div class="row my-5 justify-content-center">
-    <div class="col-10">
-        <div class="card shadow text-center">
-            <h3 class="p-4 salsa-regular text-center">Sorry, you have no <strong
-                    class="pink-font text-capitalize">"Favourite Posts"</strong></h3>
-        </div>
+    <hr class="my-0 mb-5"/>
+    <div class="pb-3 text-center mb-3">
+        <a href="{% url 'profile' %}" class="text-decoration-none text-reset nunito-sans-regular"><button
+                class="btn btn-primary py-2 btn-enlarge">&laquo; Back to
+                Profile</a></button>
     </div>
 </div>
-{% endif %}
 
 <!-- Pagination (optional) -->
 {% if is_paginated %}
@@ -90,7 +97,6 @@
                 &laquo; PREV
             </a>
         </li>
-
         <!-- Next Button -->
         <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
             <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% else %}#{% endif %}"
@@ -103,12 +109,6 @@
 {% endif %}
 </div>
 </div>
-</div>
-<hr class="my-0 mb-5" />
-<div class="pb-3 text-center mb-3">
-    <a href="{% url 'profile' %}" class="text-decoration-none text-reset nunito-sans-regular"><button
-            class="btn btn-primary py-2 btn-enlarge">&laquo; Back to
-            Profile</a></button>
 </div>
 </div>
 {% endblock %}
