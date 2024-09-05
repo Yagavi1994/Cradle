@@ -15,15 +15,20 @@
  }
 
  /* For sticky footer */
+
  main {
    flex: 1
  }
+
+ /* Logo */
 
  .logo {
    height: 120px;
    width: 120px;
 
  }
+
+ /* Header */
 
  header {
    background-image: url(/static/images/yellow-bg.jpg);
@@ -33,17 +38,7 @@
      inset -5px -3px 5px rgba(255, 255, 255, 0.2);
  }
 
- #title {
-   font-family: pacifico-regular !important;
-   font-weight: 600 !important;
-   font-size: 200% !important;
-   color: #DDC868 !important;
- }
-
- .title {
-   font-size: 300% !important;
-   color: #b13686 !important;
- }
+/* Custom CSS classes */
 
  .box-shadow {
    box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.8),
@@ -54,10 +49,6 @@
    color: #b13686 !important;
    transform: scale(1.02) !important;
    transition: transform 0.3s ease;
- }
-
- .change-color:hover {
-   color: #b13686 !important;
  }
 
  .enlarge {
@@ -81,13 +72,6 @@
    border: 1px solid #b13686 !important;
  }
 
-
- #backToTopBtn {
-   background-color: inherit;
-   border: none;
-   color: #fff;
- }
-
  .justify {
    text-align: justify !important;
  }
@@ -96,6 +80,13 @@
    border: 5px solid #fff;
  }
 
+ .btn-enlarge {
+  transition: transform 0.3s ease;
+}
+
+.btn-enlarge:hover {
+  transform: scale(1.05);
+}
 
  /* Bootstrap classes */
 
@@ -190,19 +181,6 @@
    color: #ffffff !important;
  }
 
- .yellow-font {
-   color: #DDC868 !important;
- }
-
- .grey-font {
-   color: #1f1d1d;
- }
-
- .bg-dark-purple {
-   background-color: #774c9a;
-
- }
-
  .bg-yellow {
    background-color: #DDC868;
  }
@@ -215,13 +193,6 @@
    background-color: #8c6eb4;
  }
 
- .btn-enlarge {
-   transition: transform 0.3s ease;
- }
-
- .btn-enlarge:hover {
-   transform: scale(1.1);
- }
 
  /* Fonts */
 
@@ -232,13 +203,6 @@
    font-size: larger;
  }
 
- .pacifico-regular {
-   font-family: "Pacifico", cursive;
-   font-weight: 400;
-   font-style: normal;
-   font-size: xx-large;
- }
-
  .salsa-regular {
    font-family: "Salsa", cursive;
    font-weight: 400;
@@ -247,7 +211,6 @@
 
  .nunito-sans-regular {
    font-family: "Nunito Sans", sans-serif;
-   font-optical-sizing: auto;
    font-weight: 400;
    font-style: normal;
    font-variation-settings:
@@ -274,8 +237,7 @@
  }
 
  .avatar.selected {
-   border: 2px solid #b13686
-     /* Highlight the selected avatar */
+   border: 2px solid #b13686 /* Highlight the selected avatar */   
  }
 
  /* Drop-dowm menu */
@@ -322,28 +284,16 @@
   margin: 0.5rem;
 }
 
- /* Form Stylings */
-
- .form-group label {
-   font-weight: bold;
- }
+ /* Sign-up Form Stylings */
 
  .text-danger {
    color: #dc3545;
-   /* Bootstrap's red color for danger alerts */
+
  }
 
- label[aria-expanded="true"] .fa-chevron-down {
-   transform: rotate(180deg);
-   transition: transform 0.2s ease;
- }
 
- label[aria-expanded="false"] .fa-chevron-down {
-   transition: transform 0.2s ease;
- }
-
- /* Index Template */
  /* Animation for header */
+
  @keyframes fadeIn {
    from {
      opacity: 0;
@@ -410,8 +360,6 @@
    transform: translateY(0);
  }
 
-
-
  /* Post_Detail Template */
 
  .blog-post-image {
@@ -468,6 +416,7 @@
  }
 
  /* Pagination */
+
  .page-item.disabled .page-link {
    pointer-events: none !important;
    opacity: 0.6 !important;
@@ -480,8 +429,18 @@
    color: #fff !important;
  }
 
+ /* Back to top */
+
+ #backToTopBtn {
+  background-color: inherit;
+  border: none;
+  color: #fff;
+  display: none;
+}
+
 
  /* Media Query for large screens */
+
  @media (min-width: 767.98px) {
    .fs-md-3 {
      font-size: 2rem !important;
