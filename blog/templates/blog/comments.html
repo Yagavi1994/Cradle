@@ -12,30 +12,30 @@
         {% endif %}
         {% for comment in comments %}
         <div class="col-10 col-md-8 mb-4 mt-2 ">
-            <a class="pb-3 text-decoration-none text-reset"
+            <a class="text-decoration-none text-reset"
                 href="{% url 'post_detail' slug=comment.post.slug %}#comment-{{ comment.id }}">
-                <div class="card mb-4 ms-2 p-2 comments shadow hover">
-                    <div class="card-header text-center pt-2">
+                <div class="card p-2 comments shadow hover">
+                    <div class="card-header text-center">
                         <strong class="fs-4 salsa-regular">
                             {{ comment.post.title }}</strong><br>
                         <br>
                     </div>
-                    <div class="comment-author d-flex align-items-center">
+                    <div class="comment-author d-flex align-items-center border-bottom {% if not comment.approved and comment.author == user %}text-muted{% endif %}" >
                         <img src="{% cloudinary_url comment.author.profile.profile_picture width=100 height=100 crop='fill' gravity='face' quality='auto:best' %}"
                             class="m-2 profile-icon border-bottom"
                             alt="{{ comment.author.username }}'s profile picture">
                         <p class="pt-2 ps-2 mb-0 pb-3">
-                            <strong class="text-capitalize">{{ comment.author }}</strong><br>
-                            <span class="font-weight-normal">{{ comment.created_on }}</span> wrote:
+                            <strong>{{ comment.author }}</strong><br>
+                            <span>{{ comment.created_on }}</span><br><span>Wrote :</span> 
                         </p>
                     </div>
                     <div id="comment{{ comment.id }}"
-                        class="ms-5 mt-3 {% if not comment.approved and comment.author == user %}text-muted{% endif %} ps-3">
+                        class="ms-2 mt-3 {% if not comment.approved and comment.author == user %}text-muted{% endif %} ps-3">
                         {{ comment.body | linebreaks }}
                     </div>
                     {% if not comment.approved and comment.author == user %}
-                    <p class="approval ms-5 ps-3 text-muted">
-                        This comment is awaiting approval
+                    <p class="approval ms-2 ps-3 text-muted italic-text">
+                        "This comment is awaiting approval."
                     </p>
                     {% endif %}
                 </div>
@@ -46,7 +46,7 @@
     <div class="row my-5 d-flex align-items-center flex justify-content-center">
         <div class="col-10 pt-5 pb-5">
             <div class="card shadow text-center">
-                <h3 class="p-4 salsa-regular text-center">Sorry, you have<strong
+                <h3 class="p-4 salsa-regular text-center">Sorry, you have <strong
                         class="pink-font text-capitalize">"No Comments"</strong></h3>
             </div>
         </div>

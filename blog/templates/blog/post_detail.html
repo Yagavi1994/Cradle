@@ -115,33 +115,28 @@
                             <a href="{% url 'profile' %}" class="enlarge"><img
                                     src="{% cloudinary_url comment.author.profile.profile_picture width=100 height=100 crop='fill' gravity='face' quality='auto:best' %}"
                                     class="m-2 profile-icon" alt="{{ comment.author.username }}'s profile picture"></a>
-                            <a href="{% url 'profile' %}" class="text-decoration-none text-reset hover enlarge">
-                                <p class="pt-3" class="text-capitalize nunito-sans-regular fw-bold">
+                            <a href="{% url 'profile' %}" class="text-decoration-none text-reset hover enlarge fw-bold">
+                                <p class="pt-3" class="text-capitalize nunito-sans-regular">
                                     {{ comment.author }}<br>
                             </a>
-                              Wrote:
+                            <span>{{ comment.created_on }}</span><br>
+                            <span>Wrote :</span>
                             </p>
                         </div>
                         <div id="comment{{ comment.id }}" class="ms-3 mt-3 nunito-sans-regular">
                             {{ comment.body | linebreaks }}
                         </div>
                         {% if not comment.approved and comment.author == user %}
-                        <p class="approval ms-3 nunito-sans-regular">
-                            This comment is awaiting approval
+                        <p class="approval ms-3 nunito-sans-regular italic-text">
+                            "This comment is awaiting approval."
                         </p>
-                        <hr>
                         {% endif %}
                         {% if user.is_authenticated and comment.author == user %}
-                        <div class="justify-content-between">
-                            <div class="float-start">
-                                <button class="btn btn-edit btn-enlarge btn-primary mx-2 px-4 text-center"
-                                    comment_id="{{ comment.id }}">Edit</button>
-                                <button class="btn btn-delete btn-enlarge btn-danger nunito-sans-regular text-center"
-                                    comment_id="{{ comment.id }}">Delete</button>
-                            </div>
-                            <div class="float-end mt-2 mt-md-0">
-                                <p>{{ comment.created_on }}</p>
-                            </div>
+                        <div class="justify-content-between text-center mt-3 border-top pt-4 pb-2">
+                            <button class="btn btn-edit btn-enlarge btn-primary mx-2 px-4 text-center"
+                                comment_id="{{ comment.id }}">Edit</button>
+                            <button class="btn btn-delete btn-enlarge btn-danger nunito-sans-regular text-center"
+                                comment_id="{{ comment.id }}">Delete</button>
                         </div>
                         {% endif %}
                     </div>

@@ -88,6 +88,11 @@
   transform: scale(1.05);
 }
 
+.italic-text {
+  font-style: italic !important;
+}
+
+
  /* Bootstrap classes */
 
  .nav-link {
