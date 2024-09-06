@@ -2,21 +2,27 @@
 {% load static %}
 {% block content %}
 
-<div class="masthead bg-yellow box-shadow pt-5">
+<header class="masthead bg-yellow box-shadow pt-5" aria-label="Site banner">
   <div class="container">
     <div class="row justify-content-center">
       <!-- Image -->
       <div class="text-center p-3">
-        <img src="{{ about.about_image.url }}" class="img-fluid circle-image circle-border shadow"
-          alt="{{ about.title }}">
+        <img 
+          src="{{ about.about_image.url }}" 
+          class="img-fluid circle-image circle-border shadow" 
+          alt="{{ about.title }}" 
+          aria-label="Profile image of {{ about.title }}" 
+        >
       </div>
       <!-- Content -->
-      <div class="container">
-        <div class="card nunito-sans-regular mx-1 my-3 mb-4 mt-3 p-4 shadow">
-          <p class="my-3 nunito-sans-regular">{{ about.content | safe }}</p>
-        </div>
+      <div class="container" role="main" aria-labelledby="about-title">
+        <h1 id="about-title" class="sr-only">{{ about.title }}</h1> <!-- Added h1 for screen readers -->
+        <article class="card nunito-sans-regular mx-1 my-3 mb-4 mt-3 p-4 shadow" aria-label="About content">
+          <p class="my-3 nunito-sans-regular" aria-live="polite">{{ about.content | safe }}>
+        </article>
       </div>
     </div>
   </div>
-</div>
+</header>
+
 {% endblock content %}

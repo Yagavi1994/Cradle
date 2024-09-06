@@ -371,6 +371,11 @@
    max-height: 500px;
  }
 
+ .post-card {
+  max-width: 960px !important; 
+  margin: 0 auto !important;
+ }
+
  /* About Template */
 
  .img.circle-image {
