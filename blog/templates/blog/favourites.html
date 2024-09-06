@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block content %}
-
 <!-- Page content -->
 <div class="box-shadow bg-yellow h-100 align-items-center m-0">
     <!-- Display a message if no results are found -->
@@ -15,7 +14,7 @@
                             class="pink-font text-capitalize">"No Favourite Posts"</strong></h3>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
     {% endif %}
     <div class="container">
@@ -23,8 +22,7 @@
             <!-- Blog entries -->
             <div class="col-lg-12">
                 {% if favourites %}
-                <h2 class="pt-4 mt-2 salsa-regular text-center">Your <strong class="pink-font text-capitalize">"Favorite
-                        Posts"</strong></h2>
+                <h2 class="pt-4 mt-2 salsa-regular text-center">Your <strong class="pink-font text-capitalize">"Favorite Posts"</strong></h2>
                 {% endif %}
                 {% for favourite in favourites %}
                 <!-- Blog post -->
@@ -32,8 +30,7 @@
                 <div class="row p-3 border my-5 shadow align-items-center g-0 bg-pink rounded enlarge post-animate post-card">
                     <div class="col-md-5 p-3 text-center order-md-1">
                         <a href="{% url 'post_detail' favourite.post.slug %}">
-                            <img class="circle-image shadow img-fluid" src="{{ favourite.post.featured_image.url }}"
-                                alt="{{ favourite.post.title }}">
+                            <img class="circle-image shadow img-fluid" src="{{ favourite.post.featured_image.url }}" alt="{{ favourite.post.title }}">
                         </a>
                     </div>
                     <div class="col-md-7 order-md-2 mb-3 mt-3 text-center text-md-start">
@@ -44,8 +41,7 @@
                             <p class="card-text card-body handlee-regular mt-2 justify">{{ favourite.post.excerpt }}</p>
                         </a>
                         <div class="d-grid d-sm-flex justify-content-sm-center justify-content-md-start mt-5">
-                            <a class="btn btn-primary btn-enlarge post-link p-2"
-                                href="{% url 'post_detail' favourite.post.slug %}">Read more &raquo;</a>
+                            <a class="btn btn-primary btn-enlarge post-link p-2" href="{% url 'post_detail' favourite.post.slug %}">Read more &raquo;</a>
                         </div>
                     </div>
                 </div>
@@ -56,18 +52,15 @@
                             <h4 class="card-title h4 salsa-regular mb-3 ps-md-4">{{ favourite.post.title }}</h4>
                         </a>
                         <a href="{% url 'post_detail' favourite.post.slug %}" class="text-reset text-decoration-none">
-                            <p class="card-text card-body handlee-regular ps-md-4 justify">{{ favourite.post.excerpt }}
-                            </p>
+                            <p class="card-text card-body handlee-regular ps-md-4 justify">{{ favourite.post.excerpt }}</p>
                         </a>
                         <div class="d-grid d-sm-flex justify-content-sm-center justify-content-md-start ps-md-4 mt-5">
-                            <a class="btn btn-primary btn-enlarge post-link p-2"
-                                href="{% url 'post_detail' favourite.post.slug %}">Read more &raquo;</a>
+                            <a class="btn btn-primary btn-enlarge post-link p-2" href="{% url 'post_detail' favourite.post.slug %}">Read more &raquo;</a>
                         </div>
                     </div>
                     <div class="col-md-5 text-center order-1 order-md-2 p-3">
                         <a href="{% url 'post_detail' favourite.post.slug %}">
-                            <img class="circle-image shadow img-fluid" src="{{ favourite.post.featured_image.url }}"
-                                alt="{{ favourite.post.title }}">
+                            <img class="circle-image shadow img-fluid" src="{{ favourite.post.featured_image.url }}" alt="{{ favourite.post.title }}">
                         </a>
                     </div>
                 </div>
@@ -78,38 +71,28 @@
     </div>
     <hr class="my-0 mb-5"/>
     <div class="pb-3 text-center mb-3">
-        <a href="{% url 'profile' %}" class="text-decoration-none text-reset nunito-sans-regular"><button
-                class="btn btn-primary py-2 btn-enlarge">&laquo; Back to
-                Profile</a></button>
+        <a href="{% url 'profile' %}" class="btn btn-primary text-white py-2 btn-enlarge text-decoration-none nunito-sans-regular" aria-label="Back to profile">&laquo; Back to Profile</a>
     </div>
 </div>
 
-<!-- Pagination (optional) -->
+<!-- Pagination -->
 {% if is_paginated %}
 <nav aria-label="Pagination">
     <ul class="pagination justify-content-center p-3 my-4">
         <!-- Prev Button -->
         <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
-            <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% else %}#{% endif %}"
-                class="page-link btn btn-primary text-white me-4">
-                &laquo; PREV
-            </a>
+            <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% else %}#{% endif %}" class="page-link btn btn-primary text-white me-4" aria-label="Previous page">&laquo; PREV</a>
         </li>
         <!-- Next Button -->
         <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
-            <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% else %}#{% endif %}"
-                class="page-link btn btn-primary text-white me-4">
-                NEXT &raquo;
-            </a>
+            <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% else %}#{% endif %}" class="page-link btn btn-primary text-white me-4" aria-label="Next page">NEXT &raquo;</a>
         </li>
     </ul>
 </nav>
 {% endif %}
 </div>
-</div>
-</div>
-</div>
 {% endblock %}
+
 {% block extras %}
 <script src="{% static 'js/animations.js' %}"></script>
 {% endblock %}

@@ -7,30 +7,24 @@
 <div class="bg-yellow h-100">
     <div class="row d-flex justify-content-center">
         {% if comment_count != 0 %}
-        <h2 class="pt-4 mb-4 mt-3 salsa-regular text-center">Your <strong
-                class="pink-font text-capitalize">"Comments"</strong></h2>
+        <h2 class="pt-4 mb-4 mt-3 salsa-regular text-center">Your <strong class="pink-font text-capitalize">"Comments"</strong></h2>
         {% endif %}
         {% for comment in comments %}
-        <div class="col-10 col-md-8 mb-4 mt-2 ">
-            <a class="text-decoration-none text-reset"
-                href="{% url 'post_detail' slug=comment.post.slug %}#comment-{{ comment.id }}">
-                <div class="card p-2 comments shadow hover">
+        <div class="col-10 col-md-8 mb-4 mt-2">
+            <a class="text-decoration-none text-reset" href="{% url 'post_detail' slug=comment.post.slug %}#comment-{{ comment.id }}" aria-label="Go to comment on post {{ comment.post.title }}">
+                <div class="card p-2 comments shadow hover" role="article" aria-labelledby="comment-title-{{ comment.id }}">
                     <div class="card-header text-center">
-                        <strong class="fs-4 salsa-regular">
-                            {{ comment.post.title }}</strong><br>
-                        <br>
+                        <strong id="comment-title-{{ comment.id }}" class="fs-4 salsa-regular">{{ comment.post.title }}</strong>
+                        <br><br>
                     </div>
-                    <div class="comment-author d-flex align-items-center border-bottom {% if not comment.approved and comment.author == user %}text-muted{% endif %}" >
-                        <img src="{% cloudinary_url comment.author.profile.profile_picture width=100 height=100 crop='fill' gravity='face' quality='auto:best' %}"
-                            class="m-2 profile-icon border-bottom"
-                            alt="{{ comment.author.username }}'s profile picture">
+                    <div class="comment-author d-flex align-items-center border-bottom {% if not comment.approved and comment.author == user %}text-muted{% endif %}">
+                        <img src="{% cloudinary_url comment.author.profile.profile_picture width=100 height=100 crop='fill' gravity='face' quality='auto:best' %}" class="m-2 profile-icon border-bottom" alt="{{ comment.author.username }}'s profile picture">
                         <p class="pt-2 ps-2 mb-0 pb-3">
                             <strong>{{ comment.author }}</strong><br>
-                            <span>{{ comment.created_on }}</span><br><span>Wrote :</span> 
+                            <span>{{ comment.created_on }}</span><br><span>Wrote :</span>
                         </p>
                     </div>
-                    <div id="comment{{ comment.id }}"
-                        class="ms-2 mt-3 {% if not comment.approved and comment.author == user %}text-muted{% endif %} ps-3">
+                    <div id="comment{{ comment.id }}" class="ms-2 mt-3 {% if not comment.approved and comment.author == user %}text-muted{% endif %} ps-3">
                         {{ comment.body | linebreaks }}
                     </div>
                     {% if not comment.approved and comment.author == user %}
@@ -42,32 +36,30 @@
             </a>
         </div>
         {% endfor %}
-    {% if  comment_count == 0 %}
-    <div class="row my-5 d-flex align-items-center flex justify-content-center">
-        <div class="col-10 pt-5 pb-5">
-            <div class="card shadow text-center">
-                <h3 class="p-4 salsa-regular text-center">Sorry, you have <strong
-                        class="pink-font text-capitalize">"No Comments"</strong></h3>
+        {% if comment_count == 0 %}
+        <div class="row my-5 d-flex align-items-center justify-content-center">
+            <div class="col-10 pt-5 pb-5">
+                <div class="card shadow text-center">
+                    <h3 class="p-4 salsa-regular text-center">Sorry, you have <strong class="pink-font text-capitalize">"No Comments"</strong></h3>
+                </div>
             </div>
         </div>
-    </div>
-    {% endif %}
-        <!-- Pagination (optional) -->
+        {% endif %}
+
+        <!-- Pagination -->
         {% if is_paginated %}
-        <nav aria-label="Pagination">
+        <nav aria-label="Comments pagination">
             <ul class="pagination justify-content-center p-3 my-4">
                 <!-- Prev Button -->
                 <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
-                    <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% else %}#{% endif %}"
-                        class="page-link btn btn-primary text-decoration-none text-white me-4">
+                    <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% else %}#{% endif %}" class="page-link btn btn-primary text-decoration-none text-white me-4" aria-label="Previous page">
                         &laquo; PREV
                     </a>
                 </li>
 
                 <!-- Next Button -->
                 <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
-                    <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% else %}#{% endif %}"
-                        class="page-link btn btn-primary text-decoration-none text-white">
+                    <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% else %}#{% endif %}" class="page-link btn btn-primary text-decoration-none text-white" aria-label="Next page">
                         NEXT &raquo;
                     </a>
                 </li>
@@ -75,14 +67,10 @@
         </nav>
         {% endif %}
     </div>
-    <hr class="my-0 mb-5" />
+    <hr class="my-0 mb-5">
     <div class="pb-3 text-center mb-3">
-        <a href="{% url 'profile' %}" class="text-decoration-none text-reset nunito-sans-regular"><button
-                class="btn btn-primary btn-enlarge py-2">&laquo; Back to
-                Profile</a></button>
+        <a href="{% url 'profile' %}" class="text-decoration-none nunito-sans-regular btn btn-primary enlarge py-2 text-white" aria-label="Back to Profile"> &laquo; Back to Profile </a>
     </div>
 </div>
-</div>
-
 
 {% endblock content %}

@@ -6,29 +6,34 @@
 <section class="bg-yellow box-shadow h-100 m-0 p-4">
     <div class="container-fluid h-custom">
         <div class="row d-flex justify-content-center align-items-center">
+            <!-- Profile Image and Username -->
             <div class="col-md-5 col-lg-3 col-xl-2 p-2 text-center align-items-center">
-                <img src="{% cloudinary_url profile.profile_picture width=300 height=300 crop='fill' gravity='face' quality='auto:best' %}" class="img-fluid circle-image shadow" alt="Profile Picture"
-                    id="profile-pic">
+                <img src="{% cloudinary_url profile.profile_picture width=300 height=300 crop='fill' gravity='face' quality='auto:best' %}"
+                     class="img-fluid circle-image shadow" alt="Profile Picture of {{ request.user.username }}"
+                     id="profile-pic">
                 <h3 class="salsa-regular my-3"><strong>{{ request.user.username }}</strong></h3>
             </div>
+            
+            <!-- Delete Profile Card -->
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-2 mt-lg-0">
-                <div class="card shadow">
-                    <div class="card-header text-center">
+                <div class="card shadow" role="dialog" aria-labelledby="delete-profile-header" aria-describedby="delete-profile-content">
+                    <div class="card-header text-center" id="delete-profile-header">
                         <h4 class="text-capitalize fw-bold nunito-sans-regular">Delete Profile</h4>
                     </div>
-                    <div class="card-body fs-5">
+                    <div class="card-body fs-5" id="delete-profile-content">
                         <div class="modal-body nunito-sans-regular text-center">
                             <p><strong class="pb-3">Are you sure you want to delete your Profile?</strong></p>
                             <p>This action cannot be undone.</p>
                         </div>
                         <div class="modal-footer border-top mt-4 p-3 justify-content-center">
-                            <a href="{% url 'profile' %}" class="btn btn-primary btn-enlarge m-2 text-decoration-none nunito-sans-regular">
+                            <a href="{% url 'profile' %}" class="btn btn-primary btn-enlarge m-2 text-decoration-none nunito-sans-regular" aria-label="Cancel profile deletion and go back">
                                 Cancel
                             </a>
-                            <form action="{% url 'delete_profile' %}" method="POST">
+                            <form action="{% url 'delete_profile' %}" method="POST" aria-label="Delete Profile Form">
                                 {% csrf_token %}
-                                <button id="deleteConfirm" type="submit" class="btn
-                                btn-danger enlarge nunito-sans-regular m-2">Delete</button>
+                                <button id="deleteConfirm" type="submit" class="btn btn-danger enlarge nunito-sans-regular m-2" aria-label="Confirm profile deletion">
+                                    Delete
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -37,6 +42,4 @@
         </div>
     </div>
 </section>
-
-
 {% endblock content %}
