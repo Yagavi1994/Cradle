@@ -274,6 +274,11 @@
   font-family: "Nunito Sans", sans-serif;
 }
 
+#categoryDropdown {
+  border: none !important; 
+  background: none !important;
+}
+
 /* Highlighted item when hovering or navigating with keyboard */
 .choices__list--dropdown .choices__item--highlighted {
   color: black;
