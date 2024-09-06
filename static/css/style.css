@@ -31,7 +31,7 @@
  /* Header */
 
  header {
-   background-image: url(/static/images/yellow-bg.jpg);
+   background-image: url(/static/images/yellow-bg.webp);
    background-repeat: no-repeat;
    background-size: cover;
    box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.8),
