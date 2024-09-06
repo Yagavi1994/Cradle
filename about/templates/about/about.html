@@ -2,8 +2,8 @@
 {% load static %}
 {% block content %}
 
-<header class="masthead bg-yellow box-shadow pt-5" aria-label="Site banner">
-  <div class="container">
+<div class="bg-yellow box-shadow pt-5">
+  <div class="container pb-4">
     <div class="row justify-content-center">
       <!-- Image -->
       <div class="text-center p-3">
@@ -15,14 +15,14 @@
         >
       </div>
       <!-- Content -->
-      <div class="container" role="main" aria-labelledby="about-title">
+      <div class="container mt-3" role="main" aria-labelledby="about-title mb-3">
         <h1 id="about-title" class="sr-only">{{ about.title }}</h1> <!-- Added h1 for screen readers -->
         <article class="card nunito-sans-regular mx-1 my-3 mb-4 mt-3 p-4 shadow" aria-label="About content">
-          <p class="my-3 nunito-sans-regular" aria-live="polite">{{ about.content | safe }}>
+          <p class="my-3 nunito-sans-regular" aria-live="polite">{{ about.content | safe }}
         </article>
       </div>
     </div>
   </div>
-</header>
+</div>
 
 {% endblock content %}
