@@ -655,20 +655,20 @@ Here is the detailed content for the features you requested, with relevant **Use
 ## Features
 
 ### Home Page
-The homepage displays the latest blog posts in a clean and user-friendly format. Each post shows the title, a short excerpt, the author's name, and the published date. Posts are ordered by the most recent first, providing users with fresh content at the top.
+The homepage has a banner on top with a welcome message and displays the latest blog posts in a clean and user-friendly format. Each post shows the title, a short excerpt, the author's name and the published date. Posts are ordered by the most recent first, providing users with fresh content at the top.
 
 - **User Story 1**: The homepage should display a list of the latest blog posts with links to view the full content.
 
-![Home Page]()
+![Home Page](static/images/readme/features/home-page.png)
 
 ---
 
 ### About Page
-The "About" page introduces the purpose and mission of the blog. It provides information on what the blog aims to achieve and the values behind it. This page is accessible from both the main navigation bar and the footer.
+The "About" page has a picture of the site owner and introduces the purpose and mission of the blog. It provides information on what the blog aims to achieve and the values behind it. This page is accessible from the main navigation bar.
 
 - **User Story 8**: The "About" page should be well-organized, easy to read, and offer details about the blog's goals.
 
-![About Page]()
+![About Page](static/images/readme/features/about-page.png)
 
 ---
 
@@ -677,7 +677,7 @@ The contact page allows visitors to reach out to the blog administrators for inq
 
 - **User Story 9**: Visitors should be able to submit inquiries through the contact page, and receive confirmation after submission.
 
-![Contact Page]()
+![Contact Page](static/images/readme/features/contact-page.png)
 
 ---
 
@@ -685,9 +685,17 @@ The contact page allows visitors to reach out to the blog administrators for inq
 Each blog post has its own dedicated page, displaying the title, full content, source, and published date. Users can easily navigate between posts using "Next" and "Previous" buttons. The post page also includes options for sharing the content on social media.
 
 - **User Story 2**: Blog posts should have dedicated pages with easy navigation options.
-- **User Story 3**: Users should be able to navigate between posts using "Next" and "Previous" buttons.
 
-![Blog Post Page]()
+![Blog Post Page](static/images/readme/features/blog-post-page.png)
+
+---
+
+### Navigation Between Posts
+The blog allows users to easily navigate between posts using "Next" and "Previous" buttons. These buttons are located at the bottom of each blog post, enabling visitors to move chronologically between posts without returning to the homepage or a category page. This seamless navigation enhances the user experience by allowing users to explore more content in a convenient manner.
+
+- **User Story 3**: As a visitor, I want to navigate between posts using "Next" and "Previous" buttons so that I can explore more content.
+
+![Pagination](static/images/readme/features/blog-post-page.png)
 
 ---
 
@@ -696,7 +704,11 @@ Users can favourite blog posts for later reference. Each post has a "Like" or "F
 
 - **User Story 22**: Users should be able to like/favourite posts and see them listed in their profile's favourites section.
 
-![Add and Remove Favourites]()
+#### Add Favourites
+![Add and Remove Favourites](static/images/readme/features/add-favourites.png)
+
+#### Remove Favourites
+![Add and Remove Favourites](static/images/readme/features/remove-favourites.png)
 
 ---
 
@@ -705,26 +717,34 @@ Registered users can leave comments on blog posts, update their existing comment
 
 - **User Story 21**: Users should be able to add, update, and delete their comments on blog posts.
 
-![Comments]()
+![Comments](static/images/readme/features/comments.png)
 
 ---
 
 ### Filter Content by Category
 
-The blog provides a feature that allows users to filter posts based on categories. This enables visitors to browse content specific to their interests, such as newborn care, toddler tips, or teenage advice. The categories are accessible via a dropdown in the navigation bar, providing an easy way for users to discover posts related to particular topics.
+The blog provides a feature that allows users to filter posts based on categories. This enables visitors to browse content specific to their interests, such as newborn care, toddler tips or feeding advice. The categories are accessible via a dropdown in the navigation bar, providing an easy way for users to discover posts related to particular topics.
 
 - **User Story 4**: As a visitor, I want to filter blog posts by category so that I can browse specific topics relevant to my interests.
 
-![Category]()
+![Category](static/images/readme/features/categories.png)
 
 ---
+
+### Pagination for Blog Posts
+The blog implements pagination for blog post listings when there are more than 5 posts on a single page. Pagination helps break up the content into smaller chunks, allowing for quicker loading times and a better user experience. The pagination controls are displayed at the bottom of the blog posts list, allowing users to navigate between pages of content easily.
+
+- **User Story 10**: As a visitor, I want to navigate between multiple pages of blog posts when there are more than 5 posts per page so that I can easily browse through the content.
+
+![Pagination](static/images/readme/features/pagination.png)
+
 
 ### Profile Page
 Users have a dedicated profile page where they can view their personal information, including their avatar, name, email address, and a list of their favourite posts and comment history. The page also provides options to edit their details.
 
 - **User Story 23**: Users should be able to view their profile and access their favourites and comments.
 
-![Profile Page]()
+![Profile Page](static/images/readme/features/profile-page.png)
   
 ---
 
@@ -733,25 +753,29 @@ Users can update or delete their profile picture through the "Edit Picture" page
 
 - **User Story 24**: Users should be able to edit or delete their profile picture, with changes reflected in their profile.
 
-![Edit Picture Page]()
+#### Edit Picture
+![Edit Picture Page](static/images/readme/features/edit-picture.png)
+
+#### Delete Picture
+![Delete Picture Page](static/images/readme/features/delete-picture.png)
 
 ---
 
 ### Favourites Page
-The favourites page lists all posts the user has liked or favourited. Each post shows the title, excerpt, and the date it was favourited. Users can quickly access posts they’ve saved.
+The favourites page lists all posts the user has liked or favourited. Each post shows the title and excerpt. Users can quickly access posts they’ve saved.
 
 - **User Story 25**: Users should have access to a list of their favourite posts via their profile page.
 
-![Favourites Page]()
+![Favourites Page](static/images/readme/features/favourites-page.png)
 
 ---
 
 ### Comments Page
-The comments page provides a history of all the comments made by the user. It shows each comment, the date it was posted, and the blog post it was made on. Each comment has a link to the original blog post for easy navigation.
+The comments page provides a history of all the comments made by the user. It shows each comment, the date it was posted, and the blog post it was made on. Each comment is linked to the original comment in the blog post for easy navigation and when clicked it takes the user to that particular comment highlighting it.
 
 - **User Story 26**: Users should be able to see their comment history in their profile.
 
-![Comments Page]()
+![Comments Page](static/images/readme/features/comments-page.png)
 
 ---
 
@@ -760,16 +784,16 @@ Users have the option to permanently delete their account. This action removes a
 
 - **User Story 27**: Users should be able to delete their account, which will permanently remove their data.
 
-![Delete Account]()
+![Delete Account](static/images/readme/features/delete-account.png)
 
 ---
 
 ### Header
-The header includes a navigation bar that allows users to access important sections of the blog, such as Home, About, Contact, Login, Register, Profile, Logout, and Categories. It is present on every page and highlights the current page for easy navigation.
+The header has a logo and  includes a navigation bar that allows users to access important sections of the blog, such as Home, About, Contact, Categories, Login, Register, Profile and Logout. It is present on every page and highlights the current page for easy navigation.
 
 - **User Story 5**: The navigation bar should be present at the top of every page and include links to key sections of the site.
 
-![Header]()
+![Header](static/images/readme/features/header.png)
 
 ---
 
@@ -778,7 +802,7 @@ The footer includes copyright information, social media links, and a "Back to To
 
 - **User Story 7**: The footer should provide copyright details, social media links, and a functional "Back to Top" button.
 
-![Footer]()
+![Footer](static/images/readme/features/footer.png)
 
 ---
 
@@ -790,7 +814,7 @@ The notification provides a clear and friendly message, with links to the login 
 
 - **User Story 13**: When attempting to use restricted features (e.g., commenting, favouriting), the system should notify the user to log in or sign up, and prevent access to these features until they are registered.
 
-![Restricted Feature]()
+![Restricted Feature](static/images/readme/features/restricted-notifications.png)
 
 ---
 
@@ -799,7 +823,7 @@ Visitors can create an account through the registration form, which includes fie
 
 - **User Story 14**: Visitors should be able to sign up for an account, providing valid credentials to register.
 
-![Sign Up]()
+![Sign Up](static/images/readme/features/signup-page.png)
 
 ---
 
@@ -808,7 +832,7 @@ Upon successful registration, users receive an email verification link. The user
 
 - **User Story 18**: Users should receive an email verification link after registration, which they must confirm to activate their account.
 
-![Email Verification]()
+![Email Verification](static/images/readme/features/email-verification.png)
 
 ---
 
@@ -817,7 +841,7 @@ Registered users can log in using their email/username and password. After succe
 
 - **User Story 15**: Users should be able to log in using their credentials and access their profile and blog features.
 
-![Log in]()
+![Log in](static/images/readme/features/login-page.png)
 
 ---
 
@@ -826,7 +850,7 @@ Users can securely log out of their accounts. Upon logging out, they are redirec
 
 - **User Story 16**: Users should be able to log out from their account and secure their session.
 
-![Log out]()
+![Log out](static/images/readme/features/log-out-page.png)
 
 ---
 
@@ -835,7 +859,7 @@ If a user forgets their password, they can request a password reset link through
 
 - **User Story 19**: Users should be able to request a password reset link via email.
 
-![Forgot Password]()
+![Forgot Password](static/images/readme/features/forgot-password.png)
 
 ---
 
@@ -844,7 +868,7 @@ Upon receiving the reset email, users can click the link to access a secure page
 
 - **User Story 20**: Users should be able to reset their password via the link sent in their email.
 
-![Reset Password]()
+![Reset Password](static/images/readme/features/reset-password.png)
 
 ---
 
@@ -853,7 +877,7 @@ The blog is fully responsive and works seamlessly across all devices, including 
 
 - **User Story 11**: The blog should be responsive across all devices, ensuring smooth navigation and readability.
 
-![Responsiveness]()
+![Responsiveness](static/images/readme/features/responsive-design.png)
 
 ---
 
@@ -862,7 +886,11 @@ The system displays confirmation messages for actions such as logging in, loggin
 
 - **User Story 22, 24, 19, 16**: The system should show success messages after completing actions like favouriting posts, editing profiles, resetting passwords, and logging out.
 
-![Success message]()
+![Success message](static/images/readme/features/success-msg-1.png)
+![Success message](static/images/readme/features/success-msg-2.png)
+![Success message](static/images/readme/features/success-msg-3.png)
+![Success message](static/images/readme/features/success-msg-4.png)
+![Success message](static/images/readme/features/success-msg-5.png)
 
 ---
 
@@ -889,7 +917,7 @@ This robust set of admin tools ensures that the blog is consistently maintained 
 
 - **User Story 28**: As an admin, I want to manage blog posts so that I can control the content that is published. Additionally, I want to manage comments, view contact inquiries, and delete user accounts as needed to maintain site integrity.
 
-![Admin Features]()
+![Admin Features](static/images/readme/features/admin-page.png)
 
 ---
 
