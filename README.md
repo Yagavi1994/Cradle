@@ -18,50 +18,15 @@ This experience sparked an idea. I began to wish for a single, reliable source w
 
 - [Project Overview](#project-overview)
 - [Project objectives](#project-objectives)
-   - [User Goals](#user-goals)
-   - [Site Owner Goals](#site-owner-goals) 
-- [User Experience](#user-experience)
-   - [Target user](#target-user)  
-   - [First Time Visitor Goals](#first-time-visitor-goals)
-   - [Registered User Goals](#registered-user-goals)
-   - [Admin Goals](#admin-goals)
-   - [Future Goals](#future-goals)     
+- [User Experience](#user-experience) 
 - [Design](#design)  
-   - [Design choices](#design-choicesr)  
-   - [Color Scheme](#color-scheme)
-   - [Typography](#typography)  
-   - [Imagery](#imagery)
-   - [Logo](#logo)
 - [Agile Methodology](#agile-methodology)
 - [Database Scheme & User Journey](#database-scheme-&-user-journey)
-   - [User Journey](#user-journey) 
-   - [Database Scheme](#database-scheme) 
 - [Wireframes](#wireframes)
 - [Features](#features)
-   - [Register page](#register-page)
-   - [Log in page](#log-in-page)
-   - [My projects](#my-projects)
-   - [Home page](#home-page)
-   - [Search](#search)
-   - [Card](#card)
-   - [Add Project Form](#add-project-form)
-   - [Edit Project Form](#edit-project-form)
-   - [Project page](#project-page)
-   - [Comment](#cooment)
-   - [Categories (admin only)](#categories)
-   - [About page](#about-page)
-   - [Log out](#log-out)
-   - [404 and 505 error page](#404-and-505-error-page)
-   - [Logo and Navigations Bar](#logo-and-navigations-bar)
 - [Technologies Used](#technologies-used)
-   - [Languages Used](#languages-used)
-   - [Frameworks, libraries and programs used](#frameworks,-libraries-and-programs-used)
 - [Testing](#testing)
 - [Deployment & local development](#deployment-&-local-development)
-   - [Deployment](#deployment)
-   - [Local Development](#local-development)
-      - [How to Fork](#how-to-fork)
-      - [How to Clone](#how-to-clone)
 - [Credits](#credits)
 - [Aknowledgement](#aknowledgement)
 
@@ -297,9 +262,27 @@ This experience sparked an idea. I began to wish for a single, reliable source w
 
 ---
 
+### User Story 18:  
+**As a visitor**, I want to see a clear and helpful message when I try to access a page that doesn’t exist (404 error), so that I can understand the issue and navigate back to a useful part of the site.
+
+- A custom 404 error page should be displayed when a visitor tries to access a non-existent page.
+- The page should include a friendly message such as "Oops! The page you're looking for cannot be found."
+- The 404 error page should include a link to the homepage and other relevant sections (e.g., blog categories) to help users continue browsing.
+- The design of the 404 page should match the overall look and feel of the site.
+
+---
+
+### User Story 19:  
+**As a visitor**, I want to see an informative message when there is an internal server error (500 error), so that I know the issue is being addressed and can still navigate to other parts of the site.
+
+- A custom 500 error page should be displayed when an internal server error occurs.
+- The page should inform the user that there is a technical issue and that it's being worked on.
+- The 500 error page should provide a link to the homepage and other sections of the blog to keep the user engaged.
+- The design of the 500 error page should be consistent with the rest of the site, maintaining a user-friendly experience.
+
 ### Registered User Goals
 
-#### User Story 18:  
+#### User Story 20:  
 **As a newly registered user**, I want to receive an email verification link so that I can confirm my email address.
 
 - Upon successful registration, the system should send a verification email with a unique link to the user’s provided email and display a message saying a verification link has been sent to your mail.
@@ -308,7 +291,7 @@ This experience sparked an idea. I began to wish for a single, reliable source w
 
 ---
 
-#### User Story 19:  
+#### User Story 21:  
 **As a registered user**, I want to request a password reset link if I forget my password so that I can regain access to my account.
 
 - There should be a “Forgot Password” link on the login page.
@@ -318,7 +301,7 @@ This experience sparked an idea. I began to wish for a single, reliable source w
 
 ---
 
-#### User Story 20:  
+#### User Story 22:  
 **As a registered user**, I want to be able to reset my password to a new one and log in after the process is complete.
 
 - Clicking the reset link in mail should direct the user to a secure page where they can set a new password.
@@ -329,7 +312,7 @@ This experience sparked an idea. I began to wish for a single, reliable source w
 
 ---
 
-#### User Story 21: 
+#### User Story 23: 
 **As a registered user**, I want to leave comments on blog posts so that I can engage in discussions.
 
 - The comment section should be available at the bottom of each blog post.
@@ -341,7 +324,7 @@ This experience sparked an idea. I began to wish for a single, reliable source w
 
 ---
 
-#### User Story 22: 
+#### User Story 24: 
 **As a registered user**, I want to add a blog post to my favourites by liking it so that I can easily access it later.
 
 - Each blog post should have a “Like” or “Favourite” button clearly visible near the title or at the end of the post.
@@ -355,7 +338,7 @@ This experience sparked an idea. I began to wish for a single, reliable source w
 
 ---
 
-#### User Story 23: 
+#### User Story 25: 
 **As a registered user**, I want to view my profile page so that I can see my personal information.
 
 - The profile page should be accessible via a link in the site’s navigation menu.
@@ -367,7 +350,7 @@ This experience sparked an idea. I began to wish for a single, reliable source w
 
 ---
 
-#### User Story 24: 
+#### User Story 26: 
 **As a registered user**, I want to edit my profile picture so that I can change it whenever I wish.
 
 - There should be an “Edit Picture” button or link available on the user's profile page.
@@ -380,7 +363,7 @@ This experience sparked an idea. I began to wish for a single, reliable source w
 
 ---
 
-#### User Story 25: 
+#### User Story 27: 
 **As a registered user**, I want to view a list of my favourite posts in my profile so that I can easily access content I have liked or saved.
 
 - The profile page should include a link for “Favourite Posts.”
@@ -390,7 +373,7 @@ This experience sparked an idea. I began to wish for a single, reliable source w
 
 ---
 
-#### User Story 26: 
+#### User Story 28: 
 **As a registered user**, I want to view a history of my comments so that I can track my participation in discussions.
 
 - The profile page should include a link for “My Comments.”
@@ -401,7 +384,7 @@ This experience sparked an idea. I began to wish for a single, reliable source w
 
 ---
 
-#### User Story 27: 
+#### User Story 29: 
 **As a registered user**, I want to delete my account so that I can remove all my data from the site.
 
 - There should be a “Delete Account” option available in the profile settings.
@@ -413,7 +396,7 @@ This experience sparked an idea. I began to wish for a single, reliable source w
 
 ### Admin Goals 
 
-#### User Story 28: 
+#### User Story 30: 
 **As an admin**, I want to manage blog posts so that I can control the content that is published.
 
 - The admin should have access to a content management dashboard.
@@ -702,7 +685,7 @@ The blog allows users to easily navigate between posts using "Next" and "Previou
 ### Add and Remove Favourites
 Users can favourite blog posts for later reference. Each post has a "Like" or "Favourite" button that adds or removes the post from the user's favourites list. A success message appears after each action.
 
-- **User Story 22**: Users should be able to like/favourite posts and see them listed in their profile's favourites section.
+- **User Story 24**: Users should be able to like/favourite posts and see them listed in their profile's favourites section.
 
 #### Add Favourites
 ![Add and Remove Favourites](static/images/readme/features/add-favourites.png)
@@ -715,7 +698,7 @@ Users can favourite blog posts for later reference. Each post has a "Like" or "F
 ### Add, Update and Delete Comments
 Registered users can leave comments on blog posts, update their existing comments, or delete them. Each comment is displayed with the user's name, avatar, and the time it was posted. Comments can be edited or removed at any time.
 
-- **User Story 21**: Users should be able to add, update, and delete their comments on blog posts.
+- **User Story 23**: Users should be able to add, update, and delete their comments on blog posts.
 
 ![Comments](static/images/readme/features/comments.png)
 
@@ -742,7 +725,7 @@ The blog implements pagination for blog post listings when there are more than 5
 ### Profile Page
 Users have a dedicated profile page where they can view their personal information, including their avatar, name, email address, and a list of their favourite posts and comment history. The page also provides options to edit their details.
 
-- **User Story 23**: Users should be able to view their profile and access their favourites and comments.
+- **User Story 25**: Users should be able to view their profile and access their favourites and comments.
 
 ![Profile Page](static/images/readme/features/profile-page.png)
   
@@ -751,7 +734,7 @@ Users have a dedicated profile page where they can view their personal informati
 ### Edit and Delete Picture Page
 Users can update or delete their profile picture through the "Edit Picture" page. They can upload a new image from their system or choose from pre-defined avatars. If the picture is deleted, a default avatar will be applied.
 
-- **User Story 24**: Users should be able to edit or delete their profile picture, with changes reflected in their profile.
+- **User Story 26**: Users should be able to edit or delete their profile picture, with changes reflected in their profile.
 
 #### Edit Picture
 ![Edit Picture Page](static/images/readme/features/edit-picture.png)
@@ -764,7 +747,7 @@ Users can update or delete their profile picture through the "Edit Picture" page
 ### Favourites Page
 The favourites page lists all posts the user has liked or favourited. Each post shows the title and excerpt. Users can quickly access posts they’ve saved.
 
-- **User Story 25**: Users should have access to a list of their favourite posts via their profile page.
+- **User Story 27**: Users should have access to a list of their favourite posts via their profile page.
 
 ![Favourites Page](static/images/readme/features/favourites-page.png)
 
@@ -773,7 +756,7 @@ The favourites page lists all posts the user has liked or favourited. Each post 
 ### Comments Page
 The comments page provides a history of all the comments made by the user. It shows each comment, the date it was posted, and the blog post it was made on. Each comment is linked to the original comment in the blog post for easy navigation and when clicked it takes the user to that particular comment highlighting it.
 
-- **User Story 26**: Users should be able to see their comment history in their profile.
+- **User Story 28**: Users should be able to see their comment history in their profile.
 
 ![Comments Page](static/images/readme/features/comments-page.png)
 
@@ -782,7 +765,7 @@ The comments page provides a history of all the comments made by the user. It sh
 ### Delete Account
 Users have the option to permanently delete their account. This action removes all user data, including posts, favourites, and comments. Users must confirm account deletion, and once deleted, they are logged out and redirected to the homepage.
 
-- **User Story 27**: Users should be able to delete their account, which will permanently remove their data.
+- **User Story 29**: Users should be able to delete their account, which will permanently remove their data.
 
 ![Delete Account](static/images/readme/features/delete-account.png)
 
@@ -830,7 +813,7 @@ Visitors can create an account through the registration form, which includes fie
 ### Email Verification
 Upon successful registration, users receive an email verification link. The user must confirm their email before accessing certain features. The verification email contains a link that confirms the account when clicked.
 
-- **User Story 18**: Users should receive an email verification link after registration, which they must confirm to activate their account.
+- **User Story 20**: Users should receive an email verification link after registration, which they must confirm to activate their account.
 
 ![Email Verification](static/images/readme/features/email-verification.png)
 
@@ -857,7 +840,7 @@ Users can securely log out of their accounts. Upon logging out, they are redirec
 ### Forgot Password
 If a user forgets their password, they can request a password reset link through the "Forgot Password" link on the login page. An email is sent with instructions to reset their password.
 
-- **User Story 19**: Users should be able to request a password reset link via email.
+- **User Story 21**: Users should be able to request a password reset link via email.
 
 ![Forgot Password](static/images/readme/features/forgot-password.png)
 
@@ -866,7 +849,7 @@ If a user forgets their password, they can request a password reset link through
 ### Reset Password
 Upon receiving the reset email, users can click the link to access a secure page where they can set a new password. The new password must meet security requirements before the user can log in.
 
-- **User Story 20**: Users should be able to reset their password via the link sent in their email.
+- **User Story 22**: Users should be able to reset their password via the link sent in their email.
 
 ![Reset Password](static/images/readme/features/reset-password.png)
 
@@ -884,7 +867,7 @@ The blog is fully responsive and works seamlessly across all devices, including 
 ### Displaying Messages for Successful and Unsuccessful Requests
 The system displays confirmation messages for actions such as logging in, logging out, commenting, favouriting posts, and more. Similarly, error messages are shown for unsuccessful requests (e.g., login failures, form validation errors).
 
-- **User Story 22, 24, 19, 16**: The system should show success messages after completing actions like favouriting posts, editing profiles, resetting passwords, and logging out.
+- **User Story 24, 26, 21, 16**: The system should show success messages after completing actions like favouriting posts, editing profiles, resetting passwords, and logging out.
 
 ![Success message](static/images/readme/features/success-msg-1.png)
 ![Success message](static/images/readme/features/success-msg-2.png)
@@ -902,6 +885,30 @@ The design of the blog focuses on ease of use and enhancing the user experience.
 ![User Experience]()
 
 ---
+
+### 404 and 500 Error Pages
+
+Cradle Blog includes custom error pages to ensure that users are provided with a clear and helpful message when something goes wrong while navigating the site.
+
+#### 404 Error Page (Page Not Found)
+When a user tries to access a page that doesn’t exist, they are redirected to a custom 404 error page. This page provides a friendly message, letting the user know that the page they are looking for cannot be found, along with helpful navigation options to return to the homepage or explore other sections of the site.
+
+- **User Story 18**: As a visitor, I want to see a clear and helpful message when I try to access a page that doesn’t exist (404 error), so that I can understand the issue and navigate back to a useful part of the site.
+
+![404](static/images/readme/features/404.png)
+
+---
+
+#### 500 Error Page (Internal Server Error)
+If something goes wrong on the server-side, users are presented with a custom 500 error page. This page informs the user that there was an internal error and that the site administrators are working to fix the issue. The 500 error page prevents the default technical error page from being shown and ensures the user experience is preserved even during technical failures.
+
+- **User Story 19**: As a visitor, I want to see an informative message when there is an internal server error (500 error), so that I know the issue is being addressed and can still navigate to other parts of the site.
+
+![500](static/images/readme/features/500.png)
+
+---
+
+Both the 404 and 500 error pages help keep the user engaged and informed, even when errors occur, and provide a clear pathway to continue using the site.
 
 ### Admin Features
 

@@ -69,27 +69,27 @@
             </div>
         </div>
     </div>
+
+
+        <!-- Pagination -->
+        {% if is_paginated %}
+        <nav aria-label="Pagination">
+            <ul class="pagination justify-content-center p-3 my-4">
+                <!-- Prev Button -->
+                <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+                    <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% else %}#{% endif %}" class="page-link btn btn-primary text-white me-4" aria-label="Previous page">&laquo; PREV</a>
+                </li>
+                <!-- Next Button -->
+                <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+                    <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% else %}#{% endif %}" class="page-link btn btn-primary text-white me-4" aria-label="Next page">NEXT &raquo;</a>
+                </li>
+            </ul>
+        </nav>
+        {% endif %}
     <hr class="my-0 mb-5"/>
     <div class="pb-3 text-center mb-3">
         <a href="{% url 'profile' %}" class="btn btn-primary text-white py-2 btn-enlarge text-decoration-none nunito-sans-regular" aria-label="Back to profile">&laquo; Back to Profile</a>
     </div>
-</div>
-
-<!-- Pagination -->
-{% if is_paginated %}
-<nav aria-label="Pagination">
-    <ul class="pagination justify-content-center p-3 my-4">
-        <!-- Prev Button -->
-        <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
-            <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% else %}#{% endif %}" class="page-link btn btn-primary text-white me-4" aria-label="Previous page">&laquo; PREV</a>
-        </li>
-        <!-- Next Button -->
-        <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
-            <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% else %}#{% endif %}" class="page-link btn btn-primary text-white me-4" aria-label="Next page">NEXT &raquo;</a>
-        </li>
-    </ul>
-</nav>
-{% endif %}
 </div>
 {% endblock %}
 
