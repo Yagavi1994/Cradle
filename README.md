@@ -930,113 +930,105 @@ This robust set of admin tools ensures that the blog is consistently maintained 
 * Python
 
 ## Frameworks, libraries and programs used
- * [GitHub](https://github.com/vero-nika-2828/yasmin-jas-photography) - To save and store files and code for the website in a secure location 
- * [Gitpod](https://gitpod.io/workspaces) - A cloud based IDE used for version control, development of the code to build the website and to commit and push to GithHb
- * [Heroku](https://dashboard.heroku.com/) - was used as the deployment platform for this project
- * [SQLAlchemy](https://pypi.org/project/SQLAlchemy/) - database abstraction library, used to interact with PostgreSQL.
- * [Elephant SQL](https://www.elephantsql.com/) - back end database used for storage of data
- * [Materialize](https://materializecss.com/) -  used for responsivness and styling of the website
- * [jQuery](https://jquery.com/) -used to simplify JavaScript code
- * [Jinja](https://jinja.palletsprojects.com/en/3.0.x/) -templating engine was used to was used for templating and simplifying the design process
- * [Google Fonts](https://fonts.google.com/) - For the typography on the website
- * [Font Awesome](https://fontawesome.com/) - For the iconography on the website
- * [Balsamiq](https://balsamiq.com/) - To create wireframes
- * [Edrawmax](https://www.edrawmax.com/) - To create database schema
- * Google Dev Tools - To troubleshoot and test features, solve issues with responsiveness and styling
- * [Tiny PNG](https://tinypng.com/) - To compress the pictures
- * [Am I Responsive](https://ui.dev/amiresponsive) - To show the website image on a range of devices
+- [GitHub](https://github.com/vero-nika-2828/yasmin-jas-photography) - To save and store files and code for the website in a secure location 
+- [Gitpod](https://gitpod.io/workspaces) - A cloud based IDE used for version control, development of the code to build the website and to commit and push to GithHb
+- [Heroku](https://dashboard.heroku.com/) - was used as the deployment platform for this project
+ simplifying the design process
+- [Am I Responsive](http://ami.responsivedesign.is/): was used to create the multi-device mock-up you can see at the start of this README.md file.
+- [WC3 Validator](https://validator.w3.org/), [Jigsaw W3 Validator](https://jigsaw.w3.org/css-validator/), [JS validator](https://jshint.com/) and [PEP8](https://pep8ci.herokuapp.com/): were all used to validate the website.
+- [os](https://docs.python.org/3/library/os.html): python built-in modules.
+- [Bootstrap5](https://getbootstrap.com/docs/5.0/getting-started/introduction/): was used to create the front-end design.
+- [Coloors](https://coolors.co/): was used to create the color scheme.
+- [Cloudinary](https://cloudinary.com/): was used to host the static files and media.
+- [Gunicorn](https://gunicorn.org/): as the server for Heroku.
+- [Dj_database_url](https://pypi.org/project/dj-database-url/0.5.0/): to parse the database URL from the environment variables in Heroku.
+- [Psycopg2](https://pypi.org/project/psycopg2/): as an adaptor for Python and PostgreSQL databases.
+- [Allauth](https://allauth.org/): for authentication, registration, account management.
+- [Crispy Forms & Crispy Bootstrap5](https://django-crispy-forms.readthedocs.io/en/latest/): to style the forms.
+- [djrichtextfield](https://pypi.org/project/django-richtextfield/): for handling rich text content.
+- [django resized](https://pypi.org/project/django-resized/): Resizes image origin to specified size and save it in 'WEBP' format.
+- [dj-cloudinary-storage](https://pypi.org/project/django-cloudinary-storage/): to facilitates integration with Cloudinary.
+- [Django](https://www.djangoproject.com/start/): as a main python framework for my project.
+- [Jinja2 - templating language](https://jinja.palletsprojects.com/en/3.1.x/): was used to simplify dynamic content generation, enhance security, and promote code organization in project templates.
+- [App.diagram-online](https://app.diagrams.net/): was used to create the database schema.
+- [Microsoft Outlook - SMTP settings](https://support.microsoft.com/en-us/office/pop-imap-and-smtp-settings-for-outlook-com-d088b986-291d-42b8-9564-9c414e2aa040): was used to send email to user (scenario: forgot password).
+- [Miro-online](https://miro.com/): was used to create the wireframe of the site.
+- [Google Fonts](https://fonts.google.com/) - was used for the typography on the website
+- [Font Awesome](https://fontawesome.com/) - was used for the iconography on the website
+- Google Dev Tools - was used to troubleshoot and test features, solve issues with responsiveness and styling
+- [ChatGPT](https://chatgpt.com/) - was used to generate images for blog post and compress the pictures and convert it to webp
+- [Google Spreadsheet](https://docs.google.com/spreadsheets/): was used to make the database scheme for the site.
+- [Google Slides](https://docs.google.com/presentation/): was used to draw database relationship entity diagram.
+
 
 # Testing
 Find the full testing documented in [TESTING.md](TESTING.md)
 
 # Deployment & local development
 
-## Deployment 
+## Deployment
 
-The site is deployed using Heroku. To deploy to Heroku:
+1. A new repository was created using 'Code-Instutute-Org/ci-full-template'.
+2. A meaningful name was given to my new repository and I selected 'Create Repository'.
+3. Inside the created repo select the 'Code' button above the file list on the right hand side.
+4. Ensure HTTPS is selected and click the clipboard on the right of the URL to copy it.
+5. Open Gitpod, creat new project folder, open the terminal, On the terminal type "git clone", then paste the copied url and press 'Enter'.
+6. Version control was used throughout the project using the following commands in the terminal:
+    - git add . **OR** git add "file name" - to stage the changes and get them ready for being committed to the local repo.
+    - git commit -m "Description of the update" - to save the change and commit the change to the local repo
+    - git push origin main - to push all committed changes to the GitHub repo.
 
-1. To successfully deploy on Heroku we first need to create some files: a requirements.txt file and a Procfile.
+### Forking
 
-2. The requirements.txt file contains all the applications and dependencies that are required to run the app. To create the requirements.txt file run the following command in the terminal:
+1. Go to [the project repository](https://github.com/Yagavi1994/Cradle).
+2. In the right most top menu, click the "Fork" button.
+3. There will now be a copy of the repository in your own GitHub account.
 
-*pip3 freeze --local > requirements.txt* 
+### Cloning the repo & Running the project locally
 
-3. The Procfile tells Heroku which files run the app and how to run it. To create the Procfile run the following command in the terminal:
+1. Go to the following repository on GitHub: <https://github.com/Yagavi1994/Cradle>.
+2. At the top right of the screen, click the 'Code' button, and then click 'HTTPs'.
+3. Copy the link in this field.
+4. Open Gitpod, creat new project folder, open the terminal.
+5. On the terminal type "git clone", then paste the copied url and press 'Enter'.
+6. The clone process should now begin.
 
-*echo web: python app.py > Procfile* 
+### Deploying with Heroku
 
-NOTE: The Procfile uses a capital P and doesn't have a file extension on the end.
+I followed the below steps using the [Code Institute tutorial](https://docs.google.com/document/d/1CncA1F2JClME2S_K0w4XoV3edMjOl_HrOQoEs3h9LOo/edit#heading=h.hvy9tw74f1o0):
 
-4. If the Procfile has been created correctly it will have the Heroku logo next to it. It is also important to check the Procfile contents, as sometimes on creation a blank line will be added at the end of the file. This can sometimes cause problems when deploying to Heroku, so if the file contains a blank line at the end, delete this and save the file. Make sure to save both these files and then add, commit and push them to GitHub.
+The following command in the IDE will create the relevant files needed for Heroku to install your project dependencies `pip3 freeze --local > requirements.txt`.
 
-5. Login (or sign up) to [Heroku](https://dashboard.heroku.com/) .
+1. Go to [Heroku.com](https://dashboard.heroku.com/apps) and login, if you do not already have an account then you will need to create one.
+2. Click the `New` dropdown and select `Create New App`.
+3. Enter a name for your new project, all Heroku apps need to have a unique name, you will be prompted if you need to change it.
+4. Select the region you are working in.
 
-6. Click the new button and then click create new app.
+#### Heroku Settings  
 
-7. You will then be asked to give your app a name (these must be unique so you cannot reuse bookworm) and select a region. Once these are completed click create app.
+You will need to set your Environment Variables - this is a key step to ensuring your application is deployed properly.
 
-8. You will now need to connect the Heroku app to the GitHub repository for the site. Select GitHub in the deployment section, find the correct repository for the project and then click connect.
+1. In the Settings tab, click on `Reveal Config Vars` and set the following variables:
+   #### Add the following keys and corresponding values to it.
+   ![Config Vars](static/images/readme/features/config-vars.png)
+   
+2. In your project:
+    - Create a file `env.py` and put it into `.gitignore`.
+    - Add the above keys and corresponding values mentioned in config vars in it, like DATABASE_URL, CLOUDINARY_URL and SECRET_KEY to `env.py`.
+    - Comment out the original DATABASE settings from `settings.py` and add default Database code.
+    - Run your migrations.
 
-9. Once the repository is connected, you will need to provide Heroku some config variables it needs to build the app. Click on the settings tab and then click reveal config vars button. You will now need to add the environment key/value variables that were used in the env.py file:
+#### Heroku Deployment
 
-| Key | Value |
-|  :---| :---|
-|IP | 0.0.0.0 |
-|PORT| 5000 |
-|SECRET_KEY| YOUR_SECRET_KEY* |
-|DATABASE_URL| POSTGRE_DB |
-|DEBUG| TRUE**|
+In the Deploy tab:
 
-*Denotes a value that is specific to your app.
-
-**This is set to true to enable us to see any bugs on the live site. Please change to FALSE after deployment. 
-
-10. You're now ready to click the enable automatic deploys and create button. Heroku will start building the app.
-
-11. As this project utilises a relational database, there are a few more steps to set this up.
-
-12. On the heroku dashboard go to resources tab and then select add-ons. You will need to search for and select heroku postgres. For this project the hobby dev free tier is fine.
-
-13. Go back into settings and reveal config vars. You should now see a new key called DATABASE_UL and the value should have been pre-populated.
-
-14. We will now need to go the more button on the dashboard and select run console. This is where we will set up the tables in the database we have just created.
-
-15. Type python3 and then once the python interpreter opens, we can run the following:
-
-*from bookworm import db*
-*db.create_all()*
-*exit()*
-
-16. Now that the relational database has been set up and the tables created, we can now click open app and the bookworm application should now open in a new tab.
-
-## Local Development
-
-### How to Fork 
-
-To fork the repository:
-
-1. Log in (or sign up) to Github
-2. Go to the repository for this project, [Sewing Squad](https://github.com/vero-nika-2828/sewing-squad-gitpod)
-3. Click the Fork button in the top right corner
-
-### How to Clone
-
-1. Log in or (sign up) to Github
-2. Go to  the repository for this project,  [Sewing Squad](https://github.com/vero-nika-2828/sewing-squad-gitpod)
-3. Click on the code button  which is located to the left from the green Gitpod button
-4. Select HTTPS
-5. Copy the link shown
-6. Open the terminal in your code editor
-7. Change the current working directory to the location you want to use for the cloned directory
-8. Type 'git clone' into the terminal
-9. Paste the link you copied in step 5
-
-*git clone* *{ & THE LINK FROM STEP 3 }*
-
-10. Press enter 
-
-Alternatively, you can click on Download ZIP
-
+1. Connect your Heroku account to your Github Repository following these steps:
+    - Click on the `Deploy` tab and choose `Github-Connect to Github`.
+    - Enter the GitHub repository name and click on `Search`.
+    - Choose the correct repository for your application and click on `Connect`.
+2. You can then choose to deploy the project manually or automatically, automatic deployment will generate a new application every time you push a change to Github, whereas manual deployment requires you to push the `Deploy Branch` button whenever you want a change made.
+3. Once you have chosen your deployment method and have clicked `Deploy Branch` your application will be built and you should now see the `View` button, click this to open your application.
+4. Be sure to set `DEBUG` to `False` in your `settings.py` before deploying.
 
 # Credits
 
@@ -1044,18 +1036,20 @@ Alternatively, you can click on Download ZIP
 
 Images were taken from Adobe Stock and Pixabay
 
-* OpenClipart-Vectors 
-   * [Picture (used for favicon)](https://pixabay.com/vectors/needle-sewing-thread-repair-pointy-312738/)
- 
+* Freepik
+   * [Picture used for Banner](https://www.freepik.com/free-photo/top-view-childhood-cancer-awareness-month-background-concepttoys_29015039.htm#fromView=search&page=1&position=41&uuid=7918f628-075c-4250-8108-ceea74803937)
 
-* AM_art
-   * [Sewing- retro (used for background)](https://stock.adobe.com/uk/images/vector-hand-drawn-sewing-retro-set-collection-of-highly-detailed-hand-drawn-sewing-tools-isolated-on-background/509211487?asset_id=595878873)
+* Chat-GPT
+   * [Pictures used in the Blog Post](https://chatgpt.com/)
+
+* Meta-AI
+   * [Picture used in the Logo](https://www.meta.ai/)
 
 
 # Aknowledgement
 
-I would like to thank to following people who helped me along the way in completing this project: 
-* My Code Institute mentor, Mitko Bachvarov, for his valuable advice and comprehensive guidance
-* My tutor for being so patient with me and being there for me every time I had any questions
-* Oisin, Sarah and Holly from Tutor support for helping me with some issues I came across in my project
-* My family and friends for giving me moral support and for taking time to test the final version of the project
+I would like to thank to following people who helped me along the way in completing this project:
+* Code-Institute for Full-stack development curriculum and "I Think Therefore I blog" walkthrough project which helped me to lay the basic foundation for my project.
+* My Code Institute mentor, Martina Terlevic, for her valuable advice and comprehensive guidance.
+* Tutors for helping me with solving few issues I had in the project.
+* My family and friends for giving me moral support and for taking time to test the final version of the project.
