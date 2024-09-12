@@ -678,7 +678,7 @@ The blog allows users to easily navigate between posts using "Next" and "Previou
 
 - **User Story 3**: As a visitor, I want to navigate between posts using "Next" and "Previous" buttons so that I can explore more content.
 
-![Pagination](static/images/readme/features/blog-post-page.png)
+![Pagination](static/images/readme/features/post-navigation.png)
 
 ---
 
