@@ -491,7 +491,7 @@ To review the Kanban board for the project, please click [HERE](https://github.c
 
 ## User Journey
 
-![User journey legend](./sewingsquad/static/images/readme_docs/database_and_user_journey/user_journey_legend.PNG)
+![User journey flowchart](static/images/readme/data-scheme-and-flow-chart/flowchart.webp)
 
 ## Database Scheme 
 
@@ -882,7 +882,7 @@ The design of the blog focuses on ease of use and enhancing the user experience.
 
 - **User Story 17**: The blog should include smooth animations and vibrant colors to enhance the overall user experience.
 
-![User Experience]()
+![User Experience](static/images/readme/features/user-experience.gif)
 
 ---
 
@@ -964,8 +964,9 @@ This robust set of admin tools ensures that the blog is consistently maintained 
 - [Font Awesome](https://fontawesome.com/) - was used for the iconography on the website
 - Google Dev Tools - was used to troubleshoot and test features, solve issues with responsiveness and styling
 - [ChatGPT](https://chatgpt.com/) - was used to generate images for blog post and compress the pictures and convert it to webp
-- [Google Spreadsheet](https://docs.google.com/spreadsheets/): was used to make the database scheme for the site.
-- [Google Slides](https://docs.google.com/presentation/): was used to draw database relationship entity diagram.
+- [Google Spreadsheet](https://docs.google.com/spreadsheets/) - was used to make the database scheme for the site.
+- [Google Slides](https://docs.google.com/presentation/) - was used to draw database relationship entity diagram.
+- [Google Drawio](https://app.diagrams.net/) - was used to draw Flowchart
 
 
 # Testing

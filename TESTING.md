@@ -597,6 +597,7 @@ Let's begin by writing manual testing for each function of your website based on
 | Homepage Load         | Open the website homepage                    | All elements (navbar, blog posts, footer) load properly without delay | ✅         |
 | Latest Blog Posts     | Check if latest posts appear in chronological order | Posts are displayed with title, excerpt, image and link to read the post in the correct order | ✅         |
 | Navigation Links      | Click on navigation links in the header      | Users are redirected to the respective pages      | ✅         |
+| Open Blog Post      | Click on the title, excerpt, image and read more in the posts displayed in home page.      | Users are redirected to the respective blog post pages      | ✅         |
 
 ---
 
@@ -633,6 +634,7 @@ Let's begin by writing manual testing for each function of your website based on
 | Delete        | Click "Delete" button in the delete comment confirmation modal | User's comment gets deleted, displayed confirmation message   | ✅         |
 | Cancel Delete           | Click "Cancel" button in the delete comment confirmation modal   | Comment deletion gets cancelled | ✅         |
 | Close Delete Comment Modal | Click "X" on top right of the Delete Comment Modal          | The modal gets closed  | ✅         |
+| Go to Profile Page      | Click on the profile picture and username in the Comment Box in Blog Post Page.      | Users are redirected to their Profile Page      | ✅         |
 
 ---
 
@@ -671,7 +673,7 @@ Let's begin by writing manual testing for each function of your website based on
 | **Test**              | **Action**                                   | **Expected Outcome**                               | **Result** |
 |-----------------------|----------------------------------------------|---------------------------------------------------|------------|
 | Profile Load          | Click on “Profile Picture” in the navigation bar      | User is redirected to their profile page, which displayed user info of Profile Picture, User Email, Username and links to My Facourites, My Comments, Delete Profile and Logout | ✅         |
-| Edit Profile Picture  | Click "Edit Picture" on profile page          | Opens Edit profile picture modal  | ✅         |
+| Edit Profile Picture  | Click "Edit Picture" on profile page or "The Profile Picture" itself          | Opens Edit profile picture modal  | ✅         |
 | Select Profile Picture  | Click "Choose file" on Edit profile picture modal and select a picture from computer, Click "Confirm"         | Profile picture changed to chosen image, displayed confirmation message  | ✅         |
 | Select Avatar  | Select an "Avatar" on Edit profile picture modal and Click "Confirm"         | Profile picture changed to chosen Avatar, displayed confirmation message  | ✅         |
 | Delete Profile Picture  | Click "Delete Picture" on Edit profile picture modal          | Delete Confirmation Modal opens  | ✅         |
