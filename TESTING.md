@@ -809,6 +809,12 @@ During development, several bugs were encountered and resolved:
 
 - **Fix**: To resolve the issue, the functions were separated into individual JavaScript files, each dedicated to a specific feature. By modularizing the code into separate files, the bugs were fixed, and the functionality of each feature was restored, ensuring smooth performance across the site.
 
+### Secret Key Exposure in Production
+
+- **Issue**: The Secret Key was inadvertently included directly in settings.py, causing it to be exposed in the production environment.
+
+- **Fix**: A new Secret Key has been generated and securely stored in env.py, replacing the old key in settings.py. The updated Secret Key has also been added to Heroku Config Vars, and the project has been redeployed to apply the changes.
+
 ### CSRF Token Failure on Mobile Login
 
 **Issue**: While attempting to log in via a mobile device, users encountered a "CSRF token failed" error. This was due to the deployed link not being included in the CSRF trusted origins list.

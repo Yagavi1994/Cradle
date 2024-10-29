@@ -28,7 +28,7 @@ This experience sparked an idea. I began to wish for a single, reliable source w
 - [Testing](#testing)
 - [Deployment & local development](#deployment-&-local-development)
 - [Credits](#credits)
-- [Aknowledgement](#aknowledgement)
+- [Acknowledgement](#acknowledgement)
 
 
 # Project objectives
@@ -1054,7 +1054,7 @@ Images were taken from Adobe Stock and Pixabay
    * [Picture used in the Logo](https://www.meta.ai/)
 
 
-# Aknowledgement
+# Acknowledgement
 
 I would like to thank to following people who helped me along the way in completing this project:
 * Code-Institute for Full-stack development curriculum and "I Think Therefore I blog" walkthrough project which helped me to lay the basic foundation for my project.
